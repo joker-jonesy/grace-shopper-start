@@ -7,6 +7,6 @@ if(process.env.QUIET){
 }
 
 //you name this whatever your project is
-const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_db', config);
+const connection = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/lolcards', config);
 
-module.exports = conn;
+module.exports = connection;

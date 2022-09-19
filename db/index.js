@@ -1,13 +1,10 @@
-const conn = require('./conn');
+const conn = require('./connection');
 const { Sequelize } = conn;
 const User = require('./User');
 const Product = require('./Product');
 const Order = require('./Order');
 const Tag = require('./Tag');
-//what are the models for an ecommerce website?
-//users products orders tag
-
-//line item is the product and the amount of said product
+const LineItem = require('./LineItem')
 
 User.hasMany(Order);
 Tag.hasMany(Product);
@@ -16,8 +13,11 @@ Order.belongsTo(User);
 Order.hasMany(LineItem)
 
 
-
-
 module.exports = {
-    conn
+    conn,
+    User,
+    Tag,
+    Order,
+    LineItem,
+    Product
 };

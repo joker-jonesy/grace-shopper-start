@@ -1,22 +1,41 @@
-const conn = require('./conn');
+const conn = require('./connection');
 const { Sequelize } = conn;
 //jwt auth imported here
 
 const User = conn.define('user', {
     username:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING(32),
+        unique: true,
+        validate:{
+            allowNull:false,
+            len:[6,32]
+        }
     },
     password:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate:{
+            allowNull:false,
+        },
     },
     email:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        validate:{
+            isEmail: true,
+            allowNull:false
+        }
     },
     fName:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING(64),
+        validate:{
+            allowNull:false
+        }
     },
     lName:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING(64),
+        validate:{
+            allowNull:false
+        }
     }
 })
 

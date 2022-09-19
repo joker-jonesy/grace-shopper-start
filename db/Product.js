@@ -1,21 +1,32 @@
-const conn = require('./conn');
+const conn = require('./connection');
 const { Sequelize } = conn;
 
 const Product = conn.define('product', {
     name:{
-
+        type: Sequelize.STRING,
+        allowNull:false
     },
     price:{
-
+        type: Sequelize.DECIMAL(10,2),
+        allowNull:false
     },
     qty:{
-
+        type: Sequelize.INTEGER
     },
-    img:{
-
+    imgSingle:{
+        type: Sequelize.STRING,
     },
-    descr:{
-
+    imgAll:{
+        type: Sequelize.STRING,
+    },
+    imgCart:{
+        type: Sequelize.STRING,
+    },
+    descriptionBlurb:{
+        type: Sequelize.TEXT,
+    },
+    descriptionLore:{
+        type: Sequelize.TEXT,
     }
 })
 
