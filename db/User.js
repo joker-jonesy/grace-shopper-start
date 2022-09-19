@@ -36,6 +36,10 @@ const User = conn.define('user', {
         validate:{
             allowNull:false
         }
+    },
+    isAdmin:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     }
 })
 
