@@ -7,10 +7,13 @@ const Tag = require('./Tag');
 //what are the models for an ecommerce website?
 //users products orders tag
 
+//line item is the product and the amount of said product
+
 User.hasMany(Order);
 Tag.hasMany(Product);
+LineItem.belongsTo(Product)
 Order.belongsTo(User);
-Order.hasMany(Product);
+Order.hasMany(LineItem)
 
 
 
