@@ -8,7 +8,6 @@ const Product = conn.define('product', {
     },
     price:{
         type: Sequelize.DECIMAL(10,2),
-        allowNull:false
     },
     qty:{
         type: Sequelize.INTEGER
