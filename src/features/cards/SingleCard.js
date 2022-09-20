@@ -14,13 +14,13 @@ const SingleCard = (props) => {
 						<div className='tag-1'>{props.tag1}</div>
 					</div>
 					}
-			<div className='card-info'>
-				<div className='card-price'>{props.price}</div>
-				<div className='card-quantity'>{props.qty}</div>
+				<div className='card-info'>
+					<div className='card-price'>{props.price}</div>
+					<div className='card-quantity'>{props.qty}</div>
+				</div>
 			</div>
+			<div className='card-blurb'>{props.descriptionBlurb}</div>
 		</div>
-		<div className='card-blurb'>{props.descriptionBlurb}</div>
-	</div>
 	</div>;
 };
 
