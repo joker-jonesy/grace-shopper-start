@@ -127,4 +127,8 @@ dist
 .pnp.*
 
 bundle.js
+<<<<<<< HEAD
 bundle.js.map
+=======
+bundle.js.map
+>>>>>>> frontend
