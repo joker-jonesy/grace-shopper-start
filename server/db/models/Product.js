@@ -24,9 +24,12 @@ const Product = conn.define('product', {
 	descriptionBlurb: {
 		type: Sequelize.TEXT,
 	},
-	descriptionLore: {
-		type: Sequelize.TEXT,
+	tag1:{
+		type: Sequelize.TEXT(32)
 	},
+	tag2:{
+		type: Sequelize.TEXT(32)
+	}
 });
 
 module.exports = Product;
