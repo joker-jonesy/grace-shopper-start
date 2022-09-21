@@ -31,7 +31,7 @@ const cardsSlice = createSlice({
 			})
 			.addCase(fetchCards.fulfilled, (state, action) => {
 				state.status = 'succeeded';
-				state.products = action.payload;
+				state.cards = action.payload;
 			})
 			.addCase(fetchCards.rejected, (state, action) => {
 				state.status = 'failed';
