@@ -6,8 +6,6 @@ const Cart = () => {
 	let totalQty = 0
 
 	// let totalDisplayPrice = totalPrice.toString().slice(0)
-	
-
 	return (
 		<div className="temp-cart-div">
 			<h1>Cart Items:</h1>
@@ -45,6 +43,7 @@ const Cart = () => {
 
 						)
 					})}
+
 				</div>
 			</div>
 			<div className='cart-item'>
