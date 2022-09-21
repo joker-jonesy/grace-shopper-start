@@ -31,3 +31,16 @@
 	height: 100vh;
 	background-color: rgb(204, 217, 229);
 }
+
+.temp-cart-div{
+	width: 50vw;
+}
+
+.cart-item{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.qty-button{
+	display: flex;
+}
