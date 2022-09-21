@@ -20,7 +20,7 @@ function Login (){
         dispatch(userLogin(login))
     }
     return(
-        <div>
+        <div className='rest'>
         <h3>
             Welcome please log in!
         </h3>

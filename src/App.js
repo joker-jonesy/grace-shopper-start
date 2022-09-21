@@ -11,10 +11,9 @@ import SignUp from './features/signUp/SignUp';
 export default function App() {
 	return (
 		<div className="App">
-			<div>
+
 			<Nav />
-			</div>
-				<div className='rest'>
+	
 				<Routes>
 					<Route index path="/cards" element={<Cards />} />
 					<Route index path="/cards/:id" element={<SingleCard />} />
@@ -23,7 +22,6 @@ export default function App() {
 					<Route path = '/login' element = {<Login/>}/>
 					<Route path = '/signUp' element={<SignUp/>}/>
 				</Routes>
-				</div>
 
 		</div>
 	);
