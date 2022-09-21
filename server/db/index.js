@@ -15,10 +15,6 @@ Order.hasMany(LineItem);
 
 const syncAndSeed = async () => {
 	try {
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 		const getChampions = async () => {
 			let { data } = await axios.get(
 				'http://ddragon.leagueoflegends.com/cdn/12.17.1/data/en_US/champion.json'
@@ -32,10 +28,6 @@ const syncAndSeed = async () => {
 		//change to true to reseed
 
 		await conn.sync({ force: true });
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 		let champions = await getChampions();
 		let tags = await Tag.bulkCreate([
 			{ name: 'Fighter' },
@@ -47,12 +39,6 @@ const syncAndSeed = async () => {
 			{ name: 'Mage' },
 			{ name: 'Marksman' },
 		]);
-<<<<<<< HEAD
-		
-		await Promise.all(
-=======
-
->>>>>>> main
 		champions.map(async (champion) => {
 			await Product.create({
 				name: champion.name,
@@ -65,9 +51,6 @@ const syncAndSeed = async () => {
 				tag1: champion.tags[0],
 				tag2: champion.tags[1] ? champion.tags[1] : null,
 			});
-<<<<<<< HEAD
-		}))
-=======
 		});
 		//use this area to sync your database
 
@@ -82,7 +65,6 @@ const syncAndSeed = async () => {
 
 
 		//use this area to sync your database
->>>>>>> main
 		console.log(`Seeding successful!`);
 	} catch (e) {
 		console.log(e);

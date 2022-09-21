@@ -1,5 +1,35 @@
 * {
 	box-sizing: border-box;
+	background-color: black;
+}
+
+@font-face {
+	font-family: lol-font;
+	src: url('./FrizQuadrataRegular.ttf')
+}
+
+.nav {
+	position: sticky;
+	top: 10px;
+	padding: 10px;
+	margin-top: 5%;
+	background-color: rgb(204, 217, 229);
+}
+
+.all-cards-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5rem;
+	flex-wrap: wrap;
+}
+
+.card-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5rem;
+	flex-wrap: wrap;
 }
 
 .nav-bar {
@@ -46,4 +76,49 @@
 .all-cards-container {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.card-display {
+	display: flex;
+}
+
+.card-image {
+	max-height: 500px;
+	max-width: 700px;
+}
+
+.card-blurb {
+
+}
+
+.card-title {
+	text-decoration: none;
+	font-family: lol-font;
+	color: gold;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-tags {
+	color: gold;
+	font-family: lol-font;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+.double-tags {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.card-info {
+	color: gold;
+	font-family: lol-font;
+}
+
+.card-blurb {
+	color: gold;
+	font-family: lol-font;
+	flex-shrink: 2;
 }
