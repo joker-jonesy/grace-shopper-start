@@ -1,8 +1,8 @@
 import React from 'react';
 import Nav from './components/nav/Nav';
 import { Routes, Route } from 'react-router-dom';
-import Products from './features/products/Products';
-import SingleProduct from './features/products/SingleProduct';
+import Cards from './features/cards/Cards';
+import SingleCard from './features/cards/singleCard';
 import Cart from './features/cart/Cart';
 import Profile from './features/profile/Profile';
 
@@ -12,8 +12,8 @@ export default function App() {
 			<Nav />
 			<div className="rest">
 				<Routes>
-					<Route index path="/products" element={<Products />} />
-					<Route index path="/products/:id" element={<SingleProduct />} />
+					<Route index path="/cards" element={<Cards />} />
+					<Route index path="/cards/:id" element={<SingleCard />} />
 					<Route exact path="/profile" element={<Profile />} />
 					<Route exact path="/cart" element={<Cart />} />
 				</Routes>

@@ -1,8 +1,8 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import productsReducer from '../features/products/productsSlice';
+import cardsReducer from '../features/cards/cardsSlice';
 import logger from 'redux-logger';
 
-const rootReducer = combineReducers({ products: productsReducer });
+const rootReducer = combineReducers({ cards: cardsReducer });
 
 export const store = configureStore({
 	reducer: rootReducer,
