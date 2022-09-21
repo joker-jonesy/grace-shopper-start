@@ -16,7 +16,7 @@ function SignUp (){
         return newUser
     }
     return(
-        <div>
+        <div className='rest'>
             <h3>Please use the following form to Sign Up</h3>
             <form onSubmit={handleSubmit}>
                 <label>First Name</label>
