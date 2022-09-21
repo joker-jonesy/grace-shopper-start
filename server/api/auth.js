@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Order, LineItem} = require('../db')
+const {User, Order, LineItem, Product} = require('../db')
 
 const requireToken = async(req,res,next)=>{
     try{
@@ -31,7 +31,8 @@ router.get(`/:id/user`, requireToken, async(req,res,next)=>{
     try {
         const user = await User.findByPk(req.params.id,{
             include: [
-                {model: Order, include:LineItem}
+                {model: Order, include:[{model:LineItem, include: Product
+                }]}
             ]
         })
         res.send(user)
