@@ -31,15 +31,24 @@
 	background-color: rgb(204, 217, 229);
 }
 
+<<<<<<< HEAD
 .temp-cart-div {
 	width: 50vw;
 }
 
 .cart-item {
+=======
+.temp-cart-div{
+	width: 50vw;
+}
+
+.cart-item{
+>>>>>>> brandon
 	display: flex;
 	justify-content: space-evenly;
 }
 
+<<<<<<< HEAD
 .qty-button {
 	display: flex;
 }
@@ -47,3 +56,8 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+=======
+.qty-button{
+	display: flex;
+}
+>>>>>>> brandon
