@@ -5,7 +5,7 @@ const Product = require('./models/Product');
 const Order = require('./models/Order');
 const Tag = require('./models/Tag');
 const LineItem = require('./models/LineItem');
-const axios = require('axios')
+const axios = require('axios');
 
 User.hasMany(Order);
 Tag.hasMany(Product);
@@ -13,18 +13,21 @@ LineItem.belongsTo(Product);
 Order.belongsTo(User);
 Order.hasMany(LineItem);
 
-const getChampions = async ()=>{
-	let {data} = await axios.get('http://ddragon.leagueoflegends.com/cdn/12.17.1/data/en_US/champion.json')
-	let championArr = Object.values(data.data)
-	return championArr
-}
-const setRandomPrice = ()=>{
-	return Math.floor(Math.random()*100000)/100
-  }
+const getChampions = async () => {
+	let { data } = await axios.get(
+		'http://ddragon.leagueoflegends.com/cdn/12.17.1/data/en_US/champion.json'
+	);
+	let championArr = Object.values(data.data);
+	return championArr;
+};
+const setRandomPrice = () => {
+	return Math.floor(Math.random() * 100000) / 100;
+};
 
 const syncAndSeed = async () => {
 	try {
 		//change to true to reseed
+
 		await conn.sync({ force: false});
 	let champions = await getChampions()
 	let tags = await Tag.bulkCreate([
@@ -54,6 +57,7 @@ const syncAndSeed = async () => {
 		tag1: champion.tags[0],
 		tag2: champion.tags[1] ? champion.tags[1] :null
 	})})	
+
 		//use this area to sync your database
 		console.log(`Seeding successful!`);
 	} catch (e) {
