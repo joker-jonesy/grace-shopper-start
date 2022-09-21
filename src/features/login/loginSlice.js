@@ -10,7 +10,6 @@ const initialState = {
 
 export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
     try{
-        
         const response = await axios.post('/api/auth', credentials)
         const token = response.data
         window.localStorage.setItem('token',token)
