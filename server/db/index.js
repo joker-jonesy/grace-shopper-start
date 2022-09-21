@@ -33,8 +33,15 @@ const syncAndSeed = async () => {
 		{name:'Mage'}, {name:'Marksman'}
 	])
 
+	let sally = await User.create({
+		userName: 'sally12',
+		email: 'sally1259201@gmail.com',
+		password: '1234',
+		fName: 'Sally',
+		lName: 'Fields'
+	})
+
 	champions.map(async (champion) => {
-		
 		await Product.create({
 		name:champion.name,
 		price: setRandomPrice(),
@@ -47,7 +54,6 @@ const syncAndSeed = async () => {
 		tag2: champion.tags[1] ? champion.tags[1] :null
 	})})	
 		//use this area to sync your database
-
 		console.log(`Seeding successful!`);
 	} catch (e) {
 		console.log(e);
