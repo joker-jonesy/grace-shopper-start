@@ -39,7 +39,6 @@ const syncAndSeed = async () => {
 			{ name: 'Mage' },
 			{ name: 'Marksman' },
 		]);
-
 		champions.map(async (champion) => {
 			await Product.create({
 				name: champion.name,

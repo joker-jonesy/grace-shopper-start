@@ -11,7 +11,7 @@ const Cart = () => {
 		setQty(qty - 1);
 	}
 	return (
-		<div className="temp-cart-div">
+		<div className="cart">
 			<h1>Cart Items:</h1>
 			<div>
 				<div className='cart-item'>
@@ -22,10 +22,10 @@ const Cart = () => {
 				<div className='cart-item'>
 					<h5>name1</h5>
 					<div>
-						<div className="qty-button">
-							<button onClick={removeFromQty}>-</button>
+						<div className='qty-div'>
+							<button className="qty-button" onClick={removeFromQty}>-</button>
 							<h5>{qty}</h5>
-							<button onClick={addToQty}>+</button>
+							<button className="qty-button" onClick={addToQty}>+</button>
 						</div>
 					</div>
 					<h5>$ 5,95</h5>
