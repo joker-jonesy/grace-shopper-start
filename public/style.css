@@ -43,7 +43,7 @@
 .qty-button {
 	display: flex;
 }
-.cards-container {
+.all-cards-container {
 	display: flex;
 	flex-wrap: wrap;
 }

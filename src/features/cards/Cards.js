@@ -9,22 +9,27 @@ const Cards = () => {
 
 	React.useEffect(() => {
 		dispatch(fetchCards());
-	}, [dispatch]);
+	}, []);
 
 	return !cards ? (
 		<div> Loading... </div>
 	) : (
-		<div className="cards-container">
+		<div className="all-cards-container">
 			{cards.map((card) => (
-				<div key={card.id} className="cards">
-					<img src={card.imgAll} alt="" />;
-					<Link to={`/card/${card.id}`}>
-						<span>{card.name}</span>
-					</Link>
-					<span>
-						{card.tag1}
-						{card.tag2}
-					</span>
+				<div key={card.id} className="all-cards">
+					<div className="all-cards-img">
+						<img src={card.imgAll} alt="" />
+					</div>
+					<div className="all-cards-info">
+						{' '}
+						<Link to={`/cards/${card.id}`}>
+							<span>{card.name}</span>
+						</Link>
+						<span>
+							{card.tag1}
+							{card.tag2}
+						</span>
+					</div>
 				</div>
 			))}
 		</div>
