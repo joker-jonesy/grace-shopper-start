@@ -1,8 +1,12 @@
 const router = require('express').Router();
 
+
 // router.use('/students', require('./students'));
 
 router.use('/cards', require('./cards'));
+
+router.use('/auth', require('./auth'))
+router.use('/signUp', require('./signUp'))
 
 router.use((req, res, next) => {
 	const err = new Error('API route not found!');

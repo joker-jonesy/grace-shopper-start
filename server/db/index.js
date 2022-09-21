@@ -26,6 +26,7 @@ const syncAndSeed = async () => {
 			return Math.floor(Math.random() * 100000) / 100;
 		};
 		//change to true to reseed
+
 		await conn.sync({ force: true });
 		let champions = await getChampions();
 		let tags = await Tag.bulkCreate([
@@ -54,6 +55,17 @@ const syncAndSeed = async () => {
 		});
 		//use this area to sync your database
 
+	let sally = await User.create({
+		username: 'sally12',
+		email: 'sally1259201@gmail.com',
+		password: 'asdf',
+		fName: 'Sally',
+		lName: 'Fields',
+		isAdmin: false,
+	})
+
+
+		//use this area to sync your database
 		console.log(`Seeding successful!`);
 	} catch (e) {
 		console.log(e);
