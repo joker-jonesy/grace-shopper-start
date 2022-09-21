@@ -45,9 +45,9 @@ const syncAndSeed = async () => {
 				price: setRandomPrice(),
 				qty: 100,
 				descriptionBlurb: champion.blurb,
-				imgAll: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name.trim()}_0.jpg`,
-				imgSingle: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.name.trim()}_0.jpg`,
-				imgCart: `http://ddragon.leagueoflegends.com/cdn/12.17.1/img/champion/${champion.name.trim()}.png`,
+				imgAll: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+				imgSingle: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`,
+				imgCart: `http://ddragon.leagueoflegends.com/cdn/12.17.1/img/champion/${champion.id}.png`,
 				tag1: champion.tags[0],
 				tag2: champion.tags[1] ? champion.tags[1] : null,
 			});
