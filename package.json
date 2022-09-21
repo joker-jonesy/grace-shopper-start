@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "webpack",
+		"build": "webpack -w",
 		"build:dev": "npm run build -- --watch --mode=development",
 		"test": "mocha spec.js",
 		"test:dev": "QUIET=true JWT=shh DATABASE_URL=postgres://localhost/acme_db_test npm test -- --watch",

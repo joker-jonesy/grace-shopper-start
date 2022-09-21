@@ -3,20 +3,31 @@ import axios from 'axios';
 
 const initialState = {
 	cards: [],
+	singleCard: {},
 	status: 'idle',
 	error: null,
 };
 
 export const fetchCards = createAsyncThunk('cards/fetchCards', async () => {
 	try {
-		// double check GET route //
 		const { data } = await axios.get('/api/cards');
 		return data;
 	} catch (e) {
 		console.log(e);
 	}
 });
-
+export const fetchSingleCard = createAsyncThunk(
+	'cards/fetchSingleCard',
+	async (id) => {
+		try {
+			const { data } = await axios.get(`/api/cards/${id}`);
+			return data;
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
+//
 const cardsSlice = createSlice({
 	name: 'cards',
 	initialState,
@@ -31,6 +42,17 @@ const cardsSlice = createSlice({
 				state.cards = action.payload;
 			})
 			.addCase(fetchCards.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.error;
+			})
+			.addCase(fetchSingleCard.pending, (state, action) => {
+				state.status = 'loading';
+			})
+			.addCase(fetchSingleCard.fulfilled, (state, action) => {
+				state.status = 'succeeded';
+				state.singleCard = action.payload;
+			})
+			.addCase(fetchSingleCard.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
 			});
