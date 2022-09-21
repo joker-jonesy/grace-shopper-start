@@ -7,15 +7,18 @@ const initialState = {
 	error: null,
 };
 
-export const fetchCards = createAsyncThunk('cards/fetchCards', async () => {
-	try {
-		// double check GET route //
-		const { data } = await axios.get('/api/cards');
-		return data;
-	} catch (e) {
-		console.log(e);
+export const fetchCards = createAsyncThunk(
+	'products/fetchProducts',
+	async () => {
+		try {
+			const { data } = await axios.get('/api/cards');
+
+			return data;
+		} catch (e) {
+			console.log(e);
+		}
 	}
-});
+);
 
 const cardsSlice = createSlice({
 	name: 'cards',
@@ -28,7 +31,7 @@ const cardsSlice = createSlice({
 			})
 			.addCase(fetchCards.fulfilled, (state, action) => {
 				state.status = 'succeeded';
-				state.cards = action.payload;
+				state.products = action.payload;
 			})
 			.addCase(fetchCards.rejected, (state, action) => {
 				state.status = 'failed';
