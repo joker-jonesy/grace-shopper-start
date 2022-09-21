@@ -1,33 +1,41 @@
-import React,{useEffect} from 'react';
-import { useSelector, useDispatch} from 'react-redux';
+import React from 'react';
+import { useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Login from '../login/Login';
-import {fetchCards, fetchSingleCard } from '../cards/cardsSlice';
+import { logout } from '../login/loginSlice';
+
 
 
 const Profile = () => {
 	const user = useSelector(state=>state.login.user)
 	const dispatch = useDispatch()
-	const cards = useSelector(state=>state.cards.cards)
-	useEffect(()=>{
-		dispatch(fetchCards())
-	},[])
 
-	return <div className='rest'>
+	return <div>
 		{!user.id ? <Login/>:
 		<div>
 		<h2>
 			Welcome {user.fName} {user.lName}
 		</h2>
-		<h4>Previous Orders:</h4>
+		<button onClick={()=>{dispatch(logout())}}>
+			Logout
+		</button>
+		
+		{user.orders.length ? <div>
+			<h4>Previous Orders:</h4>
 		<div>{user.orders.map(order=>{
 			if(!order.isCart){
 				return(
-					<div>
-					<p key ={order.id}>Shipped To: {order.orderStreet} {order.orderCity} 
+					<div key={order.id}>
+					{order.lineItems.map(product=>
+					<div key={product.id}>{product.quantity} <img src={product.product.imgAll}  alt='' />
+					</div>)}
+					
+					<p>Shipped To: {order.orderStreet} {order.orderCity} 
 					{order.orderState} {order.orderZip} {order.orderCountry} </p></div>
 				)
 			}
 		})}</div>
+		</div>:null}
 		</div>}
 	</div>;
 };
