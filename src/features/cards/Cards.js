@@ -11,6 +11,7 @@ const Cards = () => {
 		dispatch(fetchCards());
 	}, []);
 
+
 	return !cards ? (
 		<div> Loading... </div>
 	) : (
@@ -29,13 +30,13 @@ const Cards = () => {
 						</Link>
 						<div className='card-tags'>
 							{card.tag2 ? (
-								<div className="double-tags">
-									<div className="tag-1">{card.tag1}</div>
-									<div className="tag-2">{card.tag2}</div>
+								<div className="tag-wrapper">
+									<img className="tag" src={`${card.tag1}.png`} />
+									<img className="tag" src={`${card.tag2}.png`}/>
 								</div>
 							) : (
-								<div className="single-tag">
-									<div className="tag-1">{card.tag1}</div>
+								<div className="tag-wrapper">
+									<img className="tag" src={`${card.tag1}.png`}/>
 								</div>
 							)}
 						</div>
