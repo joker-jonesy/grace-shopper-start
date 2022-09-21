@@ -2,9 +2,9 @@ const conn = require('../connection');
 const { Sequelize } = conn;
 
 const LineItem = conn.define('lineItem', {
-	item:{type: Sequelize.INTEGER,
+	quantity:{type: Sequelize.INTEGER,
 	allowNull: false,
-	default: 1}
+	defaultValue: 1}
 });
 
 module.exports = LineItem;
