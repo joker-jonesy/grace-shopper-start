@@ -5,6 +5,8 @@ import Cards from './features/cards/Cards';
 import SingleCard from './features/cards/SingleCard';
 import Cart from './features/cart/Cart';
 import Profile from './features/profile/Profile';
+import Login from './features/login/Login';
+import SignUp from './features/signUp/SignUp';
 
 export default function App() {
 	return (
@@ -16,6 +18,8 @@ export default function App() {
 					<Route index path="/cards/:id" element={<SingleCard />} />
 					<Route exact path="/profile" element={<Profile />} />
 					<Route exact path="/cart" element={<Cart />} />
+					<Route path = '/login'element = {<Login/>}/>
+					<Route path = '/signUp' element={<SignUp/>}/>
 				</Routes>
 			</div>
 		</div>

@@ -27,36 +27,38 @@ const setRandomPrice = () => {
 const syncAndSeed = async () => {
 	try {
 		//change to true to reseed
-		await conn.sync({ force: false });
-		let champions = await getChampions();
-		let tags = await Tag.bulkCreate([
-			{ name: 'Fighter' },
-			{ name: 'Tank' },
-			{ name: 'Mage' },
-			{ name: 'Assassin' },
-			{ name: 'Tank' },
-			{ name: 'Support' },
-			{ name: 'Mage' },
-			{ name: 'Marksman' },
-		]);
 
-		await Promise.all(
-			champions.map((champion) => {
-				return Product.create({
-					name: champion.name,
-					price: setRandomPrice(),
-					qty: 100,
-					descriptionBlurb: champion.blurb,
-					imgAll: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_0.jpg`,
-					imgSingle: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.name}_0.jpg`,
-					imgCart: `http://ddragon.leagueoflegends.com/cdn/12.17.1/img/champion/${champion.name}.png`,
-					tag1: champion.tags[0],
-					tag2: champion.tags[1] ? champion.tags[1] : null,
-				});
-			})
-		);
+		await conn.sync({ force: false});
+	let champions = await getChampions()
+	let tags = await Tag.bulkCreate([
+		{name:'Fighter'}, {name:'Tank'}, {name:'Mage'},
+		{name: 'Assassin'}, {name:'Tank'}, {name:'Support'},
+		{name:'Mage'}, {name:'Marksman'}
+	])
+
+	let sally = await User.create({
+		username: 'sally12',
+		email: 'sally1259201@gmail.com',
+		password: 'asdf',
+		fName: 'Sally',
+		lName: 'Fields',
+		isAdmin: false,
+	})
+
+	champions.map(async (champion) => {
+		await Product.create({
+		name:champion.name,
+		price: setRandomPrice(),
+		qty: 100,
+		descriptionBlurb: champion.blurb,
+		imgAll: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_0.jpg`,
+		imgSingle: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.name}_0.jpg`,
+		imgCart: `http://ddragon.leagueoflegends.com/cdn/12.17.1/img/champion/${champion.name}.png`,
+		tag1: champion.tags[0],
+		tag2: champion.tags[1] ? champion.tags[1] :null
+	})})	
+
 		//use this area to sync your database
-
 		console.log(`Seeding successful!`);
 	} catch (e) {
 		console.log(e);
