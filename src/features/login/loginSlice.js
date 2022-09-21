@@ -25,7 +25,6 @@ export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
                     authorization:token
                 }
             })
-            console.log(user)
             return user
         }else{
             throw 'login failed bad credentials'
