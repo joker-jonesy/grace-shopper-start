@@ -25,7 +25,7 @@ const setRandomPrice = ()=>{
 const syncAndSeed = async () => {
 	try {
 		//change to true to reseed
-		await conn.sync({ force: false });
+		await conn.sync({ force: false});
 	let champions = await getChampions()
 	let tags = await Tag.bulkCreate([
 		{name:'Fighter'}, {name:'Tank'}, {name:'Mage'},
@@ -34,11 +34,12 @@ const syncAndSeed = async () => {
 	])
 
 	let sally = await User.create({
-		userName: 'sally12',
+		username: 'sally12',
 		email: 'sally1259201@gmail.com',
-		password: '1234',
+		password: 'asdf',
 		fName: 'Sally',
-		lName: 'Fields'
+		lName: 'Fields',
+		isAdmin: false,
 	})
 
 	champions.map(async (champion) => {

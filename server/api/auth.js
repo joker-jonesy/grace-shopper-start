@@ -3,7 +3,8 @@ const {User} = require('../db')
 
 const requireToken = async(req,res,next)=>{
     try{
-        const token = await req.header.authorization
+        const token = await req.headers.authorization
+        console.log(token)
         const user = await User.byToken(token)
         req.user = user
         next()
@@ -27,3 +28,11 @@ router.get('/', requireToken, async(req,res,next)=>{
     }
 })
 
+router.get(`/:id/user`, requireToken, async(req,res,next)=>{
+    try {
+        const user = await User.findByPk(req.params.id)
+        res.send(user)
+    }catch(error){next(error)}
+})
+
+module.exports = router

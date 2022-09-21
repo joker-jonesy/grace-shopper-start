@@ -1,5 +1,5 @@
 const conn = require('../connection');
-const { Sequelize } = conn;
+const Sequelize = require('sequelize')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
@@ -7,36 +7,31 @@ const User = conn.define('user', {
 	username: {
 		type: Sequelize.STRING(32),
 		unique: true,
+		allowNull: false,
 		validate: {
-			allowNull: false,
 			len: [6, 32],
 		},
 	},
 	password: {
 		type: Sequelize.STRING,
-		validate: {
-			allowNull: false,
-		},
+		allowNull: false,
+		
 	},
 	email: {
 		type: Sequelize.STRING,
 		unique: true,
+		allowNull: false,
 		validate: {
 			isEmail: true,
-			allowNull: false,
 		},
 	},
 	fName: {
 		type: Sequelize.STRING(64),
-		validate: {
-			allowNull: false,
-		},
+		allowNull: false,
 	},
 	lName: {
 		type: Sequelize.STRING(64),
-		validate: {
-			allowNull: false,
-		},
+		allowNull: false,
 	},
 	isAdmin: {
 		type: Sequelize.BOOLEAN,
@@ -69,7 +64,7 @@ User.byToken = async function (token){
 	try{
 		const payload = await jwt.verify(token, process.env.JWT)
 		if (payload){
-			const user = await User.findByPk(user.id)
+			const user = await User.findByPk(payload.id)
 			return user
 		}
 		const error = Error('bad credentials')
@@ -81,13 +76,13 @@ User.byToken = async function (token){
 		throw error
 	}
 }
-User.authenticate = async ({username,password})=>{
+User.authenticate = async ({username, password})=>{
 	const user = await User.findOne({
 		where:{
 			username
 		}
 	})
-	const match = await bcrypt.compare(password,user.password)
+	const match = await bcrypt.compare(password, user.password)
 	if(match){return user}
 	const error = Error('bad credentials')
 	error.status = 401

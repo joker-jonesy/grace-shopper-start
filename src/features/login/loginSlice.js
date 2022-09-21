@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 const initialState = {
@@ -8,8 +8,9 @@ const initialState = {
     error: null
 }
 
-export const userLogin = createLoginThunk('user/auth', async (credentials)=>{
+export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
     try{
+        
         const response = await axios.post('/api/auth', credentials)
         const token = response.data
         window.localStorage.setItem('token',token)
@@ -25,6 +26,7 @@ export const userLogin = createLoginThunk('user/auth', async (credentials)=>{
                     authorization:token
                 }
             })
+            console.log(user)
             return user
         }else{
             throw 'login failed bad credentials'
@@ -59,5 +61,5 @@ export const loginSlice = createSlice({
 export const getUser = (state) => state.user.user
 export const getLoggedInStatus = (state)=> state.loggedIn.loggedIn
 
-export const {} = userLogin.actions
+// export const {} = userLogin.actions
 export default loginSlice.reducer
