@@ -9,7 +9,7 @@ const Cards = () => {
 
 	React.useEffect(() => {
 		dispatch(fetchCards());
-	}, [dispatch]);
+	}, []);
 
 	return !cards ? (
 		<div> Loading... </div>
@@ -22,7 +22,7 @@ const Cards = () => {
 					</div>
 					<div className="all-cards-info">
 						{' '}
-						<Link to={`/card/${card.id}`}>
+						<Link to={`/cards/${card.id}`}>
 							<span>{card.name}</span>
 						</Link>
 						<span>

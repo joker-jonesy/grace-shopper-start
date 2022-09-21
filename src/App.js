@@ -10,7 +10,6 @@ export default function App() {
 	return (
 		<div className="App">
 			<Nav />
-
 			<Routes>
 				<Route index path="/cards" element={<Cards />} />
 				<Route index path="/cards/:id" element={<SingleCard />} />
