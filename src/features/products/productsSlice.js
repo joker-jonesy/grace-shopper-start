@@ -2,35 +2,38 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-	cards: [],
+	products: [],
 	status: 'idle',
 	error: null,
 };
 
-export const fetchCards = createAsyncThunk('cards/fetchCards', async () => {
-	try {
-		// double check GET route //
-		const { data } = await axios.get('/api/cards');
-		return data;
-	} catch (e) {
-		console.log(e);
-	}
-});
+export const fetchProducts = createAsyncThunk(
+	'products/fetchProducts',
+	async () => {
+		try {
+			const { data } = await axios.get('/api/products');
 
-const cardsSlice = createSlice({
-	name: 'cards',
+			return data;
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
+
+const productsSlice = createSlice({
+	name: 'products',
 	initialState,
 	reducers: {},
 	extraReducers(builder) {
 		builder
-			.addCase(fetchCards.pending, (state, action) => {
+			.addCase(fetchProducts.pending, (state, action) => {
 				state.status = 'loading';
 			})
-			.addCase(fetchCards.fulfilled, (state, action) => {
+			.addCase(fetchProducts.fulfilled, (state, action) => {
 				state.status = 'succeeded';
-				state.cards = action.payload;
+				state.products = action.payload;
 			})
-			.addCase(fetchCards.rejected, (state, action) => {
+			.addCase(fetchProducts.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
 			});
@@ -41,7 +44,7 @@ export const getCards = (state) => state.cards.cards;
 export const getCardsStatus = (state) => state.cards.status;
 
 //export the action variables in reducers object
-export const {} = cardsSlice.actions;
+export const {} = productsSlice.actions;
 
 //export slice reducer to store.js
-export default cardsSlice.reducer;
+export default productsSlice.reducer;
