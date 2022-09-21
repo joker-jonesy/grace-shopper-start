@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const Nav = () => {
 	return (
+	
 		<nav className="nav-bar">
 			<Link className="nav-link" to="/cards">
 				Cards
@@ -15,6 +16,7 @@ const Nav = () => {
 				Cart{' '}
 			</Link>
 		</nav>
+
 	);
 };
 
