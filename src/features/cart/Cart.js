@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const Cart = () => {
 	const props = [{id: 1, name: "name1", qty: 1, price: 5099}, {id: 2, name: "name2", qty: 1, price: 3099}]
-	let totalPrice = 0
+	let totalPrice = 0g
 	let totalQty = 0
 
 	// let totalDisplayPrice = totalPrice.toString().slice(0)
