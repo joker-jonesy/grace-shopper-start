@@ -9,7 +9,7 @@ const User = conn.define('user', {
 		unique: true,
 		allowNull: false,
 		validate: {
-			len: [6, 32],
+			len: [5, 32],
 		},
 	},
 	password: {

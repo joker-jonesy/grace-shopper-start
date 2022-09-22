@@ -43,7 +43,12 @@ const Cards = () => {
 							)}
 						</div>
 					</div>
-					<button onClick={() => handleAddToCart(card)}> Add to Cart </button>
+					<button
+						onClick={() => handleAddToCart({ productId: card.id, qty: 1 })}
+					>
+						{' '}
+						Add to Cart{' '}
+					</button>
 				</div>
 			))}
 		</div>
