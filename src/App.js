@@ -15,7 +15,7 @@ export default function App() {
 	return (
 		<div className="App">
 
-			{/* <Nav /> */}
+			<Nav />
 	
 				<Routes>
 					<Route index path="/cards" element={<Cards />} />
