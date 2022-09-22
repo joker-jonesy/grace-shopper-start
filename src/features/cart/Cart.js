@@ -22,7 +22,6 @@ const Cart = () => {
         dispatch(UserCart(login))
     }, []);
 
-
 	return !cart ? (
 		<div>no items found</div>
 	) : (
@@ -39,20 +38,6 @@ const Cart = () => {
 						{cart[0].lineItems.map((cartItem)=>{
 							totalQty += cartItem.quantity;
 							totalPrice += (Number(cartItem.product.price) * cartItem.quantity)
-							// Cannot use state Headers, so I need to make a reduceQuantity function like this (see jpfp):
-
-							// const handleDelete = (evnt) => {
-							// 	const campusId = campus.id
-							// 	evnt.preventDefault();
-							// 	dispatch(deleteCampus({ campusId }))
-							// }
-
-							//lets do price as a number?
-							// let price = (Number(cartItem.product.price) * qty ).toString().split("");
-							// price.splice(price.length-2, 0, ",").join("");
-
-							// totalPrice += (item.price * qty);
-							// totalQty += qty;
 
 							return (
 								<div className='cart-item' key={cartItem.product.id}>
