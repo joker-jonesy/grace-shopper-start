@@ -1,5 +1,40 @@
 * {
 	box-sizing: border-box;
+	background-color: black;
+}
+
+@font-face {
+	font-family: lol-font;
+	src: url('./FrizQuadrataRegular.ttf')
+}
+
+body{
+	font-family: lol-font;
+	color: gold;
+}
+
+.nav {
+	position: sticky;
+	top: 10px;
+	padding: 10px;
+	margin-top: 5%;
+	background-color: rgb(204, 217, 229);
+}
+
+.all-cards-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5rem;
+	flex-wrap: wrap;
+}
+
+.card-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5rem;
+	flex-wrap: wrap;
 }
 
 .nav-bar {
@@ -47,8 +82,9 @@
 	justify-content: space-evenly;
 }
 
-.qty-button {
+.qty-div {
 	display: flex;
+	flex-direction: row;
 }
 .all-cards-container {
 	display: flex;
@@ -56,4 +92,53 @@
 	align-items: center;
 	margin-top: 5rem;
 	flex-wrap: wrap;
+}
+
+.card-display {
+	display: flex;
+}
+
+.card-image {
+	max-height: 500px;
+	max-width: 700px;
+}
+
+.card-blurb {
+	flex-shrink: .5;
+}
+
+.card-title {
+	font-family: lol-font;
+	color: gold;
+	text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-tags {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+.tag-wrapper {
+	display: flex;
+	justify-content: space-evenly;
+	max-height: 50px;
+}
+
+.tag {
+	max-width: 50px;
+}
+
+.card-info {
+}
+
+.card-blurb {
+	flex-shrink: 2;
+}
+
+.qty-button {
+	background-color: gold;
+	max-height: 20px;
 }

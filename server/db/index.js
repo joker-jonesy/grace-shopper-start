@@ -39,7 +39,6 @@ const syncAndSeed = async () => {
 			{ name: 'Mage' },
 			{ name: 'Marksman' },
 		]);
-
 		champions.map(async (champion) => {
 			await Product.create({
 				name: champion.name,
@@ -64,6 +63,32 @@ const syncAndSeed = async () => {
 		isAdmin: false,
 	})
 
+	let order1 = await Order.create({
+		isCart:false,
+		orderStreet: '10502 big street',
+		orderCity: 'Sprinfield',
+		orderZip: '22902',
+		orderState: 'VA',
+		orderCountry: 'USA',
+		userId: sally.id
+	})
+
+	let order2 = await Order.create({
+		isCart: true,
+		userId: sally.id
+	})
+
+	let orderItems = await LineItem.bulkCreate([
+		{orderId: order1.id, productId:1, quantity:1},
+		{orderId: order1.id, productId:6, quantity:3},
+		{orderId: order1.id, productId:5, quantity:1},
+		{orderId: order1.id, productId:4},
+		{orderId: order1.id, productId:3},
+		{orderId: order1.id, productId:2},
+		{orderId:order2.id, productId:10},
+		{orderId:order2.id, productId:102, quantity:2},
+		{orderId:order2.id, productId:115}
+	])
 
 		//use this area to sync your database
 		console.log(`Seeding successful!`);

@@ -21,19 +21,27 @@ const Cards = () => {
 	) : (
 		<div className="all-cards-container">
 			{cards.map((card) => (
-				<div key={card.id} className="all-cards">
-					<div className="all-cards-img">
+				<div key={card.id} className="card">
+					<div className="card-image">
 						<img src={card.imgAll} alt="" />
 					</div>
 					<div className="all-cards-info">
 						{' '}
 						<Link to={`/cards/${card.id}`}>
-							<span>{card.name}</span>
+							<div className="card-title">{card.name}</div>
 						</Link>
-						<span>
-							{card.tag1}
-							{card.tag2}
-						</span>
+						<div className="card-tags">
+							{card.tag2 ? (
+								<div className="tag-wrapper">
+									<img className="tag" src={`${card.tag1}.png`} />
+									<img className="tag" src={`${card.tag2}.png`} />
+								</div>
+							) : (
+								<div className="tag-wrapper">
+									<img className="tag" src={`${card.tag1}.png`} />
+								</div>
+							)}
+						</div>
 					</div>
 					<button onClick={() => handleAddToCart(card)}> Add to Cart </button>
 				</div>
