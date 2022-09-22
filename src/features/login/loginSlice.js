@@ -1,11 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
+const token = localStorage.getItem('token') 
+? localStorage.getItem('token')
+:null
+
 const initialState = {
     loggedIn: false,
     user: {},
     status: 'idle',
-    error: null
+    error: null,
+    token
 }
 
 export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
@@ -25,18 +30,26 @@ export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
                     authorization:token
                 }
             })
-            return user
+            return {user, token}
         }else{
             throw 'login failed bad credentials'
         }
     }catch(e){console.log(e)}
 })
 
+export const userLogout = createAsyncThunk()
+
 export const loginSlice = createSlice({
     name: 'login',
     initialState,
     reducers:{
-        
+        logout: (state)=>{
+            localStorage.removeItem('token')
+            state.loading = false
+            state.user = {}
+            state.token = null
+            state.error = null
+        }
     },
     extraReducers(builder){
         builder
@@ -46,7 +59,8 @@ export const loginSlice = createSlice({
             .addCase(userLogin.fulfilled, (state,action)=>{
                 state.status = 'succeeded'
                 state.loggedIn = true
-                state.user = action.payload
+                state.user = action.payload.user
+                state.token = action.payload.token
             })
             .addCase(userLogin.rejected, (state,action)=>{
                 state.status = 'failed'
@@ -57,7 +71,6 @@ export const loginSlice = createSlice({
 })
 
 export const getUser = (state) => state.user.user
+export const {logout} = loginSlice.actions
 export const getLoggedInStatus = (state)=> state.loggedIn.loggedIn
-
-// export const {} = userLogin.actions
 export default loginSlice.reducer

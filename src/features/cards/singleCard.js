@@ -18,23 +18,26 @@ const SingleCard = () => {
 			<div className="card-container">
 				<div className="card">
 					<div className="card-title">{champion.name}</div>
-					<img className="card-image" src={champion.imgSingle}></img>
-					{champion.tag2 ? (
-						<div className="double-tags">
+					<div className='card-display'>
+						<img className="card-image" src={champion.imgSingle}></img>
+						<p className="card-blurb">{champion.descriptionBlurb}</p>
+					</div>
+					<div className='card-tags'>
+						{champion.tag2 ? (
+							<div className="double-tags">
+								<div className="tag-1">{champion.tag1}</div>
+								<div className="tag-2">{champion.tag2}</div>
+							</div>
+						) : (
 							<div className="tag-1">{champion.tag1}</div>
-							<div className="tag-2">{champion.tag2}</div>
-						</div>
-					) : (
-						<div className="single-tag">
-							<div className="tag-1">{champion.tag1}</div>
-						</div>
-					)}
+						)}
+					</div>
 					<div className="card-info">
 						<div className="card-price">{champion.price}</div>
 						<div className="card-quantity">{champion.qty}</div>
 					</div>
 				</div>
-				<div className="card-blurb">{champion.descriptionBlurb}</div>
+				
 			</div>
 		</div>
 	);
