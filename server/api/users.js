@@ -12,14 +12,13 @@ const requireToken = async(req,res,next)=>{
 
 router.get('/', requireToken, async (req,res,next)=>{
     try{
-    let orders = await Order.findAll({where:{
-        isCart:false},
-        include:[
-            {model:User},
-            {model:LineItem, include:[{model:Product}]}
-        ]
-    })
-    res.send(orders)
+        const users = await User.findAll({
+            include: [
+                {model: Order, include:[{model:LineItem, include: Product
+                }]}
+            ]
+        })
+    res.send(users)
 
     }catch(error){next(error)}
 })

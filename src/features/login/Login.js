@@ -7,14 +7,12 @@ import { Link } from 'react-router-dom'
 function Login (){
     const [login,setLogin]=useState({})
     const dispatch = useDispatch()
-
     const handleChange = props =>event=>{ 
         setLogin({
             ...login,
             [props]:event.target.value
         })
     }
-
     const handleSubmit = (event)=>{
         event.preventDefault()
         dispatch(userLogin(login))
