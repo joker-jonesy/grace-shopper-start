@@ -6,7 +6,7 @@ import { logout } from '../login/loginSlice';
 
 
 
-const Profile = () => {
+const UserProfile = () => {
 	const user = useSelector(state=>state.login.user)
 	const dispatch = useDispatch()
 
@@ -40,4 +40,4 @@ const Profile = () => {
 	</div>;
 };
 
-export default Profile;
+export default UserProfile;

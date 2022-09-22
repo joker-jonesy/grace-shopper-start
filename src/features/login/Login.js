@@ -28,7 +28,7 @@ function Login (){
             <label>Username</label>
                 <input type='text' onChange={handleChange('username')} name='username'/>
             <label>Password</label>
-                <input type='text' onChange={handleChange('password')} name='password'/>
+                <input type='password' onChange={handleChange('password')} name='password'/>
             <button type='submit'>Login</button>
         </form>
         <Link to='/signUp'><h3>Create New User</h3></Link>
