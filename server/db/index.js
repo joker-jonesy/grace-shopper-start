@@ -54,6 +54,15 @@ const syncAndSeed = async () => {
 			});
 		});
 		//use this area to sync your database
+	
+	let admin = await User.create({
+		username: 'admin',
+		email: 'admin@gmail.com',
+		password: 'admin',
+		fName: 'Jr.',
+		lName: 'Administrator',
+		isAdmin: true
+	})
 
 	let sally = await User.create({
 		username: 'sally12',

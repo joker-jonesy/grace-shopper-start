@@ -1,12 +1,19 @@
-import React from "react"
-import { useDispatch } from "react-redux";
-
+import React from 'react';
+import { useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import AdminProfile from '../admin/AdminProfile';
+import Login from '../login/Login';
 import { logout } from '../login/loginSlice';
 
-function UserProfile (){
+
+
+const Profile = () => {
 	const user = useSelector(state=>state.login.user)
 	const dispatch = useDispatch()
-    return(<div>
+
+	return <div>
+		{!user.id ? <Login/> : user.isAdmin ? <AdminProfile/> :
+		<div>
 		<h2>
 			Welcome {user.fName} {user.lName}
 		</h2>
@@ -30,7 +37,8 @@ function UserProfile (){
 			}
 		})}</div>
 		</div>:null}
-		</div>)
-}
+		</div>}
+	</div>;
+};
 
-export default UserProfile
+export default Profile;
