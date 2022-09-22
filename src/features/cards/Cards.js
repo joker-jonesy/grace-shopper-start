@@ -2,6 +2,8 @@ import React from 'react';
 import { fetchCards } from './cardsSlice';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../cart/cartSlice';
+
 const Cards = () => {
 	const cards = useSelector((state) => state.cards.cards);
 
@@ -11,6 +13,9 @@ const Cards = () => {
 		dispatch(fetchCards());
 	}, []);
 
+	const handleAddToCart = (card) => {
+		dispatch(addToCart(card));
+	};
 
 	return !cards ? (
 		<div> Loading... </div>
@@ -48,6 +53,7 @@ const Cards = () => {
 						</div>
 						<button className='add-to-cart-button'>Add to cart</button>
 					</div>
+					<button onClick={() => handleAddToCart({productId: card.id, qty: 1})}> Add to Cart </button>
 				</div>
 			))}
 		</div>
