@@ -22,4 +22,13 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
+//post /api/cards
+router.post('/', async (req,res,next)=>{
+	try{
+		console.log(req.body)
+		const newCard = await Product.create(req.body)
+		res.status(201).send(newCard)
+	}catch(error){next(error)}
+})
+
 module.exports = router;
