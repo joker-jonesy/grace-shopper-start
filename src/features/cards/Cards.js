@@ -18,8 +18,8 @@ const Cards = () => {
 		<div className="all-cards-container">
 			{cards.map((card) => (
 				<div key={card.id} className="card">
-					<div className="card-image">
-						<img src={card.imgAll} alt="" />
+					<div>
+						<img className="card-image" src={card.imgAll} alt="" />
 					</div>
 					<div className="all-cards-info">
 						{' '}
@@ -28,18 +28,25 @@ const Cards = () => {
 								{card.name}
 							</div>
 						</Link>
-						<div className='card-tags'>
+						<div className='card-info'>
 							{card.tag2 ? (
-								<div className="tag-wrapper">
-									<img className="tag" src={`${card.tag1}.png`} />
-									<img className="tag" src={`${card.tag2}.png`}/>
-								</div>
-							) : (
-								<div className="tag-wrapper">
+								<span className="tag-wrapper">
 									<img className="tag" src={`${card.tag1}.png`}/>
-								</div>
+									<img className="tag" src={`${card.tag2}.png`}/>
+								</span>
+							) : (
+								<span className="tag-wrapper">
+									<img className="tag" src={`${card.tag1}.png`}/>
+								</span>
 							)}
 						</div>
+						<div className='card-price'>
+							<span>
+								<div>Price:</div>
+								<div className='card-price'>${card.price}</div>
+							</span>
+						</div>
+						<button className='add-to-cart-button'>Add to cart</button>
 					</div>
 				</div>
 			))}
