@@ -14,7 +14,7 @@ const LoginCart = () => {
 	const totalPrice = useSelector(getTotalPrice);
 
 	React.useEffect(() => {
-		dispatch(addLoginCart(loginCart.lineItems));
+		// dispatch(addLoginCart(loginCart.lineItems));
 	}, []);
 	return (
 		<div className="cart-container">
