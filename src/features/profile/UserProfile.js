@@ -6,7 +6,7 @@ import { logout } from '../login/loginSlice';
 function UserProfile (){
 	const user = useSelector(state=>state.login.user)
 	const dispatch = useDispatch()
-    return(<div>
+    return(<div className='view-profile-container'>
 		<h2>
 			Welcome {user.fName} {user.lName}
 		</h2>

@@ -11,7 +11,7 @@ const Profile = () => {
 	const user = useSelector(state=>state.login.user)
 	const dispatch = useDispatch()
 
-	return <div>
+	return <div className='view-profile-container'>
 		{!user.id ? <Login/> : user.isAdmin ? <AdminProfile/> :
 		<div>
 		<h2>
