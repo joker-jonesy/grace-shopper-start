@@ -1,9 +1,10 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function ViewOrders (){
     const admin = useSelector(state=>state.login)
     const orders = useSelector(state=>state.orders.orders)
+    console.log(orders)
     return(<div>
         {admin.user.isAdmin ? !orders.length ? <h1>loading</h1> : <div>
             {orders.map(order => <ul key={order.id}>

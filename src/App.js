@@ -10,13 +10,15 @@ import SignUp from './features/signUp/SignUp';
 import ViewOrders from './features/admin/ViewOrders';
 import ViewUsers from './features/admin/ViewUsers';
 import CreateCard from './features/admin/CreateCard'
+import EditCard from './features/admin/EditCard';
+import UpdateUser from './features/profile/UpdateUser';
 
 export default function App() {
 	return (
 		<div className="App">
 
-			<Nav />
-	
+			{/* <Nav />
+	 */}
 				<Routes>
 					<Route index path="/cards" element={<Cards />} />
 					<Route index path="/cards/:id" element={<SingleCard />} />
@@ -27,6 +29,8 @@ export default function App() {
 					<Route path = '/admin/viewOrders' element = {<ViewOrders/>}/>
 					<Route path = '/admin/viewUsers' element ={<ViewUsers/>}/>
 					<Route path = '/admin/createCard' element ={<CreateCard/>}/>
+					<Route path = '/admin/editCard' element ={<EditCard/>}/>
+					<Route path = '/profile/updateProfile' element={<UpdateUser/>}/>
 				</Routes>
 
 		</div>

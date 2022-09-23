@@ -13,6 +13,25 @@ const initialState = {
     token
 }
 
+export const checkToken = createAsyncThunk('user/auth/token', async ()=>{
+    const token = localStorage.getItem('token')
+    if(token){
+        const {data:auth} = await axios.get('/api/auth',{
+            headers:{
+                authorization:token
+            }
+        })
+        const {id} = auth
+        const {data:user} = await axios.get(`/api/auth/${id}/user`, {
+            headers:{
+                authorization:token
+            }
+        })
+        return {user,token, loggedIn:true}
+    }else user = {}
+    return {user,token:null, loggedIn:false}
+})
+
 export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
     try{
         const response = await axios.post('/api/auth', credentials)
@@ -36,8 +55,24 @@ export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
         }
     }catch(e){console.log(e)}
 })
-
-export const userLogout = createAsyncThunk()
+export const fetchUser = createAsyncThunk('user/auth/return', async (token)=>{
+    try{
+    if(token){
+        const {data:auth} = await axios.get('/api/auth', {
+            headers:{
+                authorization:token
+            }
+        })
+        const {id}= auth
+        const {data:user} = await axios.get(`/api/auth/${id}/user`,{
+            headers:{
+                authorization:token
+            }
+        })
+        return user
+    }else{throw 'update failed bad credentionals'}}
+    catch(error){console.log(error)}
+})
 
 export const loginSlice = createSlice({
     name: 'login',
@@ -49,6 +84,7 @@ export const loginSlice = createSlice({
             state.user = {}
             state.token = null
             state.error = null
+            state.loggedIn = false
         }
     },
     extraReducers(builder){
@@ -66,6 +102,34 @@ export const loginSlice = createSlice({
                 state.status = 'failed'
                 state.error = action.error
                 state.loggedIn = false
+            })
+            .addCase(fetchUser.pending, (state,action)=>{
+                state.status = 'loading'
+            })
+            .addCase(fetchUser.fulfilled, (state,action)=>{
+                state.status = 'succeeded'
+                state.loggedIn = true
+                state.user = action.payload
+                state.token = state.token
+            })
+            .addCase(fetchUser.rejected, (state,action)=>{
+                state.status = 'failed'
+                state.error = action.error
+                state.loggedIn = false
+            })
+            .addCase(checkToken.pending, (state,action)=>{
+                state.status = 'loading'
+            })
+            .addCase(checkToken.fulfilled,(state,action)=>{
+                state.status = 'succeeded'
+                state.loggedIn = action.payload.loggedIn
+                state.token= action.payload.token
+                state.user = action.payload.user
+            })
+            .addCase(checkToken.rejected,(state,action)=>{
+                state.status = 'failed'
+                state.error = action.error
+                
             })
     }
 })
