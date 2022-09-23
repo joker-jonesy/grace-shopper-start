@@ -29,7 +29,6 @@ export default function App() {
 				<Route index path="/cards/:id" element={<SingleCard />} />
 				<Route exact path="/profile" element={<Profile />} />
 				<Route exact path="/cart" element={<Cart />} />
-				<Route path="/login" element={<Login />} />
 				<Route path="/signUp" element={<SignUp />} />
 				<Route path="/admin/viewOrders" element={<ViewOrders />} />
 				<Route path="/admin/viewUsers" element={<ViewUsers />} />

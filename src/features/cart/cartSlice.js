@@ -44,6 +44,7 @@ const cartSlice = createSlice({
 					if (item.card.id === action.payload.card.id) {
 						item.qty += action.payload.qty;
 						item.price = Number(item.card.price) * item.qty;
+						item.price = Math.round(item.price * 100) / 100;
 					}
 				});
 				state.totalPrice;
@@ -57,10 +58,15 @@ const cartSlice = createSlice({
 
 			state.totalItems = state.cart.length;
 		},
+		// addLoginCart(state, action) {
+		// 	const productItems = state.cart.map((item) => item.card.id);
+		// 	if (productItems.includes(action.payload.card.id))
+
+		// },
 	},
 });
 
 export const getTotalPrice = (state) => state.cart.totalPrice;
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, addLoginCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

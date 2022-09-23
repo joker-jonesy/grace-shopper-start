@@ -62,8 +62,8 @@ body {
 .cart-item-header {
 	width: 66%;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: space-around;
+	align-items: flex-end;
 	padding: 10px;
 }
 .cart-item-header span {
@@ -80,10 +80,12 @@ body {
 }
 
 .cart-item-image {
+	display: flex;
+	flex-direction: column;
 }
 .cart-item-info {
 	display: flex;
-	width: 100%;
+	width: 66%;
 	justify-content: space-evenly;
 }
 
@@ -95,7 +97,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 5rem;
+	margin-top: 6rem;
 	flex-wrap: wrap;
 }
 

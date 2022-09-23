@@ -1,18 +1,24 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getTotalPrice } from './cartSlice';
-const GuestCart = () => {
-	const navigate = useNavigate();
+import { useSelector, useDispatch } from 'react-redux';
+import { getTotalPrice, addLoginCart } from './cartSlice';
+
+const LoginCart = () => {
+	const dispatch = useDispatch();
+
+	const login = useSelector((state) => state.login);
+	const loginCart = login.user.orders.filter((item) => item.isCart === true);
+
+	const user = useSelector((state) => state.login.user);
 	const cart = useSelector((state) => state.cart.cart);
 	const totalItem = useSelector((state) => state.cart.totalItems);
 	const totalPrice = useSelector(getTotalPrice);
-	const handleLogin = () => {
-		navigate('/profile');
-	};
+
+	React.useEffect(() => {
+		dispatch(addLoginCart(loginCart.lineItems));
+	}, []);
 	return (
 		<div className="cart-container">
-			<h1> User's items: </h1> <button onClick={handleLogin}> Login </button>
+			<h1> {user.username} items: </h1>
 			<div className="cart-item-header">
 				<span>item</span>
 				<span>qty</span>
@@ -40,4 +46,4 @@ const GuestCart = () => {
 	);
 };
 
-export default GuestCart;
+export default LoginCart;
