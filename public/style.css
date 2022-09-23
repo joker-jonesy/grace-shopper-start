@@ -13,6 +13,7 @@
 body{
 	font-family: lol-font;
 	color: gold;
+	background-color: black;
 }
 
 .nav {
@@ -96,6 +97,23 @@ body{
 .all-cards-container {
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 5rems;
+}
+
+.admin-profile-container {
+	margin-top: 5rems;
+}
+
+.create-card-container {
+	margin-top: 5rems;
+}
+
+.view-orders-container {
+	margin-top: 5rems;
+}
+
+.view-users-container {
+	margin-top: 5rems;
 }
 
 .card-display {
@@ -143,6 +161,7 @@ body{
 	align-items: center;
 	font-family: lol-font;
 	color: gold;
+	background-color: black;
 }
 
 .tag-wrapper {

@@ -51,9 +51,8 @@ const Cards = () => {
 								<div className='card-price'>${card.price}</div>
 							</span>
 						</div>
-						<button className='add-to-cart-button'>Add to cart</button>
 					</div>
-					<button onClick={() => handleAddToCart({productId: card.id, qty: 1})}> Add to Cart </button>
+					<button className='add-to-cart-button' onClick={() => handleAddToCart({productId: card.id, qty: 1})}> Add to Cart </button>
 				</div>
 			))}
 		</div>
