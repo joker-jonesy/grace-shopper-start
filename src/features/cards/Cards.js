@@ -1,17 +1,12 @@
 import React from 'react';
-import { fetchCards } from './cardsSlice';
+
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../cart/cartSlice';
 
 const Cards = () => {
 	const cards = useSelector((state) => state.cards.cards);
-
 	const dispatch = useDispatch();
-
-	React.useEffect(() => {
-		dispatch(fetchCards());
-	}, []);
 
 	const handleAddToCart = (card) => {
 		dispatch(addToCart(card));
@@ -47,9 +42,7 @@ const Cards = () => {
 					</div>
 						{' '}
 						<Link to={`/cards/${card.id}`}>
-							<div className="card-title">
-								{card.name}
-							</div>
+							<div className="card-title">{card.name}</div>
 						</Link>
 						<div className='card-info'>
 							<div className='card-container'>
@@ -70,7 +63,9 @@ const Cards = () => {
 								<div className='card-price'>Price: ${card.price}</div>
 							</span>
 						</div>
-					<button className='add-to-cart-button' onClick={() => handleAddToCart({productId: card.id, qty: 1})}> Add to Cart </button>
+					<button className='add-to-cart-button' onClick={() =>
+							handleAddToCart({ card: card, qty: 1, price: card.price })
+						}> Add to Cart </button>
 				</div>
 			))}
 		</div>

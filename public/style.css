@@ -5,7 +5,7 @@
 
 @font-face {
 	font-family: lol-font;
-	src: url('./FrizQuadrataRegular.ttf')
+	src: url('./FrizQuadrataRegular.ttf');
 }
 
 
@@ -77,16 +77,45 @@ body{
 	left: 0;
 	right: 0;
 	margin-top: 5%;
-	height: 100vh;
 	background-color: rgb(204, 217, 229);
 }
 
-.temp-cart-div {
-	width: 50vw;
+.cart-container {
+	margin-top: 5rem;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
-.cart-item {
+.cart-item-header {
+	width: 66%;
 	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+	padding: 10px;
+}
+.cart-item-header span {
+	text-decoration: underline;
+	text-transform: capitalize;
+	font-size: large;
+}
+.cart-item {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 10px;
+}
+
+.cart-item-image {
+	display: flex;
+	flex-direction: column;
+}
+.cart-item-info {
+	display: flex;
+	width: 66%;
 	justify-content: space-evenly;
 }
 
@@ -96,6 +125,9 @@ body{
 }
 .all-cards-container {
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 6rem;
 	flex-wrap: wrap;
 	margin-top: 7rems;
 }
