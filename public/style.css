@@ -5,12 +5,14 @@
 
 @font-face {
 	font-family: lol-font;
-	src: url('./FrizQuadrataRegular.ttf')
+	src: url('./FrizQuadrataRegular.ttf');
 }
 
-body{
+body {
 	font-family: lol-font;
 	color: gold;
+	line-height: 1.5rem;
+	letter-spacing: 0.5px;
 }
 
 .nav {
@@ -19,22 +21,6 @@ body{
 	padding: 10px;
 	margin-top: 5%;
 	background-color: rgb(204, 217, 229);
-}
-
-.all-cards-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 5rem;
-	flex-wrap: wrap;
-}
-
-.card-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 5rem;
-	flex-wrap: wrap;
 }
 
 .nav-bar {
@@ -65,20 +51,39 @@ body{
 }
 
 .cart-container {
+	margin-top: 5rem;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
-.cart-item {
+
+.cart-item-header {
+	width: 66%;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+.cart-item-header span {
+	text-decoration: underline;
+	text-transform: capitalize;
+	font-size: large;
+}
+.cart-item {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
 	padding: 10px;
 }
 
-.cart-item {
+.cart-item-image {
+}
+.cart-item-info {
 	display: flex;
+	width: 100%;
 	justify-content: space-evenly;
 }
 
@@ -104,15 +109,15 @@ body{
 }
 
 .card-blurb {
-	flex-shrink: .5;
+	flex-shrink: 0.5;
 }
 
 .card-title {
 	font-family: lol-font;
 	color: gold;
 	text-decoration: none;
-    font-weight: 600;
-    text-align: center;
+	font-weight: 600;
+	text-align: center;
 }
 
 .card-tags {

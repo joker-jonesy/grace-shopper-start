@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { UserCart } from './cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import GuestCart from './GuestCart';
 
 const Cart = () => {
-	const getData = useSelector((state) => state.login.user);
-	const getCart = getData.orders;
-	const cart = getCart
-		? getCart.filter((item) => item.isCart === true)
-		: undefined;
 	const dispatch = useDispatch();
+
+	const login = useSelector((state) => state.login);
+	const localCart = useSelector((state) => state.cart);
+
+	// const getCart = login.loggedIn ? login.user.orders : localCart.cart;
+	const cart = login.loggedIn
+		? login.user.orders.filter((item) => item.isCart === true)
+		: localCart.cart;
 
 	let totalPrice = 0;
 	let totalQty = 0;
 
-	const [login, setLogin] = useState({
-		username: 'sally12',
-		password: 'asdf',
-	});
-
-	useEffect(() => {
-		event.preventDefault();
-		dispatch(UserCart(login));
-	}, []);
-
 	return !cart ? (
 		<div>no items found</div>
+	) : !login.loggedIn ? (
+		<GuestCart />
 	) : (
 		<div className="rest">
 			<div className="temp-cart-div">
-				<h1>{getName}'s cart</h1>
+				<h1> user's cart</h1>
 				<div>
 					<div className="cart-item">
 						<h5>item</h5>

@@ -1,16 +1,11 @@
 import React from 'react';
-import { fetchCards } from './cardsSlice';
+
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../cart/cartSlice';
 const Cards = () => {
 	const cards = useSelector((state) => state.cards.cards);
-
 	const dispatch = useDispatch();
-
-	React.useEffect(() => {
-		dispatch(fetchCards());
-	}, []);
 
 	const handleAddToCart = (card) => {
 		dispatch(addToCart(card));
@@ -44,7 +39,9 @@ const Cards = () => {
 						</div>
 					</div>
 					<button
-						onClick={() => handleAddToCart({ productId: card.id, qty: 1 })}
+						onClick={() =>
+							handleAddToCart({ card: card, qty: 1, price: card.price })
+						}
 					>
 						{' '}
 						Add to Cart{' '}
