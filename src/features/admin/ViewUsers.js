@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function ViewUsers (){
     const admin = useSelector(state=>state.login)
     const users = useSelector(state=>state.users.users)
-    return(<div>
+    return(<div className='view-users-container'>
         {admin.user.isAdmin ? !users.length ? <h1>loading</h1> : 
         <div>
             {users.map(user=><div key={user.id}>

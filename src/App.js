@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './components/nav/Nav';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Cards from './features/cards/Cards';
 import SingleCard from './features/cards/singleCard';
 import Cart from './features/cart/Cart';
@@ -12,19 +13,26 @@ import ViewUsers from './features/admin/ViewUsers';
 import CreateCard from './features/admin/CreateCard'
 import EditCard from './features/admin/EditCard';
 import UpdateUser from './features/profile/UpdateUser';
+import CreateCard from './features/admin/CreateCard';
+import { fetchCards } from './features/cards/cardsSlice';
 
 export default function App() {
+	const dispatch = useDispatch();
+
+	React.useEffect(() => {
+		dispatch(fetchCards());
+	}, []);
+
 	return (
 		<div className="App">
 
-			{/* <Nav />
-	 */}
+			<Nav />
+	
 				<Routes>
 					<Route index path="/cards" element={<Cards />} />
 					<Route index path="/cards/:id" element={<SingleCard />} />
 					<Route exact path="/profile" element={<Profile />} />
 					<Route exact path="/cart" element={<Cart />} />
-					<Route path = '/login' element = {<Login/>}/>
 					<Route path = '/signUp' element={<SignUp/>}/>
 					<Route path = '/admin/viewOrders' element = {<ViewOrders/>}/>
 					<Route path = '/admin/viewUsers' element ={<ViewUsers/>}/>

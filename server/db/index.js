@@ -94,9 +94,9 @@ const syncAndSeed = async () => {
 		{orderId: order1.id, productId:4},
 		{orderId: order1.id, productId:3},
 		{orderId: order1.id, productId:2},
-		{orderId:order2.id, productId:10},
-		{orderId:order2.id, productId:102, quantity:2},
-		{orderId:order2.id, productId:115}
+		{orderId: order2.id, productId:10},
+		{orderId: order2.id, productId:102, quantity:2},
+		{orderId: order2.id, productId:115}
 	])
 
 		//use this area to sync your database

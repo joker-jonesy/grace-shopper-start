@@ -13,8 +13,13 @@ const Profile = () => {
 	},[])
 	
 	const dispatch = useDispatch()
+<<<<<<< HEAD
 	useEffect(()=>{},[])
 	return <div>
+=======
+
+	return <div className='view-profile-container'>
+>>>>>>> main
 		{!user.id ? <Login/> : user.isAdmin ? <AdminProfile/> :
 		<div>
 		<h2>

@@ -26,7 +26,7 @@ function CreateCard (){
         dispatch(fetchCards())
     }
     return(
-        <div>
+        <div className='create-card-container'>
         {!admin.user.isAdmin ? <h1>Access Denied</h1> :
         <div>Create a new Card for Sale!
             <form onSubmit = {handleSubmit}>
