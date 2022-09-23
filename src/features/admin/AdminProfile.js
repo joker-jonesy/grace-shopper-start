@@ -17,7 +17,7 @@ function AdminProfile (){
     })
 
     return (
-        <div>
+        <div className='admin-profile-container'>
             {admin.user.isAdmin ? <div>
             <h4>Welcome Administrator {admin.user.fname} {admin.user.lname}</h4>
                 <Link to ='/admin/viewOrders'>
