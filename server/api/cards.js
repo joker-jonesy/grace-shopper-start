@@ -31,4 +31,22 @@ router.post('/', async (req,res,next)=>{
 	}catch(error){next(error)}
 })
 
+//delete /api/cards/:id
+router.delete('/:id', async (req,res,next)=>{
+	try {
+		const card = await Product.findByPk((req.params.id))
+		await card.destroy()
+		res.send(card)
+	}catch(error){next(error)}
+})
+//update or put /api/cards/:id
+router.put('/:id', async (req,res,next)=>{
+	try{
+		const card = await Product.findByPk((req.params.id))
+		await card.update(req.body)
+		const updatedCard = await Product.findByPk((req.params.id))
+		res.send(updatedCard)
+	}catch(error){next(error)}
+})
+
 module.exports = router;

@@ -39,4 +39,13 @@ router.get(`/:id/user`, requireToken, async(req,res,next)=>{
     }catch(error){next(error)}
 })
 
+router.put('/:id', requireToken, async(req,res,next)=>{
+    try{
+        const user = await User.findByPk(req.params.id)
+        await user.update(req.body)
+        const updatedUser = await User.findByPk(req.params.id)
+        res.send(updatedUser)
+    }catch(error){next(error)}
+})
+
 module.exports = router

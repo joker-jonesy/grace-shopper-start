@@ -11,6 +11,7 @@ const initialState = {
 export const fetchCards = createAsyncThunk('cards/fetchCards', async () => {
 	try {
 		const { data } = await axios.get('/api/cards');
+		await data.sort((a,b)=>a.id-b.id)
 		return data;
 	} catch (e) {
 		console.log(e);
@@ -31,7 +32,8 @@ export const fetchSingleCard = createAsyncThunk(
 const cardsSlice = createSlice({
 	name: 'cards',
 	initialState,
-	reducers: {},
+	reducers: {
+	},
 	extraReducers(builder) {
 		builder
 			.addCase(fetchCards.pending, (state, action) => {

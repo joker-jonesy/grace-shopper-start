@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { userLogin } from './loginSlice'
-import SignUp from '../signUp/SignUp'
 import { Link } from 'react-router-dom'
 
 function Login (){
