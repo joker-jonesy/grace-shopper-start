@@ -21,10 +21,14 @@ const Profile = () => {
 			) : user.isAdmin ? (
 				<AdminProfile />
 			) : (
-				<div>
+				<div className='user-profile'>
 					<h2>
-						Welcome {user.fName} {user.lName}
+						Welcome, {user.username}!
 					</h2>
+					<div className='user-info'>
+						<div className='user-name'>{user.fName} {user.lName}</div>
+						<div className='user-email'>{user.email}</div>
+					</div>
 					<button
 						onClick={() => {
 							dispatch(logout());
@@ -40,6 +44,7 @@ const Profile = () => {
 							<h4>Previous Orders:</h4>
 							<div>
 								{user.orders.map((order) => {
+									console.log(order)
 									if (!order.isCart) {
 										return (
 											<div key={order.id}>
@@ -50,8 +55,9 @@ const Profile = () => {
 												</p>
 												{order.lineItems.map((product) => (
 													<div key={product.id}>
-														{product.quantity}{' '}
-														<img src={product.product.imgAll} alt="" />
+														<div>{product.product.name}, Qty: {product.quantity}</div>
+														{/* {product.quantity}{' '} */}
+														<img className='previous-order-image' src={product.product.imgCart} alt="" />
 													</div>
 												))}
 											</div>

@@ -24,22 +24,21 @@ export default function App() {
 
 	return (
 		<div className="App">
-
 			<Nav />
-	
-				<Routes>
-					<Route index path="/cards" element={<Cards />} />
-					<Route index path="/cards/:id" element={<SingleCard />} />
-					<Route exact path="/profile" element={<Profile />} />
-					<Route exact path="/cart" element={<Cart />} />
-					<Route path = '/signUp' element={<SignUp/>}/>
-					<Route path = '/admin/viewOrders' element = {<ViewOrders/>}/>
-					<Route path = '/admin/viewUsers' element ={<ViewUsers/>}/>
-					<Route path = '/admin/createCard' element ={<CreateCard/>}/>
-					<Route path = '/admin/editCard' element ={<EditCard/>}/>
-					<Route path = '/profile/updateProfile' element={<UpdateUser/>}/>
-				</Routes>
-
+				<div className='content-container'>
+					<Routes>
+						<Route index path="/cards" element={<Cards />} />
+						<Route index path="/cards/:id" element={<SingleCard />} />
+						<Route exact path="/profile" element={<Profile />} />
+						<Route exact path="/cart" element={<Cart />} />
+						<Route path = '/signUp' element={<SignUp/>}/>
+						<Route path = '/admin/viewOrders' element = {<ViewOrders/>}/>
+						<Route path = '/admin/viewUsers' element ={<ViewUsers/>}/>
+						<Route path = '/admin/createCard' element ={<CreateCard/>}/>
+						<Route path = '/admin/editCard' element ={<EditCard/>}/>
+						<Route path = '/profile/updateProfile' element={<UpdateUser/>}/>
+					</Routes>
+				</div>
 		</div>
 	);
 }
