@@ -35,20 +35,20 @@ function UpdateUser (){
     }
 
     return(
-        <div>
+        <div className='update-user-container'>
             {!login.loggedIn? <h1>Please Login to view page</h1> :
-            <div>
+            <div className='form-container'>
                 <h3>Please use the following form Edit your profile</h3>
-                <form onSubmit={handleSubmit}>
-                    <label>First Name: {user.fName} Change To:</label>
-                        <input type='text' onChange={handleChange('fName')} placeholder={user.fName}/>
-                    <label>Last Name: {user.lName} Change To:</label>
-                        <input type='text' onChange={handleChange('lName')} placeholder={user.lName}/>
-                    <label>Email:{user.email} Change To:</label>
-                        <input type='text' onChange={handleChange('email')} placeholder={user.email}/>
-                    <label>Username:{user.username} Change To:</label>
-                        <input type='text' onChange={handleChange('username')} placeholder={user.username}/>
-                    <button type='submit'>Edit your profile</button>
+                <form onSubmit={handleSubmit} className='form'>
+                    <label className='form-label'>First Name: {user.fName}</label>
+                        <input className='form-element' type='text' onChange={handleChange('fName')} placeholder={user.fName}/>
+                    <label className='form-label'>Last Name: {user.lName}</label>
+                        <input className='form-element' type='text' onChange={handleChange('lName')} placeholder={user.lName}/>
+                    <label className='form-label'>Email: {user.email}</label>
+                        <input className='form-email-element' type='text' onChange={handleChange('email')} placeholder={user.email}/>
+                    <label className='form-label'>Username: {user.username}</label>
+                        <input className='form-element' type='text' onChange={handleChange('username')} placeholder={user.username}/>
+                    <button className='form-button' type='submit'>Edit your profile</button>
                 </form>
             </div>}
         </div>

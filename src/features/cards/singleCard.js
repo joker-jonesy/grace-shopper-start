@@ -36,9 +36,9 @@ const SingleCard = () => {
 	) : (
 		<div>
 			<div className="card-container">
-				<div className="card">
+				<div className="single-card">
 					<div className='card-display'>
-						<img className="card-image" src={champion.imgSingle}></img>
+						<img className="single-card-image" src={champion.imgSingle}></img>
 						<div className='single-card-info'>
 						<div className="single-card-title">{champion.name}</div>
 						<div className='single-view-tags'>
@@ -53,10 +53,14 @@ const SingleCard = () => {
 								</div>
 							)}
 							</div>
-							<p className="card-blurb">{champion.descriptionBlurb}</p>
-							<div className='single-card-price'>Price: ${champion.price}</div>
-							<div className="card-quantity">Qty: {champion.qty}</div>
-							<button className='single-add-to-cart-button'>Add to cart</button>
+							<div className='blurb-wrapper'>
+								<p className="card-blurb">{champion.descriptionBlurb}</p>
+							</div>
+							<div className='single-card-store-info'>
+								<div className='single-card-price'>Price: ${champion.price}</div>
+								<div className="card-quantity">Qty: {champion.qty}</div>
+								<button className='single-add-to-cart-button'>Add to cart</button>
+							</div>
 						</div>
 					</div>
 				</div>
