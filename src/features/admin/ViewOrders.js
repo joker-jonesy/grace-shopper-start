@@ -4,12 +4,8 @@ import { useSelector } from "react-redux";
 function ViewOrders (){
     const admin = useSelector(state=>state.login)
     const orders = useSelector(state=>state.orders.orders)
-<<<<<<< HEAD
     console.log(orders)
     return(<div>
-=======
-    return(<div className='view-orders-container'>
->>>>>>> main
         {admin.user.isAdmin ? !orders.length ? <h1>loading</h1> : <div>
             {orders.map(order => <ul key={order.id}>
                 <li>Create By: {order.user.fName} {order.user.lName}</li>

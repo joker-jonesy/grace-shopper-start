@@ -13,7 +13,6 @@ import ViewUsers from './features/admin/ViewUsers';
 import CreateCard from './features/admin/CreateCard'
 import EditCard from './features/admin/EditCard';
 import UpdateUser from './features/profile/UpdateUser';
-import CreateCard from './features/admin/CreateCard';
 import { fetchCards } from './features/cards/cardsSlice';
 
 export default function App() {
