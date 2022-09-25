@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotalPrice, addLoginCart } from './cartSlice';
+import { Link } from 'react-router-dom';
 
 const LoginCart = () => {
 	const dispatch = useDispatch();
@@ -36,8 +37,10 @@ const LoginCart = () => {
 						animationDuration: `${(i + 1) * .5}s`
 					}}>
 						<div className="cart-item-name">
-							<img className='cart-image' src={item.card.imgCart} alt="" />
-							<div className='image-name'> {item.card.name} </div>
+							<Link to={`/cards/${item.card.id}`}>
+								<img className='cart-image' src={item.card.imgCart} alt="" />
+								<div className='image-name'> {item.card.name} </div>
+							</Link>
 						</div>
 						<div className='cart-item-qty'> {item.qty} </div>
 						<div className='cart-item-price'> {item.price} </div>
