@@ -18,7 +18,6 @@ const Cart = () => {
 		login.loggedIn &&
 			localCart.cart.length > 0 &&
 			localCart.cart.map((item) => {
-				console.log('ITEM', `item`);
 				dispatch(updateOrder({ token: login.token, user: login.user, item }));
 			});
 		// login.loggedIn &&

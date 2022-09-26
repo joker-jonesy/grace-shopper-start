@@ -404,3 +404,13 @@ body {
 	animation-timing-function: ease-in;
 	animation-duration: 1s;
 }
+.filter-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 7rem;
+
+	margin-top: 7rem;
+	margin-bottom: -50px;
+	position: sticky;
+}
