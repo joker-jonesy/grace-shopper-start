@@ -7,10 +7,7 @@ import { logout, checkToken } from '../login/loginSlice';
 import { Link } from 'react-router-dom';
 
 const Profile = () => {
-<<<<<<< HEAD
-=======
 	const dispatch = useDispatch();
->>>>>>> main
 	const user = useSelector((state) => state.login.user);
 	useEffect(() => {
 		dispatch(checkToken());

@@ -36,8 +36,20 @@ export const updateOrder = createAsyncThunk(
 					authorization: token,
 				},
 			});
-			console.log('cart!', data);
+			return data;
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
 
+export const deleteUserItem = createAsyncThunk(
+	'cart/deleteUserItem',
+	async ({ lineItem, token }) => {
+		try {
+			const { data } = await axios.delete(`/api/lineItem/${lineItem.id}`, {
+				headers: { authorization: token },
+			});
 			return data;
 		} catch (e) {
 			console.log(e);
@@ -57,8 +69,7 @@ const cartSlice = createSlice({
 	reducers: {
 		addToCart(state, action) {
 			const productItems = state.cart.map((item) => item.card.id);
-			console.log(action.payload);
-			if (productItems.includes(action.payload.product.id)) {
+			if (productItems.includes(action.payload.card.id)) {
 				state.cart.map((item) => {
 					if (item.card.id === action.payload.card.id) {
 						item.qty += action.payload.qty;
@@ -101,15 +112,23 @@ const cartSlice = createSlice({
 
 			state.totalItems = state.cart.length;
 		},
+		deleteItem(state, action) {
+			state.cart = state.cart.filter((item) => item.card.id !== action.payload);
+		},
 	},
 	extraReducers(builder) {
-		builder.addCase(updateOrder.fulfilled, (state, action) => {
-			state.totalItems = action.payload.count;
-		});
+		builder
+			.addCase(updateOrder.fulfilled, (state, action) => {
+				state.totalItems = action.payload.count;
+			})
+			.addCase(deleteUserItem.fulfilled, (state, action) => {
+				state.totalItems = action.payload.count;
+			});
 	},
 });
 
 export const getTotalPrice = (state) => state.cart.totalPrice;
-export const { addToCart, addLoginCart, setLoginTotal } = cartSlice.actions;
+export const { addToCart, addLoginCart, setLoginTotal, deleteItem } =
+	cartSlice.actions;
 
 export default cartSlice.reducer;

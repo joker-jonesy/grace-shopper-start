@@ -4,7 +4,8 @@ import { getTotalPrice, addLoginCart, userCart } from './cartSlice';
 import { setLoginTotal } from './cartSlice';
 import { checkToken } from '../login/loginSlice';
 import { Link } from 'react-router-dom';
-
+import DeleteItem from './DeleteItem';
+import Checkout from './Checkout';
 const LoginCart = () => {
 	const dispatch = useDispatch();
 	const login = useSelector((state) => state.login);
@@ -58,14 +59,14 @@ const LoginCart = () => {
 							</div>
 							<div className="cart-item-qty"> {item.quantity} </div>
 							<div className="cart-item-price"> {item.product.price} </div>
-							<button className="cart-delete-button">Delete</button>
+							<DeleteItem lineItem={item} user={user} />
 						</div>
 					))
 				)}
 			</div>
 
 			<span> Total: ${Math.round(totalPrice * 100) / 100} </span>
-			<button> Checkout </button>
+			<Checkout />
 		</div>
 	);
 };

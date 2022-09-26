@@ -60,7 +60,6 @@ const Cards = () => {
 		<>
 			<Filter />
 			<div className="all-cards-container">
-				{console.log(filteredCards)}
 				{filteredCards.map((card, i) => (
 					<div
 						className="card-wrapper"

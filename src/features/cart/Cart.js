@@ -9,7 +9,6 @@ const Cart = () => {
 	const login = useSelector((state) => state.login);
 	const localCart = useSelector((state) => state.cart);
 
-	// const getCart = login.loggedIn ? login.user.orders : localCart.cart;
 	const cart = login.loggedIn
 		? login.user.orders.filter((item) => item.isCart === true)
 		: localCart.cart;
@@ -20,11 +19,6 @@ const Cart = () => {
 			localCart.cart.map((item) => {
 				dispatch(updateOrder({ token: login.token, user: login.user, item }));
 			});
-		// login.loggedIn &&
-		// 	localCart.cart.length < 1 &&
-		// 	login.user.orders[1].lineItems.map((item) =>
-		// 		dispatch(addLoginCart(item))
-		// 	);
 	}, []);
 
 	return !cart ? (
