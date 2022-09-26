@@ -1,7 +1,9 @@
+import { createNextState } from "@reduxjs/toolkit";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "../login/loginSlice";
+import UpdatePassword from "./UpdatePassword";
 
 
 function UpdateUser (){
@@ -19,12 +21,15 @@ function UpdateUser (){
         })
     }
     const updateUser = async (user, token)=>{
+        try{
         let {data} = await axios.put(`/api/auth/${user.id}`,user,{
             headers:{
                 authorization:token
             }
+            
         })
-        return data
+        return data}
+        catch(error){ console.log(error)}
     }
 
     const handleSubmit = async (event)=>{
@@ -50,6 +55,7 @@ function UpdateUser (){
                         <input className='form-element' type='text' onChange={handleChange('username')} placeholder={user.username}/>
                     <button className='form-button' type='submit'>Edit your profile</button>
                 </form>
+                <UpdatePassword user={user}/>
             </div>}
         </div>
     )

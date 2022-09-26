@@ -48,4 +48,14 @@ router.put('/:id', requireToken, async(req,res,next)=>{
     }catch(error){next(error)}
 })
 
+router.put('/:id/changePassword', async(req,res,next)=>{
+    try{
+        let credentials = {username: req.body.username, password: req.body.currentPassword}
+        const user = await User.authenticate(credentials)
+        const updatedUser = await user.update({password:req.body.password})
+        res.send(updatedUser)
+
+    }catch(error){next(error)}
+})
+
 module.exports = router

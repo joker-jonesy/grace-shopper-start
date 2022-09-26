@@ -15,12 +15,14 @@ import EditCard from './features/admin/EditCard';
 import UpdateUser from './features/profile/UpdateUser';
 import { fetchCards } from './features/cards/cardsSlice';
 import Splash from './features/splash/Splash'
+import { checkToken } from './features/login/loginSlice';
 
 export default function App() {
 	const dispatch = useDispatch();
 
 	React.useEffect(() => {
-		dispatch(fetchCards());
+		dispatch(fetchCards())
+		dispatch(checkToken());
 	}, []);
 
 
