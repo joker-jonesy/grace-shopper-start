@@ -27,10 +27,10 @@ function UpdateCard (props){
         !newSubmit(!submit)
     }
     return(
-        <div>
+        <div className='card-edit-container'>
         {!admin.user.isAdmin ? <h1>Access Denied</h1> :
-        <div>Edit this Card!
-            <form onSubmit = {handleSubmit}>
+        <div className='card-edit-form'>Edit this Card!
+            <form className='edit-form'onSubmit = {handleSubmit}>
                 <label>Champion Name {card.name} change to:</label>
                     <input type='text' onChange={handleChange('name')} placeholder={card.name}/>
                 <label>Price</label>
