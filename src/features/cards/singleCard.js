@@ -23,7 +23,6 @@ const SingleCard = () => {
 	useEffect(() => {
 		//needs error handeling
 		if (card.id){
-			console.log("heloooo")
 			axios.get(`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
 			).then(response => {
 				setCardLore(response.data.data[card.name].lore)
@@ -54,7 +53,10 @@ const SingleCard = () => {
 							)}
 							</div>
 							<div className='blurb-wrapper'>
-								<p className="card-blurb">{cardLore}</p>
+								<div className='card-blurb'>
+									<center>Lore:</center>
+									<p>{cardLore}</p>
+								</div>
 							</div>
 							<div className='single-card-store-info'>
 								<div className='single-card-price'>Price: ${card.price}</div>

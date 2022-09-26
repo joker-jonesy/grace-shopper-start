@@ -300,6 +300,8 @@ body{
 	max-width: 700px;
 }
 
+
+
 .card-image:hover {
 	transform: scale(1.05);
 	transition: width 1s, height 1s, transform 1s;
@@ -308,11 +310,19 @@ body{
 .blurb-wrapper {
 	display: flex;
 	justify-content: center;
+	max-height: 40%;
+	overflow: auto;
 }
 
 .card-blurb {
-	width: 200px;
 	margin: 20px;
+	max-width: 70%;
+	overflow:auto;
+	background-color: #101711;
+	padding: 10px;
+	border-style:double;
+	border-width: 5px;
+	border-color: rgb(60 73 60);
 }
 
 .card-title {
@@ -491,4 +501,11 @@ body{
 	padding: 3px;
 	padding-top: 10px;
 	padding-bottom: 20px;
+}
+
+.admin-profile-links {
+	color: gold;
+	text-decoration: underline;
+	padding: 5px;
+	cursor: pointer;
 }
