@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../cart/cartSlice';
+import { TailSpin } from 'react-loading-icons';
 
 const Cards = () => {
 	const cards = useSelector((state) => state.cards.cards);
@@ -30,9 +31,11 @@ const Cards = () => {
 				return '';
 		}
 	}
-
-	return !cards ? (
-		<div> Loading... </div>
+	
+	return !cards.length ? (
+		<div className="all-cards-container">
+            <TailSpin stroke="#f0b326" strokeWidth="3"/>
+		</div>
 	) : (
 		<div className="all-cards-container">
 			{cards.map((card, i) => (
