@@ -8,14 +8,17 @@ function EditCard (){
     const admin = useSelector(state=>state.login)
     return(
         <div>{!admin.user.isAdmin ? <h1>Access Denied</h1> :
-            <div className="all-cards-container">
-                {cards.map(card=>
-                    <div key={card.id} className='card'>
-                        <img src={card.imgCart} alt=''/>
-                        <UpdateCard card = {card}/>
-                        <DeleteCard card = {card}/>
-                    </div>
-                )}
+            <div>
+                <h4>Please use this form to update or delete a card!</h4>
+                <div className="all-cards-container">
+                    {cards.map(card=>
+                        <div key={card.id} className='card'>
+                            <img src={card.imgCart} alt=''/>
+                            <UpdateCard card = {card}/>
+                            <DeleteCard card = {card}/>
+                        </div>
+                    )}
+                </div>
             </div>}
         </div>
     )

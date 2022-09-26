@@ -12,6 +12,7 @@ function AdminProfile() {
 
 	let admin = useSelector((state) => state.login);
 
+<<<<<<< HEAD
 	useEffect(() => {
 		if (admin.user.isAdmin) {
 			dispatch(fetchOrders(admin.token));
@@ -19,6 +20,29 @@ function AdminProfile() {
 			dispatch(fetchCards());
 		}
 	});
+=======
+    return (
+        <div className='admin-profile-container'>
+            {admin.user.isAdmin ? <div>
+            <h4>Welcome Administrator {admin.user.fName} {admin.user.lName}</h4>
+                <Link to ='/admin/viewOrders'>
+                <p>View Completed Orders</p>
+                </Link>
+                <Link to = '/admin/viewUsers'>
+                    <p>View all users and delete a user</p>
+                </Link>
+                <Link to ='/admin/createCard'>
+                <p>Create new Card</p>
+                </Link>
+                <Link to = '/admin/editCard'>
+                <p>Update or Delete a Card</p>
+                </Link>
+                <button onClick={()=>{dispatch(logout())}}>
+			        Logout
+		        </button>
+            </div>
+            :null}
+>>>>>>> main
 
 	return (
 		<div className="admin-profile-container">

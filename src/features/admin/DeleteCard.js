@@ -11,9 +11,10 @@ function DeleteCard (props){
     const deleteSingleCard =async (id)=> await axios.delete(`/api/cards/${id}`)
     return(
         <button onClick={async ()=>{
-            await deleteSingleCard(props.card.id)
+            const answer =window.confirm('Deleting a card will have unintended consequences if a user has ordered this card in the past. Please only use this function for newly created cards.  Are you sure you want to delete?')
+            if(answer){await deleteSingleCard(props.card.id)
             await dispatch(fetchCards())
-            newSubmit(!submit)
+            newSubmit(!submit)}
         }}>Delete!</button>
     )
 }
