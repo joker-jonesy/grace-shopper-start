@@ -8,10 +8,12 @@ import Filter from './Filter';
 import { fetchCards } from './cardsSlice';
 const Cards = () => {
 	const dispatch = useDispatch();
+
 	const cards = useSelector((state) => state.cards.cards);
 	const login = useSelector((state) => state.login);
 	const filter = useSelector(getFilter);
-	const [cardss, setCards] = React.useState(1);
+
+	const [filteredCards, setfilteredCards] = React.useState([]);
 
 	const handleAddToCart = (card) => {
 		(login.loggedIn &&
@@ -21,13 +23,18 @@ const Cards = () => {
 			dispatch(setLoginTotal)) ||
 			dispatch(addToCart(card));
 	};
+
 	React.useEffect(() => {
-		// if (filter !== 'All') {
-		// 	cards.filter((card) => card.tag1 === filter || card.tag2 === filter);
-		// } else {
-		// 	fetchCards();
-		// }
-	}, []);
+		setfilteredCards(cards);
+		if (filter !== 'All') {
+			setfilteredCards(
+				filteredCards.filter(
+					(card) => card.tag1 === filter || card.tag2 === filter
+				)
+			);
+		}
+	}, [filter]);
+
 	const getTagImage = (tag) => {
 		switch (tag) {
 			case 'Fighter':
@@ -53,7 +60,8 @@ const Cards = () => {
 		<>
 			<Filter />
 			<div className="all-cards-container">
-				{cards.map((card, i) => (
+				{console.log(filteredCards)}
+				{filteredCards.map((card, i) => (
 					<div
 						className="card-wrapper"
 						style={{

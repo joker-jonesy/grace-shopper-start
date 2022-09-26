@@ -37,12 +37,12 @@ const cardsSlice = createSlice({
 	reducers: {
 		changeFilter(state, action) {
 			state.filter = action.payload;
-			if (action.payload !== 'All') {
-				state.filteredCards = state.cards.filter(
-					(card) => card.tag1 === action.payload || card.tag2 === action.payload
-				);
-			}
-			state.filteredCards = state.cards;
+			// if (action.payload !== 'All') {
+			// 	state.filteredCards = state.cards.filter(
+			// 		(card) => card.tag1 === action.payload || card.tag2 === action.payload
+			// 	);
+			// }
+			// state.filteredCards = state.cards;
 		},
 	},
 	extraReducers(builder) {
