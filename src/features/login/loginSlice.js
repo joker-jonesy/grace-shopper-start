@@ -14,7 +14,6 @@ const initialState = {
 };
 
 export const checkToken = createAsyncThunk('user/auth/token', async ()=>{
-    const token = localStorage.getItem('token')
     if(token){
         const {data:auth} = await axios.get('/api/auth',{
             headers:{
