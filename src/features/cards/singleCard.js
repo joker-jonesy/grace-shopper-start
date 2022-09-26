@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSingleCard } from './cardsSlice';
@@ -13,12 +14,24 @@ const SingleCard = () => {
 		dispatch(fetchSingleCard(id));
 	}, []);
 	const card = useSelector((state) => state.cards.singleCard);
+	const [cardLore, setCardLore] = useState(undefined)
 
 	const handleAddToCart = (card) => {
 		dispatch(addToCart(card));
 	};
-	console.log(card.id)
-	return !card.id ? (
+
+	useEffect(() => {
+		//needs error handeling
+		if (card.id){
+			console.log("heloooo")
+			axios.get(`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
+			).then(response => {
+				setCardLore(response.data.data[card.name].lore)
+			})
+		}
+    }, [card])
+	
+	return !cardLore ? (
 		<div className="all-cards-container">
             <TailSpin stroke="#f0b326" strokeWidth="3"/>
 		</div>
@@ -41,7 +54,7 @@ const SingleCard = () => {
 							)}
 							</div>
 							<div className='blurb-wrapper'>
-								<p className="card-blurb">{card.descriptionBlurb}</p>
+								<p className="card-blurb">{cardLore}</p>
 							</div>
 							<div className='single-card-store-info'>
 								<div className='single-card-price'>Price: ${card.price}</div>
