@@ -14,6 +14,7 @@ const initialState = {
 };
 
 export const checkToken = createAsyncThunk('user/auth/token', async ()=>{
+    const token = localStorage.getItem('token')
     if(token){
         const {data:auth} = await axios.get('/api/auth',{
             headers:{
@@ -28,7 +29,8 @@ export const checkToken = createAsyncThunk('user/auth/token', async ()=>{
         })
         return {user,token, loggedIn:true}
     }else user = {}
-    return {user,token:null, loggedIn:false}
+    localStorage.removeItem('token')
+    return {user, token:null, loggedIn:false}
 })
 
 export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{

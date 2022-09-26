@@ -12,9 +12,14 @@ function Login (){
             [props]:event.target.value
         })
     }
+    const [message, setMessage]=useState('')
     const handleSubmit = (event)=>{
         event.preventDefault()
-        dispatch(userLogin(login))
+        setMessage('')
+        const user = dispatch(userLogin(login))
+        if(!user.id){
+            setMessage('invalid username or password')
+        }
     }
     return(
         <div className='rest'>
@@ -23,11 +28,12 @@ function Login (){
         </h3>
         <form onSubmit={handleSubmit}>
             <label>Username</label>
-                <input type='text' onChange={handleChange('username')} name='username'/>
+                <input type='text' onChange={handleChange('username')} required name='username'/>
             <label>Password</label>
-                <input type='password' onChange={handleChange('password')} name='password'/>
+                <input type='password' onChange={handleChange('password')} required name='password'/>
             <button type='submit'>Login</button>
         </form>
+        <div>{message}</div>
         <Link to='/signUp'><h3>Create New User</h3></Link>
         </div>
     )
