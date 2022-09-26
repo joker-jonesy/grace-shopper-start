@@ -31,11 +31,11 @@ function CreateCard (){
             <div className='create-card-form'>Create a new Card for Sale!
                 <form className='create-form' onSubmit = {handleSubmit}>
                     <label>Champion Name</label>
-                        <input type='text' onChange={handleChange('name')}/>
+                        <input type='text' onChange={handleChange('name')} required/>
                     <label>Price</label>
-                        <input type='number' onChange={handleChange('price')}/>
+                        <input type='number' onChange={handleChange('price')} required/>
                     <label>Quantity</label>
-                        <input type = 'number' onChange = {handleChange('qty')}/>
+                        <input type = 'number' onChange = {handleChange('qty')} required/>
                     <label>Image for Single Card View</label>
                         <input type='text' onChange = {handleChange('imgSingle')}/>
                     <label>Image for All Cards View</label>
@@ -43,7 +43,7 @@ function CreateCard (){
                     <label>Image for Cart View</label>
                         <input type='text' onChange = {handleChange('imgCart')}/>
                     <label>Description of Champion</label>
-                        <input type='text' onChange={handleChange('descriptionBlurb')}/>
+                        <input type='text' onChange={handleChange('descriptionBlurb')} required/>
                     <label>tag1</label>
                         <select onClick={(event)=>{
                             setNewCard({

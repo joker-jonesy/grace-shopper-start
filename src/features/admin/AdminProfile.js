@@ -27,13 +27,13 @@ function AdminProfile (){
                 <p>View Completed Orders</p>
                 </Link>
                 <Link to = '/admin/viewUsers'>
-                    <p>View all users</p>
+                    <p>View all users and delete a user</p>
                 </Link>
                 <Link to ='/admin/createCard'>
                 <p>Create new Card</p>
                 </Link>
                 <Link to = '/admin/editCard'>
-                <p>Update or Delete a Product</p>
+                <p>Update or Delete a Card</p>
                 </Link>
                 <button onClick={()=>{dispatch(logout())}}>
 			        Logout

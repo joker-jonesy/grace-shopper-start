@@ -3,6 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSingleCard } from './cardsSlice';
 import { addToCart } from '../cart/cartSlice';
+import { TailSpin } from 'react-loading-icons'
 
 const SingleCard = () => {
 	const dispatch = useDispatch();
@@ -16,9 +17,11 @@ const SingleCard = () => {
 	const handleAddToCart = (card) => {
 		dispatch(addToCart(card));
 	};
-
-	return !card ? (
-		<h1> Loading...</h1>
+	console.log(card.id)
+	return !card.id ? (
+		<div className="all-cards-container">
+            <TailSpin stroke="#f0b326" strokeWidth="3"/>
+		</div>
 	) : (
 		<div>
 					<div className='card-display'>
