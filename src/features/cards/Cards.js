@@ -47,8 +47,9 @@ const Cards = () => {
 					style={{
 						animationDuration: `${Math.log(i) + 1}s`,
 					}}
+					key={card.id}
 				>
-					<div key={card.id} className="card">
+					<div className="card">
 						<div>
 							<Link to={`/cards/${card.id}`}>
 								<img className="card-image" src={card.imgAll} alt="" />

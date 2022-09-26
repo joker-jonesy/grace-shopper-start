@@ -47,7 +47,7 @@ const LoginCart = () => {
 							}}
 						>
 							<div className="cart-item-name">
-								<Link to={`/cards/${item.card.id}`}>
+								<Link to={`/cards/${item.product.id}`}>
 									<img
 										className="cart-image"
 										src={item.product.imgCart}
