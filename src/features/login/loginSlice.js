@@ -29,7 +29,8 @@ export const checkToken = createAsyncThunk('user/auth/token', async ()=>{
         })
         return {user,token, loggedIn:true}
     }else user = {}
-    return {user,token:null, loggedIn:false}
+    localStorage.removeItem('token')
+    return {user, token:null, loggedIn:false}
 })
 
 export const userLogin = createAsyncThunk('user/auth', async (credentials)=>{
