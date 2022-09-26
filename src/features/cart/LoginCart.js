@@ -36,7 +36,7 @@ const LoginCart = () => {
 				{totalItem < 1 ? (
 					<h1> Empty Cart </h1>
 				) : (
-					loginCart[0].lineItems.map((item) => (
+					loginCart[0].lineItems.map((item, i) => (
 						<div
 							className="cart-item"
 							key={item.product.id}
