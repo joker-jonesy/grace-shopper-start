@@ -61,13 +61,18 @@ const Cards = () => {
 							)}
 							</div>
 						</div>
-						<div className='card-price'>
-								<div className='card-price'>Price: ${card.price}</div>
+						<div className='card-info-flex'>
+							<div className='all-card-store-info'>
+								<div className='single-card-price'>Price: ${card.price}</div>
+								<div className="card-quantity">{card.qty > 5 ? "In Stock" : (card.qty === 0 ? "Out of Stock" : `Only ${card.qty} in stock`)}</div>
+							</div>
+							<div className='cart-button-flex'>
+								<button className='add-to-cart-button' onClick={() =>
+										handleAddToCart({ card: card, qty: 1, price: card.price })
+									}> Add to Cart </button>
+							</div>
 						</div>
-					<button className='add-to-cart-button' onClick={() =>
-							handleAddToCart({ card: card, qty: 1, price: card.price })
-						}> Add to Cart </button>
-				</div>
+					</div>
 				</div>
 			))}
 			

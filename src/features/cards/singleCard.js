@@ -21,8 +21,6 @@ const SingleCard = () => {
 		<h1> Loading...</h1>
 	) : (
 		<div>
-			<div className="card-container">
-				<div className="single-card">
 					<div className='card-display'>
 						<img className="single-card-image" src={card.imgSingle}></img>
 						<div className='single-card-info'>
@@ -44,7 +42,9 @@ const SingleCard = () => {
 							</div>
 							<div className='single-card-store-info'>
 								<div className='single-card-price'>Price: ${card.price}</div>
-								<div className="card-quantity">Qty: {card.qty}</div>
+								<div className="card-quantity">{card.qty > 5 ? "In Stock" : (card.qty === 0 ? "Out of Stock" : `Only ${card.qty} in stock`)}</div>
+							</div>
+							<div className='cart-button-flex'>
 								<button className='single-add-to-cart-button' onClick={() =>
 							handleAddToCart({ card: card, qty: 1, price: card.price })
 						}>Add to cart</button>
@@ -52,9 +52,6 @@ const SingleCard = () => {
 						</div>
 					</div>
 				</div>
-				
-			</div>
-		</div>
 	);
 };
 
