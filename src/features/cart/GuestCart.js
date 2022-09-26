@@ -34,17 +34,17 @@ const GuestCart = () => {
 						<div className="cart-item-name">
 						<Link to={`/cards/${item.card.id}`}>
 							<img className='cart-image' src={item.card.imgCart} alt="" />
-							<div className='image-name'> {item.card.name} </div>
 						</Link>
+							<div className='image-name'> {item.card.name} </div>
 						</div>
 						<div className='cart-item-qty'> {item.qty} </div>
 						<div className='cart-item-price'> {item.price} </div>
-						<button className='cart-delete-button'>Delete</button>
+						<button className='cart-delete-button'>Remove from cart</button>
 					</div>
 				))
 			)}
 			</div>
-			<span> Total: {totalPrice} </span>
+			<div className='cart-price'> Total: ${totalPrice} </div>
 			<button> Checkout </button>
 		</div>
 	);

@@ -26,45 +26,45 @@ function CreateCard (){
         dispatch(fetchCards())
     }
     return(
-        <div className='create-card-container'>
-        {!admin.user.isAdmin ? <h1>Access Denied</h1> :
-        <div>Create a new Card for Sale!
-            <form onSubmit = {handleSubmit}>
-                <label>Champion Name</label>
-                    <input type='text' onChange={handleChange('name')}/>
-                <label>Price</label>
-                    <input type='number' onChange={handleChange('price')}/>
-                <label>Quantity</label>
-                    <input type = 'number' onChange = {handleChange('qty')}/>
-                <label>Image for Single Card View</label>
-                    <input type='text' onChange = {handleChange('imgSingle')}/>
-                <label>Image for All Cards View</label>
-                    <input type='text' onChange = {handleChange('imgAll')}/>
-                <label>Image for Cart View</label>
-                    <input type='text' onChange = {handleChange('imgCart')}/>
-                <label>Description of Champion</label>
-                    <input type='text' onChange={handleChange('descriptionBlurb')}/>
-                <label>tag1</label>
-                    <select onClick={(event)=>{
-                        setNewCard({
-                        ...newCard,
-                        tag1:event.target.value})}}>
-                        {tags.map(tag=>
-                            <option key={tag.id} value={tag.name}>{tag.name}</option>)}
-                    </select>
-                <label>tag2</label>
-                    <select  onClick={(event)=>{
-                        setNewCard({
-                        ...newCard,
-                        tag2:event.target.value})}}>
-                        <option value={null}>No second tag</option>
-                        {tags.map(tag=>
-                            <option key={tag.id} value={tag.name}>{tag.name}</option>)}
-                    </select>
-                <button type='submit'>Create New Card!</button>
-            </form>
-        </div>}
-        </div>
+            <div className='create-card-container'>
+            {!admin.user.isAdmin ? <h1>Access Denied</h1> :
+            <div className='create-card-form'>Create a new Card for Sale!
+                <form className='create-form' onSubmit = {handleSubmit}>
+                    <label>Champion Name</label>
+                        <input type='text' onChange={handleChange('name')}/>
+                    <label>Price</label>
+                        <input type='number' onChange={handleChange('price')}/>
+                    <label>Quantity</label>
+                        <input type = 'number' onChange = {handleChange('qty')}/>
+                    <label>Image for Single Card View</label>
+                        <input type='text' onChange = {handleChange('imgSingle')}/>
+                    <label>Image for All Cards View</label>
+                        <input type='text' onChange = {handleChange('imgAll')}/>
+                    <label>Image for Cart View</label>
+                        <input type='text' onChange = {handleChange('imgCart')}/>
+                    <label>Description of Champion</label>
+                        <input type='text' onChange={handleChange('descriptionBlurb')}/>
+                    <label>tag1</label>
+                        <select onClick={(event)=>{
+                            setNewCard({
+                            ...newCard,
+                            tag1:event.target.value})}}>
+                            {tags.map(tag=>
+                                <option key={tag.id} value={tag.name}>{tag.name}</option>)}
+                        </select>
+                    <label>tag2</label>
+                        <select  onClick={(event)=>{
+                            setNewCard({
+                            ...newCard,
+                            tag2:event.target.value})}}>
+                            <option value={null}>No second tag</option>
+                            {tags.map(tag=>
+                                <option key={tag.id} value={tag.name}>{tag.name}</option>)}
+                        </select>
+                    <button type='submit'>Create New Card!</button>
+                </form>
+            </div>}
+            </div>
     )
 }
 export default CreateCard

@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTotalPrice, addLoginCart, userCart } from './cartSlice';
 import { setLoginTotal } from './cartSlice';
 import { checkToken } from '../login/loginSlice';
+import { Link } from 'react-router-dom';
+
 const LoginCart = () => {
 	const dispatch = useDispatch();
 	const login = useSelector((state) => state.login);
@@ -45,8 +47,14 @@ const LoginCart = () => {
 							}}
 						>
 							<div className="cart-item-name">
-								<img className="cart-image" src={item.product.imgCart} alt="" />
-								<div className="image-name"> {item.product.name} </div>
+								<Link to={`/cards/${item.card.id}`}>
+									<img
+										className="cart-image"
+										src={item.product.imgCart}
+										alt=""
+									/>
+									<div className="image-name"> {item.product.name} </div>
+								</Link>
 							</div>
 							<div className="cart-item-qty"> {item.quantity} </div>
 							<div className="cart-item-price"> {item.product.price} </div>
