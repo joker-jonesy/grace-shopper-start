@@ -22,29 +22,40 @@ const LoginCart = () => {
 	}, [totalItem]);
 
 	return (
-		<div className="cart-container">
+		<div className="cart">
 			<h1> {user.username} items: </h1>
 			<div className="cart-item-header">
-				<span>item</span>
-				<span>qty</span>
-				<span>price</span>
+				<span className="header-element">item</span>
+				<span className="header-element">qty</span>
+				<span className="header-element">price</span>
+				<span className="header-element">
+					<div></div>
+				</span>
 			</div>
-			{totalItem < 1 ? (
-				<h1> Empty Cart </h1>
-			) : (
-				loginCart[0].lineItems.map((item) => (
-					<div className="cart-item" key={item.product.id}>
-						<div className="cart-item-image">
-							<img src={item.product.imgCart} alt="" />
+			<div className="cart-container">
+				{totalItem < 1 ? (
+					<h1> Empty Cart </h1>
+				) : (
+					loginCart[0].lineItems.map((item) => (
+						<div
+							className="cart-item"
+							key={item.product.id}
+							style={{
+								animationDuration: `${(i + 1) * 0.5}s`,
+							}}
+						>
+							<div className="cart-item-name">
+								<img className="cart-image" src={item.product.imgCart} alt="" />
+								<div className="image-name"> {item.product.name} </div>
+							</div>
+							<div className="cart-item-qty"> {item.quantity} </div>
+							<div className="cart-item-price"> {item.product.price} </div>
+							<button className="cart-delete-button">Delete</button>
 						</div>
-						<div className="cart-item-info">
-							<span> {item.product.name} </span>
-							<span> {item.quantity} </span>
-							<span> {item.product.price} </span>
-						</div>
-					</div>
-				))
-			)}
+					))
+				)}
+			</div>
+
 			<span> Total: ${Math.round(totalPrice * 100) / 100} </span>
 			<button> Checkout </button>
 		</div>
