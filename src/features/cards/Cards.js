@@ -5,9 +5,7 @@ import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
 import { getFilter } from './cardsSlice';
 import Filter from './Filter';
 import { fetchCards } from './cardsSlice';
-
 import { TailSpin } from 'react-loading-icons';
-import Modal from '../../components/Modal/index.jsx';
 
 const Cards = () => {
 	const dispatch = useDispatch();
