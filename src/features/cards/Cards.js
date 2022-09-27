@@ -92,18 +92,7 @@ const Cards = () => {
 											<img className="tag" src={getTagImage(card.tag1)} />
 										</span>
 									)}
-								</div>
-								<div className="card-price">
-									<div className="card-price">Price: ${card.price / 100}</div>
-								</div>
-								<button
-									className="add-to-cart-button"
-									onClick={() =>
-										handleAddToCart({ card: card, qty: 1, price: card.price })
-									}
-								>
-									Add to Cart
-								</button>
+								</div>	
 							</div>
 						</div>
 						<div className='card-info-flex'>
