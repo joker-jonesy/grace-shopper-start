@@ -49,7 +49,9 @@ const SingleCard = () => {
 								<p className="card-blurb">{card.descriptionBlurb}</p>
 							</div>
 							<div className="single-card-store-info">
-								<div className="single-card-price">Price: ${card.price}</div>
+								<div className="single-card-price">
+									Price: ${card.price / 100}
+								</div>
 								<div className="card-quantity">Qty: {card.qty}</div>
 								<button
 									className="single-add-to-cart-button"

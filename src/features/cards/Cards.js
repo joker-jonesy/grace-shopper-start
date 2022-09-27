@@ -89,7 +89,7 @@ const Cards = () => {
 									)}
 								</div>
 								<div className="card-price">
-									<div className="card-price">Price: ${card.price}</div>
+									<div className="card-price">Price: ${card.price / 100}</div>
 								</div>
 								<button
 									className="add-to-cart-button"

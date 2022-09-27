@@ -57,6 +57,40 @@ export const deleteUserItem = createAsyncThunk(
 	}
 );
 
+export const checkoutOrder = createAsyncThunk(
+	'cart/checkoutOrder',
+	async ({ token, cart, user }) => {
+		try {
+			const { data } = await axios.post(
+				'/api/checkout/create-checkout-session',
+				cart,
+				{ headers: { authorization: token } }
+			);
+			data && (window.location = data.url);
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
+
+export const processOrder = createAsyncThunk(
+	'cart/processOrder',
+	async ({ token, lineItems, user }) => {
+		try {
+			const { data } = await axios.put(
+				`/api/orders/${user.id}/processOrder`,
+				lineItems,
+				{
+					headers: { authorization: token },
+				}
+			);
+			console.log(data.processed);
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
+
 const initialState = {
 	cart: [],
 	totalItems: 0,
@@ -114,6 +148,7 @@ const cartSlice = createSlice({
 		},
 		deleteItem(state, action) {
 			state.cart = state.cart.filter((item) => item.card.id !== action.payload);
+			state.totalItems--;
 		},
 	},
 	extraReducers(builder) {

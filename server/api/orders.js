@@ -55,4 +55,22 @@ router.put('/:id', requireToken, async (req, res, next) => {
 	}
 });
 
+router.put('/:userId/processOrder', requireToken, async (req, res, next) => {
+	try {
+		const order = await Order.findOne({
+			where: { userId: req.params.userId, isCart: true },
+		});
+		console.log(order);
+		order && (await order.update({ isCart: false }));
+		req.body.map(async (item) => {
+			const product = await Product.findByPk(item.id);
+			await product.update({
+				where: { quantity: product.quantity - item.quantity },
+			});
+		});
+	} catch (e) {
+		next(e);
+	}
+});
+
 module.exports = router;

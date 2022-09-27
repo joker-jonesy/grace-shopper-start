@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotalPrice, addLoginCart, userCart } from './cartSlice';
 import { setLoginTotal } from './cartSlice';
@@ -8,16 +9,20 @@ import DeleteItem from './DeleteItem';
 import Checkout from './Checkout';
 const LoginCart = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	const login = useSelector((state) => state.login);
 	const loginCart = login.user.orders.filter((item) => item.isCart === true);
 
 	const user = useSelector((state) => state.login.user);
 	const cart = useSelector((state) => state.cart.cart);
 
-	const totalItem = loginCart[0].lineItems.length;
-	const totalPrice = loginCart[0].lineItems.reduce((accum, next) => {
-		return accum + Number(next.product.price);
-	}, 0);
+	const totalItem = loginCart.length ? loginCart[0].lineItems.length : 0;
+	const totalPrice = loginCart.length
+		? loginCart[0].lineItems.reduce((accum, next) => {
+				return accum + Number(next.quantity * next.product.price);
+		  }, 0)
+		: 0;
 
 	React.useEffect(() => {
 		dispatch(checkToken());
@@ -58,14 +63,17 @@ const LoginCart = () => {
 								</Link>
 							</div>
 							<div className="cart-item-qty"> {item.quantity} </div>
-							<div className="cart-item-price"> {item.product.price} </div>
+							<div className="cart-item-price">
+								{' '}
+								{(item.quantity * item.product.price) / 100}{' '}
+							</div>
 							<DeleteItem lineItem={item} user={user} />
 						</div>
 					))
 				)}
 			</div>
 
-			<span> Total: ${Math.round(totalPrice * 100) / 100} </span>
+			<span> Total: ${Math.round(totalPrice) / 100} </span>
 			<Checkout />
 		</div>
 	);
