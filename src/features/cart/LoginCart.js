@@ -65,7 +65,7 @@ const LoginCart = () => {
 							<div className="cart-item-qty"> {item.quantity} </div>
 							<div className="cart-item-price">
 								{' '}
-								{(item.quantity * item.product.price) / 100}{' '}
+								{((item.quantity * item.product.price) / 100).toFixed(2)}{' '}
 							</div>
 							<DeleteItem lineItem={item} user={user} />
 						</div>
@@ -73,7 +73,7 @@ const LoginCart = () => {
 				)}
 			</div>
 
-			<span> Total: ${Math.round(totalPrice) / 100} </span>
+			<span> Total: ${(Math.round(totalPrice) / 100).toFixed(2)} </span>
 			<Checkout />
 		</div>
 	);

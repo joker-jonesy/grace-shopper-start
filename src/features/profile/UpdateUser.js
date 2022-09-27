@@ -25,8 +25,7 @@ function UpdateUser (){
         let {data} = await axios.put(`/api/auth/${user.id}`,user,{
             headers:{
                 authorization:token
-            }
-            
+            }   
         })
         return data}
         catch(error){ console.log(error)}
