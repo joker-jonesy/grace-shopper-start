@@ -3,21 +3,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../cart/cartSlice';
 import { TailSpin } from 'react-loading-icons';
-import {AnimatePresence, motion} from 'framer-motion'
 import Modal from '../../components/Modal/index.jsx';
 
 const Cards = () => {
 	const cards = useSelector((state) => state.cards.cards);
 	const dispatch = useDispatch();
 
-	const [modalOpen, setModalOpen] = useState(false);
-
-	const close = () => setModalOpen(false);
-	const open = () => setModalOpen(true);
-
 	const handleAddToCart = (card) => {
 		dispatch(addToCart(card));
-		(modalOpen ? close() : open());
 	};
 
 	const getTagImage = (tag) => {
@@ -78,16 +71,15 @@ const Cards = () => {
 							</div>
 							<div className='cart-button-flex'>
 								<Link to='/cart'>
-									<motion.button className='add-to-cart-button' onClick={() =>
+									<button className='add-to-cart-button' onClick={() =>
 											handleAddToCart({ card: card, qty: 1, price: card.price })
-										}> Add to Cart </motion.button>
+										}> Add to Cart </button>
 								</Link>
 							</div>
 						</div>
 					</div>
 				</div>
 			))}
-			{modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
 		</div>	
 	);
 };
