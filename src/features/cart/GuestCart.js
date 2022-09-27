@@ -42,7 +42,7 @@ const GuestCart = () => {
 								<div className="image-name"> {item.card.name} </div>
 							</div>
 							<div className="cart-item-qty"> {item.qty} </div>
-							<div className="cart-item-price" > {(item.price / 100).toFixed(2)} </div>
+							<div className="cart-item-price" > ${(item.price / 100).toFixed(2)} </div>
 							<DeleteItem id={item.card.id} />
 						</div>
 					))
