@@ -23,7 +23,7 @@ const syncAndSeed = async () => {
 			return championArr;
 		};
 		const setRandomPrice = () => {
-			return Math.floor(Math.random() * 100000);
+			return Math.floor(Math.random() * 10000);
 		};
 		//change to true to reseed
 
