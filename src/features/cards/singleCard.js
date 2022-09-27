@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSingleCard } from './cardsSlice';
 
 import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
+import { addToCart } from '../cart/cartSlice';
+import { TailSpin } from 'react-loading-icons';
 
 const SingleCard = () => {
 	const dispatch = useDispatch();
@@ -13,6 +16,7 @@ const SingleCard = () => {
 		dispatch(fetchSingleCard(id));
 	}, []);
 	const card = useSelector((state) => state.cards.singleCard);
+	const [cardLore, setCardLore] = useState(undefined);
 
 	const handleAddToCart = (card) => {
 		(login.loggedIn &&
@@ -23,8 +27,24 @@ const SingleCard = () => {
 			dispatch(addToCart(card));
 	};
 
-	return !card ? (
-		<h1> Loading...</h1>
+	useEffect(() => {
+		//needs error handeling
+		if (card.id) {
+			console.log('heloooo');
+			axios
+				.get(
+					`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
+				)
+				.then((response) => {
+					setCardLore(response.data.data[card.name].lore);
+				});
+		}
+	}, [card]);
+
+	return !cardLore ? (
+		<div className="all-cards-container">
+			<TailSpin stroke="#f0b326" strokeWidth="3" />
+		</div>
 	) : (
 		<div>
 			<div className="card-container">
@@ -46,7 +66,7 @@ const SingleCard = () => {
 								)}
 							</div>
 							<div className="blurb-wrapper">
-								<p className="card-blurb">{card.descriptionBlurb}</p>
+								<p className="card-blurb">{cardLore}</p>
 							</div>
 							<div className="single-card-store-info">
 								<div className="single-card-price">

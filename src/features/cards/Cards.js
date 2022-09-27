@@ -6,6 +6,9 @@ import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
 import { getFilter } from './cardsSlice';
 import Filter from './Filter';
 import { fetchCards } from './cardsSlice';
+import { addToCart } from '../cart/cartSlice';
+import { TailSpin } from 'react-loading-icons';
+
 const Cards = () => {
 	const dispatch = useDispatch();
 
@@ -54,8 +57,10 @@ const Cards = () => {
 		}
 	};
 
-	return !cards ? (
-		<div> Loading... </div>
+	return !cards.length ? (
+		<div className="all-cards-container">
+			<TailSpin stroke="#f0b326" strokeWidth="3" />
+		</div>
 	) : (
 		<>
 			<Filter />
