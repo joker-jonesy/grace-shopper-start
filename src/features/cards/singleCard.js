@@ -4,8 +4,8 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSingleCard } from './cardsSlice';
 import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
-
 import { TailSpin } from 'react-loading-icons';
+import { currencyFormat } from '../util/utils';
 
 const SingleCard = () => {
 	const dispatch = useDispatch();
@@ -68,7 +68,9 @@ const SingleCard = () => {
 						</div>
 					</div>
 					<div className="single-card-store-info">
-						<div className="single-card-price">Price: ${(card.price / 100).toFixed(2)}</div>
+						<div className="single-card-price">
+							Price: ${currencyFormat(card.price)}
+						</div>
 						<div className="card-quantity">
 							{card.qty > 5
 								? 'In Stock'

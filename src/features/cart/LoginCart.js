@@ -7,6 +7,8 @@ import { checkToken } from '../login/loginSlice';
 import { Link } from 'react-router-dom';
 import DeleteItem from './DeleteItem';
 import Checkout from './Checkout';
+import { currencyFormat } from '../util/utils';
+
 const LoginCart = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -21,7 +23,7 @@ const LoginCart = () => {
 	const totalPrice = loginCart.length
 		? loginCart[0].lineItems.reduce((accum, next) => {
 				return accum + Number(next.quantity * next.product.price);
-		}, 0)
+		  }, 0)
 		: 0;
 
 	React.useEffect(() => {
@@ -64,8 +66,7 @@ const LoginCart = () => {
 							</div>
 							<div className="cart-item-qty"> {item.quantity} </div>
 							<div className="cart-item-price">
-								{' '}
-								${((item.quantity * item.product.price) / 100).toFixed(2)}{' '}
+								{currencyFormat(item.quantity * item.product.price)}
 							</div>
 							<DeleteItem lineItem={item} user={user} />
 						</div>
@@ -73,7 +74,7 @@ const LoginCart = () => {
 				)}
 			</div>
 
-			<span> Total: ${(Math.round(totalPrice) / 100).toFixed(2)} </span>
+			<span> Total: {currencyFormat(totalPrice)} </span>
 			<Checkout />
 		</div>
 	);

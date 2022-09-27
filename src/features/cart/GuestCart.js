@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getTotalPrice } from './cartSlice';
 import DeleteItem from './DeleteItem';
+import { currencyFormat } from '../util/utils';
+
 const GuestCart = () => {
 	const navigate = useNavigate();
 	const cart = useSelector((state) => state.cart.cart);
@@ -42,13 +44,16 @@ const GuestCart = () => {
 								<div className="image-name"> {item.card.name} </div>
 							</div>
 							<div className="cart-item-qty"> {item.qty} </div>
-							<div className="cart-item-price" > ${(item.price / 100).toFixed(2)} </div>
+							<div className="cart-item-price">
+								{' '}
+								{currencyFormat(item.price)}{' '}
+							</div>
 							<DeleteItem id={item.card.id} />
 						</div>
 					))
 				)}
 			</div>
-			<div className="cart-price"> Total: ${(totalPrice / 100).toFixed(2)} </div>
+			<div className="cart-price"> Total: {currencyFormat(totalPrice)} </div>
 			<button> Checkout </button>
 		</div>
 	);
