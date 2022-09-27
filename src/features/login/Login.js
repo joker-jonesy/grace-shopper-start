@@ -22,9 +22,9 @@ function Login (){
         }
     }
     return(
-        <div className='rest'>
+        <div className='rest login'>
         <h3>
-            Welcome please log in!
+            Welcome, please log in!
         </h3>
         <form onSubmit={handleSubmit}>
             <label>Username</label>
@@ -34,7 +34,7 @@ function Login (){
             <button type='submit'>Login</button>
         </form>
         <div>{message}</div>
-        <Link to='/signUp'><h3>Create New User</h3></Link>
+        <Link to='/signUp'><h3>Sign Up</h3></Link>
         </div>
     )
 }
