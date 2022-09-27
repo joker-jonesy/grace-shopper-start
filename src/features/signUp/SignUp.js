@@ -61,7 +61,7 @@ function SignUp (){
                     <input type='text' onChange={handleChange('username')} name='username' required minLength={5} maxLength={32}/>
                 <label>Password</label>
                     <input type='password' onChange={handlePassword('password')} name='password' required minLength={4} maxLength={20}/>
-                <label>retype Password</label>
+                <label>Retype Password</label>
                     <input type='password' onChange={handlePassword2('password2')} name='password' required minLength={4} maxLength={20}/>
                 <button type='submit'>Sign Up</button>
                 </form>

@@ -6,9 +6,9 @@ const Checkout = () => {
 	const dispatch = useDispatch();
 	const login = useSelector((state) => state.login);
 	const loginCart = login.user.orders.filter((item) => item.isCart === true);
-
+	console.log(loginCart)
 	const handleCheckout = async () => {
-		loginCart.length
+		loginCart[0].lineItems.length >0
 			? dispatch(
 					checkoutOrder({
 						token: login.token,

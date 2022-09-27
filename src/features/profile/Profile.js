@@ -5,6 +5,7 @@ import AdminProfile from '../admin/AdminProfile';
 import Login from '../login/Login';
 import { logout } from '../login/loginSlice';
 import { Link } from 'react-router-dom';
+import { clearCart, setLoginTotal } from '../cart/cartSlice';
 
 const Profile = () => {
 	const dispatch = useDispatch();
@@ -27,7 +28,9 @@ const Profile = () => {
 					</div>
 					<button
 						onClick={() => {
-							dispatch(logout());
+							dispatch(logout())
+							dispatch(setLoginTotal(0))
+							dispatch(clearCart())
 						}}
 					>
 						Logout
