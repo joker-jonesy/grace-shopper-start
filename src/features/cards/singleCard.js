@@ -68,7 +68,7 @@ const SingleCard = () => {
 						</div>
 					</div>
 					<div className="single-card-store-info">
-						<div className="single-card-price">Price: ${card.price / 100}</div>
+						<div className="single-card-price">Price: ${Math.floor(card.price) / 100}</div>
 						<div className="card-quantity">
 							{card.qty > 5
 								? 'In Stock'

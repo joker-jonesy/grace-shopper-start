@@ -306,8 +306,8 @@ body {
 
 
 .card-image:hover {
-	transform: scale(1.02);
-	transition: width 0.4s, height 0.4s, transform 0.4s;
+	transform: scale(1.025);
+	transition: width 0.3s, height 0.3s, transform 0.3s;
 }
 
 .blurb-wrapper {
@@ -377,7 +377,7 @@ body {
 
 .single-card-store-info {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 }
 
 .card-info-flex {

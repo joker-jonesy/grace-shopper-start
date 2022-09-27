@@ -21,7 +21,7 @@ const LoginCart = () => {
 	const totalPrice = loginCart.length
 		? loginCart[0].lineItems.reduce((accum, next) => {
 				return accum + Number(next.quantity * next.product.price);
-		  }, 0)
+		}, 0)
 		: 0;
 
 	React.useEffect(() => {
@@ -65,7 +65,7 @@ const LoginCart = () => {
 							<div className="cart-item-qty"> {item.quantity} </div>
 							<div className="cart-item-price">
 								{' '}
-								{(item.quantity * item.product.price) / 100}{' '}
+								{Math.floor(item.quantity * item.product.price) / 100}{' '}
 							</div>
 							<DeleteItem lineItem={item} user={user} />
 						</div>
@@ -73,7 +73,7 @@ const LoginCart = () => {
 				)}
 			</div>
 
-			<span> Total: ${Math.round(totalPrice) / 100} </span>
+			<span> Total: ${Math.floor(totalPrice) / 100} </span>
 			<Checkout />
 		</div>
 	);

@@ -42,13 +42,13 @@ const GuestCart = () => {
 								<div className="image-name"> {item.card.name} </div>
 							</div>
 							<div className="cart-item-qty"> {item.qty} </div>
-							<div className="cart-item-price"> {item.price / 100} </div>
+							<div className="cart-item-price"> {Math.floor(item.price) / 100} </div>
 							<DeleteItem id={item.card.id} />
 						</div>
 					))
 				)}
 			</div>
-			<div className="cart-price"> Total: ${totalPrice / 100} </div>
+			<div className="cart-price"> Total: ${Math.floor(totalPrice) / 100} </div>
 			<button> Checkout </button>
 		</div>
 	);

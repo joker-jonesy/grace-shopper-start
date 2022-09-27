@@ -15,7 +15,7 @@ const Checkout = () => {
 						user: login.user,
 						cart: loginCart[0].lineItems,
 					})
-			  )
+			)
 			: alert(' Cart is Empty ');
 	};
 
