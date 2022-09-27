@@ -7,7 +7,7 @@ const Product = conn.define('product', {
 		allowNull: false,
 	},
 	price: {
-		type: Sequelize.DECIMAL(10, 2),
+		type: Sequelize.INTEGER,
 	},
 	qty: {
 		type: Sequelize.INTEGER,
@@ -24,12 +24,12 @@ const Product = conn.define('product', {
 	descriptionBlurb: {
 		type: Sequelize.TEXT,
 	},
-	tag1:{
-		type: Sequelize.TEXT(32)
+	tag1: {
+		type: Sequelize.TEXT(32),
 	},
-	tag2:{
-		type: Sequelize.TEXT(32)
-	}
+	tag2: {
+		type: Sequelize.TEXT(32),
+	},
 });
 
 module.exports = Product;

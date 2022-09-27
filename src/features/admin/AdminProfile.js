@@ -1,23 +1,24 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../login/loginSlice";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { fetchOrders } from "./ordersSlice";
-import {fetchUsers} from './usersSlice'
-import {fetchCards} from '../cards/cardsSlice'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../login/loginSlice';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { fetchOrders } from './ordersSlice';
+import { fetchUsers } from './usersSlice';
+import { fetchCards } from '../cards/cardsSlice';
 
-function AdminProfile (){
-    const dispatch = useDispatch()
+function AdminProfile() {
+	const dispatch = useDispatch();
 
-    let admin = useSelector(state=>state.login)
-    useEffect(()=>{
-        if(admin.user.isAdmin){
-        dispatch(fetchOrders(admin.token))
-        dispatch(fetchUsers(admin.token))
-        dispatch(fetchCards())
-    }
-    })
+	let admin = useSelector((state) => state.login);
+
+	useEffect(() => {
+		if (admin.user.isAdmin) {
+			dispatch(fetchOrders(admin.token));
+			dispatch(fetchUsers(admin.token));
+			dispatch(fetchCards());
+		}
+	});
 
     return (
         <div className='admin-profile-container'>
@@ -42,9 +43,8 @@ function AdminProfile (){
 		        </button>
             </div>
             :null}
-
-        </div>
-    )
+		</div>
+	)
 }
 
-export default AdminProfile
+export default AdminProfile;

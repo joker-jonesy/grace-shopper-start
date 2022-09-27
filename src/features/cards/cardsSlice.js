@@ -3,15 +3,17 @@ import axios from 'axios';
 
 const initialState = {
 	cards: [],
+	filteredCards: [],
 	singleCard: {},
 	status: 'idle',
 	error: null,
+	filter: null,
 };
 
 export const fetchCards = createAsyncThunk('cards/fetchCards', async () => {
 	try {
 		const { data } = await axios.get('/api/cards');
-		await data.sort((a,b)=>a.id-b.id)
+		await data.sort((a, b) => a.id - b.id);
 		return data;
 	} catch (e) {
 		console.log(e);
@@ -33,6 +35,15 @@ const cardsSlice = createSlice({
 	name: 'cards',
 	initialState,
 	reducers: {
+		changeFilter(state, action) {
+			state.filter = action.payload;
+			// if (action.payload !== 'All') {
+			// 	state.filteredCards = state.cards.filter(
+			// 		(card) => card.tag1 === action.payload || card.tag2 === action.payload
+			// 	);
+			// }
+			// state.filteredCards = state.cards;
+		},
 	},
 	extraReducers(builder) {
 		builder
@@ -42,6 +53,7 @@ const cardsSlice = createSlice({
 			.addCase(fetchCards.fulfilled, (state, action) => {
 				state.status = 'succeeded';
 				state.cards = action.payload;
+				state.filter = 'All';
 			})
 			.addCase(fetchCards.rejected, (state, action) => {
 				state.status = 'failed';
@@ -63,9 +75,10 @@ const cardsSlice = createSlice({
 
 export const getCards = (state) => state.cards.cards;
 export const getCardsStatus = (state) => state.cards.status;
+export const getFilter = (state) => state.cards.filter;
 
 //export the action variables in reducers object
-export const {} = cardsSlice.actions;
+export const { changeFilter } = cardsSlice.actions;
 
 //export slice reducer to store.js
 export default cardsSlice.reducer;

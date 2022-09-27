@@ -28,7 +28,6 @@ function SignUp (){
     }
     const handlePassword2 = props=> event=>{
         setPassword2(event.target.value)
-        console.log(password2)
         return password2
     }
 

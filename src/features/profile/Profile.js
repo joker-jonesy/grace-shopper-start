@@ -3,15 +3,12 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import AdminProfile from '../admin/AdminProfile';
 import Login from '../login/Login';
-import { logout, checkToken } from '../login/loginSlice';
+import { logout } from '../login/loginSlice';
 import { Link } from 'react-router-dom';
 
 const Profile = () => {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.login.user);
-	useEffect(() => {
-		dispatch(checkToken());
-	}, []);
 
 	return (
 		<div className="view-profile-container">
@@ -20,13 +17,13 @@ const Profile = () => {
 			) : user.isAdmin ? (
 				<AdminProfile />
 			) : (
-				<div className='user-profile'>
-					<h2>
-						Welcome, {user.username}!
-					</h2>
-					<div className='user-info'>
-						<div className='user-name'>{user.fName} {user.lName}</div>
-						<div className='user-email'>{user.email}</div>
+				<div className="user-profile">
+					<h2>Welcome, {user.username}!</h2>
+					<div className="user-info">
+						<div className="user-name">
+							{user.fName} {user.lName}
+						</div>
+						<div className="user-email">{user.email}</div>
 					</div>
 					<button
 						onClick={() => {
@@ -43,7 +40,6 @@ const Profile = () => {
 							<h4>Previous Orders:</h4>
 							<div>
 								{user.orders.map((order) => {
-									console.log(order)
 									if (!order.isCart) {
 										return (
 											<div key={order.id}>
@@ -54,9 +50,15 @@ const Profile = () => {
 												</p>
 												{order.lineItems.map((product) => (
 													<div key={product.id}>
-														<div>{product.product.name}, Qty: {product.quantity}</div>
+														<div>
+															{product.product.name}, Qty: {product.quantity}
+														</div>
 														{/* {product.quantity}{' '} */}
-														<img className='previous-order-image' src={product.product.imgCart} alt="" />
+														<img
+															className="previous-order-image"
+															src={product.product.imgCart}
+															alt=""
+														/>
 													</div>
 												))}
 											</div>

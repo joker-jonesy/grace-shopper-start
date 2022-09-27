@@ -23,7 +23,7 @@ const syncAndSeed = async () => {
 			return championArr;
 		};
 		const setRandomPrice = () => {
-			return Math.floor(Math.random() * 100000) / 100;
+			return Math.floor(Math.random() * 100000);
 		};
 		//change to true to reseed
 
@@ -53,51 +53,51 @@ const syncAndSeed = async () => {
 			});
 		});
 		//use this area to sync your database
-	
-	let admin = await User.create({
-		username: 'admin',
-		email: 'admin@gmail.com',
-		password: 'admin',
-		fName: 'Jr.',
-		lName: 'Administrator',
-		isAdmin: true
-	})
 
-	let sally = await User.create({
-		username: 'sally12',
-		email: 'sally1259201@gmail.com',
-		password: 'asdf',
-		fName: 'Sally',
-		lName: 'Fields',
-		isAdmin: false,
-	})
+		let admin = await User.create({
+			username: 'admin',
+			email: 'admin@gmail.com',
+			password: 'admin',
+			fName: 'Jr.',
+			lName: 'Administrator',
+			isAdmin: true,
+		});
 
-	let order1 = await Order.create({
-		isCart:false,
-		orderStreet: '10502 big street',
-		orderCity: 'Sprinfield',
-		orderZip: '22902',
-		orderState: 'VA',
-		orderCountry: 'USA',
-		userId: sally.id
-	})
+		let sally = await User.create({
+			username: 'sally12',
+			email: 'sally1259201@gmail.com',
+			password: 'asdf',
+			fName: 'Sally',
+			lName: 'Fields',
+			isAdmin: false,
+		});
 
-	let order2 = await Order.create({
-		isCart: true,
-		userId: sally.id
-	})
+		let order1 = await Order.create({
+			isCart: false,
+			orderStreet: '10502 big street',
+			orderCity: 'Sprinfield',
+			orderZip: '22902',
+			orderState: 'VA',
+			orderCountry: 'USA',
+			userId: sally.id,
+		});
 
-	let orderItems = await LineItem.bulkCreate([
-		{orderId: order1.id, productId:1, quantity:1},
-		{orderId: order1.id, productId:6, quantity:3},
-		{orderId: order1.id, productId:5, quantity:1},
-		{orderId: order1.id, productId:4},
-		{orderId: order1.id, productId:3},
-		{orderId: order1.id, productId:2},
-		{orderId: order2.id, productId:10},
-		{orderId: order2.id, productId:102, quantity:2},
-		{orderId: order2.id, productId:115}
-	])
+		let order2 = await Order.create({
+			isCart: true,
+			userId: sally.id,
+		});
+
+		let orderItems = await LineItem.bulkCreate([
+			{ orderId: order1.id, productId: 1, quantity: 1 },
+			{ orderId: order1.id, productId: 6, quantity: 3 },
+			{ orderId: order1.id, productId: 5, quantity: 1 },
+			{ orderId: order1.id, productId: 4 },
+			{ orderId: order1.id, productId: 3 },
+			{ orderId: order1.id, productId: 2 },
+			{ orderId: order2.id, productId: 10 },
+			{ orderId: order2.id, productId: 102, quantity: 2 },
+			{ orderId: order2.id, productId: 115 },
+		]);
 
 		//use this area to sync your database
 		console.log(`Seeding successful!`);
