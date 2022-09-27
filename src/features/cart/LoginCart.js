@@ -7,6 +7,8 @@ import { checkToken } from '../login/loginSlice';
 import { Link } from 'react-router-dom';
 import DeleteItem from './DeleteItem';
 import Checkout from './Checkout';
+import { currencyFormat } from '../util/utils';
+
 const LoginCart = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -65,7 +67,7 @@ const LoginCart = () => {
 							<div className="cart-item-qty"> {item.quantity} </div>
 							<div className="cart-item-price">
 								{' '}
-								{(item.quantity * item.product.price) / 100}{' '}
+								{currencyFormat(item.quantity * item.product.price)}{' '}
 							</div>
 							<DeleteItem lineItem={item} user={user} />
 						</div>
@@ -73,7 +75,7 @@ const LoginCart = () => {
 				)}
 			</div>
 
-			<span> Total: ${Math.round(totalPrice) / 100} </span>
+			<span> Total: {currencyFormat(totalPrice)} </span>
 			<Checkout />
 		</div>
 	);
