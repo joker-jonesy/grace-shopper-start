@@ -4,11 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-	
+		"start": "npm node server",
 		"build:dev": "npm run build -- --watch --mode=development",
 		"test": "mocha spec.js",
 		"test:dev": "QUIET=true JWT=shh DATABASE_URL=postgres://dpkhhlhieydgsa:c12300e2e4c5b6bb2255545e9456f7bde3698d710d9793eb97b1317c937d4ab1@ec2-44-206-214-233.compute-1.amazonaws.com:5432/dbue544i080bm9 npm test -- --watch",
-		"start": "JWT=shhh nodemon server --ignore src/ --ignore dist/ & npm run build:dev"
+		"start:dev": "JWT=shhh nodemon server --ignore src/ --ignore dist/ & npm run build:dev"
 	},
 	"keywords": [],
 	"author": "",
