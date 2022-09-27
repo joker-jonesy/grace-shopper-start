@@ -28,8 +28,8 @@ router.post('/create-checkout-session', requireToken, async (req, res) => {
 			}),
 
 			mode: 'payment',
-			success_url: `ecommercelolcards1.herokuapp.com/succeeded`,
-			cancel_url: `ecommercelolcards1.herokuapp.com`,
+			success_url: `https://ecommercelolcards1.herokuapp.com/succeeded`,
+			cancel_url: `https://ecommercelolcards1.herokuapp.com`,
 		});
 
 		res.send({ url: session.url });
