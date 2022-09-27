@@ -6,7 +6,7 @@ import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
 import { getFilter } from './cardsSlice';
 import Filter from './Filter';
 import { fetchCards } from './cardsSlice';
-import { addToCart } from '../cart/cartSlice';
+
 import { TailSpin } from 'react-loading-icons';
 
 const Cards = () => {

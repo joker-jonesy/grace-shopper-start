@@ -60,12 +60,14 @@ router.put('/:userId/processOrder', requireToken, async (req, res, next) => {
 		const order = await Order.findOne({
 			where: { userId: req.params.userId, isCart: true },
 		});
-		console.log(order);
+
 		order && (await order.update({ isCart: false }));
+
 		req.body.map(async (item) => {
-			const product = await Product.findByPk(item.id);
+			const product = await Product.findByPk(item.product.id);
+
 			await product.update({
-				where: { quantity: product.quantity - item.quantity },
+				qty: product.qty - item.quantity,
 			});
 		});
 	} catch (e) {

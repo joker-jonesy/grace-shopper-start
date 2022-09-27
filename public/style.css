@@ -414,3 +414,10 @@ body {
 	margin-bottom: -50px;
 	position: sticky;
 }
+
+.payment-process {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10rem;
+}

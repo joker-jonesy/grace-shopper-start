@@ -3,9 +3,8 @@ import axios from 'axios';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSingleCard } from './cardsSlice';
-
 import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
-import { addToCart } from '../cart/cartSlice';
+
 import { TailSpin } from 'react-loading-icons';
 
 const SingleCard = () => {

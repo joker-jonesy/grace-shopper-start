@@ -16,7 +16,7 @@ const PaymentRecieve = () => {
 			})
 		);
 	}, []);
-	return <div>PaymentRecieve</div>;
+	return <div className="payment-process"> Thank You for Shopping ^_^ </div>;
 };
 
 export default PaymentRecieve;
