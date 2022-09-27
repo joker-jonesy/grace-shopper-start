@@ -5,9 +5,7 @@ import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
 import { getFilter } from './cardsSlice';
 import Filter from './Filter';
 import { fetchCards } from './cardsSlice';
-
 import { TailSpin } from 'react-loading-icons';
-import Modal from '../../components/Modal/index.jsx';
 
 const Cards = () => {
 	const dispatch = useDispatch();
@@ -106,23 +104,35 @@ const Cards = () => {
 								</button>
 							</div>
 						</div>
-						<div className='card-info-flex'>
-							<div className='all-card-store-info'>
-								<div className='single-card-price'>Price: ${card.price}</div>
-								<div className="card-quantity">{card.qty > 5 ? "In Stock" : (card.qty === 0 ? "Out of Stock" : `Only ${card.qty} in stock`)}</div>
+						<div className="card-info-flex">
+							<div className="all-card-store-info">
+								<div className="single-card-price">Price: ${card.price}</div>
+								<div className="card-quantity">
+									{card.qty > 5
+										? 'In Stock'
+										: card.qty === 0
+										? 'Out of Stock'
+										: `Only ${card.qty} in stock`}
+								</div>
 							</div>
-							<div className='cart-button-flex'>
-								<Link to='/cart'>
-									<button className='add-to-cart-button' onClick={() =>
+							<div className="cart-button-flex">
+								<Link to="/cart">
+									<button
+										className="add-to-cart-button"
+										onClick={() =>
 											handleAddToCart({ card: card, qty: 1, price: card.price })
-										}> Add to Cart </button>
+										}
+									>
+										{' '}
+										Add to Cart{' '}
+									</button>
 								</Link>
 							</div>
 						</div>
 					</div>
-			))}
-		</div>
-	</>
+				))}
+			</div>
+		</>
 	);
 };
 
