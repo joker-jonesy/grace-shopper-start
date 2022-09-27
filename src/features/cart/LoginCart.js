@@ -66,8 +66,7 @@ const LoginCart = () => {
 							</div>
 							<div className="cart-item-qty"> {item.quantity} </div>
 							<div className="cart-item-price">
-								{' '}
-								{currencyFormat(item.quantity * item.product.price)}{' '}
+								{currencyFormat(item.quantity * item.product.price)}
 							</div>
 							<DeleteItem lineItem={item} user={user} />
 						</div>
