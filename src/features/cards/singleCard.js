@@ -29,7 +29,6 @@ const SingleCard = () => {
 	useEffect(() => {
 		//needs error handeling
 		if (card.id) {
-			console.log('heloooo');
 			axios
 				.get(
 					`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
