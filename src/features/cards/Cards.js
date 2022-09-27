@@ -78,6 +78,7 @@ const Cards = () => {
 									<img className="card-image" src={card.imgAll} alt="" />
 								</Link>
 							</div>{' '}
+							<div className="card-info-wrapper">	
 							<div className="card-title">{card.name}</div>
 							<div className="card-info">
 								<div className="card-container">
@@ -93,7 +94,6 @@ const Cards = () => {
 									)}
 								</div>
 							</div>
-						</div>
 						<div className="card-info-flex">
 							<div className="all-card-store-info">
 								<div className="single-card-price">
@@ -113,13 +113,15 @@ const Cards = () => {
 									onClick={() =>
 										handleAddToCart({ card: card, qty: 1, price: card.price })
 									}
-								>
+									>
 									{' '}
 									Add to Cart{' '}
 								</button>
 							</div>
 						</div>
+						</div>
 					</div>
+				</div>
 				))}
 			</div>
 		</>

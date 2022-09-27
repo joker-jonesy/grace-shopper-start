@@ -21,7 +21,7 @@ const LoginCart = () => {
 	const totalPrice = loginCart.length
 		? loginCart[0].lineItems.reduce((accum, next) => {
 				return accum + Number(next.quantity * next.product.price);
-		  }, 0)
+		}, 0)
 		: 0;
 
 	React.useEffect(() => {
