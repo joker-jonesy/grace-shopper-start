@@ -31,7 +31,7 @@ const SingleCard = () => {
 		if (card.id) {
 			axios
 				.get(
-					`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
+					`https://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
 				)
 				.then((response) => {
 					setCardLore(response.data.data[card.name].lore);
