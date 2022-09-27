@@ -20,36 +20,31 @@ function AdminProfile() {
 		}
 	});
 
-	return (
-		<div className="admin-profile-container">
-			{admin.user.isAdmin ? (
-				<div>
-					<h4>
-						Welcome Administrator {admin.user.fName} {admin.user.lName}
-					</h4>
-					<Link to="/admin/viewOrders">
-						<p>View Completed Orders</p>
-					</Link>
-					<Link to="/admin/viewUsers">
-						<p>View all users</p>
-					</Link>
-					<Link to="/admin/createCard">
-						<p>Create new Card</p>
-					</Link>
-					<Link to="/admin/editCard">
-						<p>Update or Delete a Product</p>
-					</Link>
-					<button
-						onClick={() => {
-							dispatch(logout());
-						}}
-					>
-						Logout
-					</button>
-				</div>
-			) : null}
+    return (
+        <div className='admin-profile-container'>
+            {admin.user.isAdmin ? <div>
+            <h4>Welcome Administrator {admin.user.fName} {admin.user.lName}</h4>
+            <ul className='admin-profile-links'>
+                <Link to ='/admin/viewOrders'>
+                <li className='admin-profile-links'>View Completed Orders</li>
+                </Link>
+                <Link to = '/admin/viewUsers'>
+                <li className='admin-profile-links'>View all users and delete a user</li>
+                </Link>
+                <Link to ='/admin/createCard'>
+                <li className='admin-profile-links'>Create new Card</li>
+                </Link>
+                <Link to = '/admin/editCard'>
+                <li className='admin-profile-links'>Update or Delete a Card</li>
+                </Link>
+            </ul>
+                <button onClick={()=>{dispatch(logout())}}>
+			        Logout
+		        </button>
+            </div>
+            :null}
 		</div>
-	);
+	)
 }
 
 export default AdminProfile;

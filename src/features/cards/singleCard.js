@@ -28,15 +28,11 @@ const SingleCard = () => {
 
 	useEffect(() => {
 		//needs error handeling
-		if (card.id) {
-			console.log('heloooo');
-			axios
-				.get(
-					`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
-				)
-				.then((response) => {
-					setCardLore(response.data.data[card.name].lore);
-				});
+		if (card.id){
+			axios.get(`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
+			).then(response => {
+				setCardLore(response.data.data[card.name].lore)
+			})
 		}
 	}, [card]);
 
@@ -46,9 +42,7 @@ const SingleCard = () => {
 		</div>
 	) : (
 		<div>
-			<div className="card-container">
-				<div className="single-card">
-					<div className="card-display">
+					<div className='card-display'>
 						<img className="single-card-image" src={card.imgSingle}></img>
 						<div className="single-card-info">
 							<div className="single-card-title">{card.name}</div>
@@ -64,28 +58,24 @@ const SingleCard = () => {
 									</div>
 								)}
 							</div>
-							<div className="blurb-wrapper">
-								<p className="card-blurb">{cardLore}</p>
-							</div>
-							<div className="single-card-store-info">
-								<div className="single-card-price">
-									Price: ${card.price / 100}
+							<div className='blurb-wrapper'>
+								<div className='card-blurb'>
+									<center>Lore:</center>
+									<p>{cardLore}</p>
 								</div>
-								<div className="card-quantity">Qty: {card.qty}</div>
-								<button
-									className="single-add-to-cart-button"
-									onClick={() =>
-										handleAddToCart({ card: card, qty: 1, price: card.price })
-									}
-								>
-									Add to cart
-								</button>
+							</div>
+							<div className='single-card-store-info'>
+								<div className='single-card-price'>Price: ${card.price}</div>
+								<div className="card-quantity">{card.qty > 5 ? "In Stock" : (card.qty === 0 ? "Out of Stock" : `Only ${card.qty} in stock`)}</div>
+							</div>
+							<div className='cart-button-flex'>
+								<button className='single-add-to-cart-button' onClick={() =>
+							handleAddToCart({ card: card, qty: 1, price: card.price })
+						}>Add to cart</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	);
 };
 
