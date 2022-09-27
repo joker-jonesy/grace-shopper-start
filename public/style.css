@@ -17,7 +17,7 @@
 	}
 }
 
-body{
+body {
 	font-family: lol-font;
 	color: gold;
 	background-color: black;
@@ -86,8 +86,8 @@ body{
 .nav-link:hover {
 	background-color: gold;
 	color: #333;
-	font-size: 24px
-  }
+	font-size: 24px;
+}
 
 .rest {
 	position: fixed;
@@ -117,7 +117,10 @@ body{
 	width: 25%;
 }
 
-.cart-item-name, .cart-item-qty, .cart-item-price, .cart-delete-button {
+.cart-item-name,
+.cart-item-qty,
+.cart-item-price,
+.cart-delete-button {
 	width: 25%;
 }
 
@@ -168,7 +171,6 @@ body{
 .cart-item-name {
 	display: flex;
 	flex-direction: column;
-
 }
 
 .cart-item-info {
@@ -181,8 +183,6 @@ body{
 	display: flex;
 	flex-direction: row;
 }
-
-
 
 .all-cards-container {
 	display: flex;
@@ -227,7 +227,7 @@ body{
 	margin-top: 7rems;
 }
 
-.view-profile-container{
+.view-profile-container {
 	margin-top: 7rems;
 }
 
@@ -265,8 +265,8 @@ body{
 	font-family: lol-font;
 	color: gold;
 	text-decoration: none;
-    font-weight: 600;
-    text-align: center;
+	font-weight: 600;
+	text-align: center;
 }
 
 .form {
@@ -298,14 +298,14 @@ body{
 	color: gold;
 	font-size: 24px;
 	text-align: center;
-	padding-top:55px;
+	padding-top: 55px;
 }
 
 .single-card-info {
 	width: 490px;
 	height: 403px;
 	margin-top: 9px;
-    background-color: rgb(61, 61, 61);
+	background-color: rgb(61, 61, 61);
 	background-image: url('https://blz-contentstack-images.akamaized.net/v3/assets/blt45749e0fed8aa592/blte8df32260aa76d67/60192ff814a90a0bfc552b1d/frame.png');
 }
 
@@ -355,7 +355,7 @@ body{
 }
 
 .card-info {
-	background-color: rgb(0, 0, 0, 0)
+	background-color: rgb(0, 0, 0, 0);
 }
 
 .card-blurb {
@@ -363,7 +363,7 @@ body{
 }
 
 .single-card-price {
-	margin-left: 20px
+	margin-left: 20px;
 }
 
 .card-quantity {
@@ -383,7 +383,7 @@ body{
 
 .cart-container {
 	margin-top: 2rem;
-	border: 1px solid rgba(255,215,0,.5);
+	border: 1px solid rgba(255, 215, 0, 0.5);
 	border-radius: 4px;
 	margin-bottom: 1rem;
 }
@@ -403,4 +403,21 @@ body{
 	animation-name: fade-in-opacity;
 	animation-timing-function: ease-in;
 	animation-duration: 1s;
+}
+.filter-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 7rem;
+
+	margin-top: 7rem;
+	margin-bottom: -50px;
+	position: sticky;
+}
+
+.payment-process {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10rem;
 }

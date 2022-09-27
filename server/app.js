@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const volleyball = require('volleyball');
 const app = express();
+require('dotenv').config();
 
 // static middleware
 app.use(express.static(path.join(__dirname, '..', 'public')));
