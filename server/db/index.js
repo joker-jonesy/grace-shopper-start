@@ -41,15 +41,15 @@ const syncAndSeed = async () => {
 		]);
 
 		champions.map(async (champion) => {
-			let {data} = await axios.get(`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${champion.id}.json`)	
+			let {data} = await axios.get(`https://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${champion.id}.json`)	
 			await Product.create({
 				name: champion.name,
 				price: setRandomPrice(),
 				qty: 100,
 				descriptionBlurb: data.data[champion.id].lore,
-				imgAll: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
-				imgSingle: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`,
-				imgCart: `http://ddragon.leagueoflegends.com/cdn/12.17.1/img/champion/${champion.id}.png`,
+				imgAll: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+				imgSingle: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`,
+				imgCart: `https://ddragon.leagueoflegends.com/cdn/12.17.1/img/champion/${champion.id}.png`,
 				tag1: champion.tags[0],
 				tag2: champion.tags[1] ? champion.tags[1] : null,
 			});
