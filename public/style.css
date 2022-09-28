@@ -58,14 +58,14 @@ body {
 
 .modal {
 	width: clamp(50%, 700px, 90%);
-  height: min(50%, 300px);
+	height: min(50%, 300px);
 
-  margin: auto;
-  padding: 0 2rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	margin: auto;
+	padding: 0 2rem;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .login {
@@ -100,7 +100,7 @@ body {
 	padding: 2% 20%;
 	background-color: rgb(17, 17, 17);
 	font-family: lol-font;
-	border-bottom: 2px solid rgb(255, 215, 0, .5);
+	border-bottom: 2px solid rgb(255, 215, 0, 0.5);
 }
 
 .nav-link {
@@ -114,14 +114,13 @@ body {
 	position: relative;
 }
 
-
 /* .nav-link:focus,
 .nav-link:hover {
 	background-color: gold;
 	color: #333;
 	font-size: 24px
 } */
-  
+
 .nav-link:after {
 	content: '';
 	position: absolute;
@@ -134,7 +133,7 @@ body {
 	transform-origin: bottom right;
 	transition: transform 0.25s ease-out;
 }
-  
+
 .nav-link:hover:after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
@@ -303,8 +302,6 @@ body {
 	max-width: 700px;
 }
 
-
-
 .card-image:hover {
 	transform: scale(1.025);
 	transition: width 0.3s, height 0.3s, transform 0.3s;
@@ -320,10 +317,10 @@ body {
 .card-blurb {
 	margin: 20px;
 	max-width: 70%;
-	overflow:auto;
+	overflow: auto;
 	background-color: #101711;
 	padding: 10px;
-	border-style:double;
+	border-style: double;
 	border-width: 5px;
 	border-color: rgb(60 73 60);
 }
@@ -371,7 +368,7 @@ body {
 .single-card-info {
 	width: 490px;
 	height: 400px;
-    background-color: rgb(0, 33, 0);
+	background-color: rgb(0, 33, 0);
 	background-image: url('https://blz-contentstack-images.akamaized.net/v3/assets/blt45749e0fed8aa592/blte8df32260aa76d67/60192ff814a90a0bfc552b1d/frame.png');
 }
 
@@ -520,7 +517,6 @@ body {
 
 	margin-top: 2rem;
 	margin-bottom: -50px;
-	position: sticky;
 }
 
 .payment-process {
@@ -530,10 +526,9 @@ body {
 	margin: 10rem;
 }
 
-
-.card-info-wrapper{
-	border-right:  3px solid rgb(13, 13, 13);
+.card-info-wrapper {
+	border-right: 3px solid rgb(13, 13, 13);
 	border-bottom: 7px solid rgb(17, 17, 17);
-	border-left:   3px solid rgb(13, 13, 13);
+	border-left: 3px solid rgb(13, 13, 13);
 	margin-bottom: 40px;
 }
