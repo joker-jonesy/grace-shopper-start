@@ -108,7 +108,6 @@ const cartSlice = createSlice({
 					if (item.card.id === action.payload.card.id) {
 						item.qty += action.payload.qty;
 						item.price = Number(item.card.price) * item.qty;
-						item.price = Math.round(item.price * 100) / 100;
 					}
 				});
 				state.totalPrice;
@@ -118,12 +117,16 @@ const cartSlice = createSlice({
 
 			state.totalPrice = 0;
 			state.cart.map((item) => (state.totalPrice += Number(item.price)));
-			state.totalPrice = Math.round(state.totalPrice * 100) / 100;
 
 			state.totalItems = state.cart.length;
 		},
 		setLoginTotal(state, action) {
 			state.totalItems = action.payload;
+		},
+		clearCart(state,action){
+			state.totalItems = 0
+			state.cart = []
+			state.totalPrice= 0
 		},
 		addLoginCart(state, action) {
 			const productItems = state.cart.map((item) => item.product.id);
@@ -132,7 +135,7 @@ const cartSlice = createSlice({
 					if (item.card.id === action.payload.product.id) {
 						item.qty += action.payload.quantity;
 						item.price = Number(item.product.price) * item.qty;
-						item.price = Math.round(item.price * 100) / 100;
+
 					}
 				});
 				state.totalPrice;
@@ -142,7 +145,6 @@ const cartSlice = createSlice({
 
 			state.totalPrice = 0;
 			state.cart.map((item) => (state.totalPrice += Number(item.price)));
-			state.totalPrice = Math.round(state.totalPrice * 100) / 100;
 
 			state.totalItems = state.cart.length;
 		},
@@ -158,12 +160,13 @@ const cartSlice = createSlice({
 			})
 			.addCase(deleteUserItem.fulfilled, (state, action) => {
 				state.totalItems = action.payload.count;
+
 			});
 	},
 });
 
 export const getTotalPrice = (state) => state.cart.totalPrice;
-export const { addToCart, addLoginCart, setLoginTotal, deleteItem } =
+export const { addToCart, addLoginCart, setLoginTotal, deleteItem, clearCart } =
 	cartSlice.actions;
 
 export default cartSlice.reducer;

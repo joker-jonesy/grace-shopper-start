@@ -23,6 +23,7 @@ function AdminProfile() {
     return (
         <div className='admin-profile-container'>
             {admin.user.isAdmin ? <div>
+			<div className='login-box-wrapper'>
             <h4>Welcome Administrator {admin.user.fName} {admin.user.lName}</h4>
             <ul className='admin-profile-links'>
                 <Link to ='/admin/viewOrders'>
@@ -38,7 +39,8 @@ function AdminProfile() {
                 <li className='admin-profile-links'>Update or Delete a Card</li>
                 </Link>
             </ul>
-                <button onClick={()=>{dispatch(logout())}}>
+			</div>
+                <button className='logout-button' onClick={()=>{dispatch(logout())}}>
 			        Logout
 		        </button>
             </div>
