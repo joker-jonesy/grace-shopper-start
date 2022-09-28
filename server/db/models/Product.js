@@ -14,7 +14,7 @@ const Product = conn.define('product', {
 	},
 	imgSingle: {
 		type: Sequelize.STRING,
-		defaultValue: 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yuumi_0.jpg'
+		defaultValue: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yuumi_0.jpg'
 	},
 	imgAll: {
 		type: Sequelize.STRING,
