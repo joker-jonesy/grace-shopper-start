@@ -56,7 +56,7 @@ const GuestCart = () => {
 				)}
 			</div>
 			<div className="cart-price"> Total: {currencyFormat(totalPrice)} </div>
-			<button> Checkout </button>
+			<button onClick={handleLogin}> Checkout </button>
 		</div>
 	);
 };

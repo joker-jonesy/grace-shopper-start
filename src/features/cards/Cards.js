@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
 import { getFilter } from './cardsSlice';
 import Filter from './Filter';
-import { fetchCards } from './cardsSlice';
+import { fetchCards, changeFilter } from './cardsSlice';
 import { TailSpin } from 'react-loading-icons';
 
 const Cards = () => {
@@ -14,7 +14,7 @@ const Cards = () => {
 	const login = useSelector((state) => state.login);
 	const filter = useSelector(getFilter);
 
-	const [filteredCards, setfilteredCards] = React.useState([]);
+	const filteredCards = useSelector((state) => state.cards.filteredCards);
 
 	const handleAddToCart = (card) => {
 		(login.loggedIn &&
@@ -26,15 +26,8 @@ const Cards = () => {
 	};
 
 	React.useEffect(() => {
-		setfilteredCards(cards);
-		if (filter !== 'All') {
-			setfilteredCards(
-				filteredCards.filter(
-					(card) => card.tag1 === filter || card.tag2 === filter
-				)
-			);
-		}
-	}, [filter]);
+		dispatch(changeFilter(filter));
+	}, []);
 
 	const getTagImage = (tag) => {
 		switch (tag) {
@@ -55,7 +48,7 @@ const Cards = () => {
 		}
 	};
 
-	return !cards.length ? (
+	return !cards ? (
 		<div className="all-cards-container">
 			<TailSpin stroke="#f0b326" strokeWidth="3" />
 		</div>
