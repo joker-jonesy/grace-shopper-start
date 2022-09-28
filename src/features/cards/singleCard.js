@@ -15,7 +15,6 @@ const SingleCard = () => {
 		dispatch(fetchSingleCard(id));
 	}, []);
 	const card = useSelector((state) => state.cards.singleCard);
-	const [cardLore, setCardLore] = useState(undefined);
 
 	const handleAddToCart = (card) => {
 		(login.loggedIn &&
@@ -26,24 +25,8 @@ const SingleCard = () => {
 			dispatch(addToCart(card));
 	};
 
-	useEffect(() => {
-		//needs error handeling
-		if (card.id) {
-			axios
-				.get(
-					`http://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion/${card.name}.json`
-				)
-				.then((response) => {
-					setCardLore(response.data.data[card.name].lore);
-				});
-		}
-	}, [card]);
 
-	return !cardLore ? (
-		<div className="all-cards-container">
-			<TailSpin stroke="#f0b326" strokeWidth="3" />
-		</div>
-	) : (
+	return (
 		<div>
 			<div className="card-display">
 				<img className="single-card-image" src={card.imgSingle}></img>
@@ -64,7 +47,7 @@ const SingleCard = () => {
 					<div className="blurb-wrapper">
 						<div className="card-blurb">
 							<center>Lore:</center>
-							<p>{cardLore}</p>
+							<p>{card.descriptionBlurb}</p>
 						</div>
 					</div>
 					<div className="single-card-store-info">

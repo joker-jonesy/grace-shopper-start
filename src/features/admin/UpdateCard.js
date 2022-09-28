@@ -6,8 +6,9 @@ import { fetchCards } from "../cards/cardsSlice";
 function UpdateCard (props){
     const dispatch = useDispatch()
     const card = props.card
-    const [form, setForm]= useState({id:card.id})
+    const [form, setForm]= useState({id:card.id, tag1:card.tag1, tag2:card.tag2})
     const [submit,newSubmit]= useState(false)
+    const [message,setMessage] = useState('')
     useEffect(()=>{},[submit])
     const admin = useSelector(state=>state.login)
     let tags = [{ name: 'Fighter', id:1 },{ name: 'Tank', id:2 },{ name: 'Mage', id:3 },{ name: 'Assassin',id:4 },{ name: 'Tank', id:5 },{ name: 'Support', id:6 },{ name: 'Mage', id:7 },{ name: 'Marksman', id:8 },];
@@ -21,9 +22,11 @@ function UpdateCard (props){
     }
     const handleSubmit = async (event)=>{
         event.preventDefault()
-        await updateSingleCard(form)
-        dispatch(fetchCards())
-        setTimeout(()=>{},4)
+        let {data} =await updateSingleCard(form)
+        await dispatch(fetchCards())
+        if(data.id){
+            setMessage('Card Updated!')
+        }
         !newSubmit(!submit)
     }
     return(
@@ -46,7 +49,7 @@ function UpdateCard (props){
                 <label>Description of Champion</label>
                     <input type='text' onChange={handleChange('descriptionBlurb')}/>
                 <label>tag1</label>
-                    <select onClick={(event)=>{
+                    <select defaultValue={card.tag1} onClick={(event)=>{
                         setForm({
                         ...form,
                         tag1:event.target.value})}}>
@@ -54,7 +57,7 @@ function UpdateCard (props){
                             <option key={tag.id} value={tag.name}>{tag.name}</option>)}
                     </select>
                 <label>tag2</label>
-                    <select  onClick={(event)=>{
+                    <select defaultValue={card.tag2} onClick={(event)=>{
                         setForm({
                         ...form,
                         tag2:event.target.value})}}>
@@ -64,6 +67,7 @@ function UpdateCard (props){
                     </select>
                 <button type='submit'>Update This Card!</button>
             </form>
+            <div>{message}</div>
         </div>}
         </div>
     )

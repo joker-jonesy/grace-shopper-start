@@ -6,11 +6,11 @@ import { fetchCards } from "../cards/cardsSlice";
 function CreateCard (){
     const admin = useSelector(state=> state.login)
     const dispatch = useDispatch()
-    const [newCard, setNewCard] = useState({})
+    const [newCard, setNewCard] = useState({tag1:'Fighter'})
+    const [message, setMessage] = useState('')
     let tags = [{ name: 'Fighter', id:1 },{ name: 'Tank', id:2 },{ name: 'Mage', id:3 },{ name: 'Assassin',id:4 },{ name: 'Tank', id:5 },{ name: 'Support', id:6 },{ name: 'Mage', id:7 },{ name: 'Marksman', id:8 },
     ];
     const handleChange = props => event =>{
-        console.log(newCard)
         setNewCard({
             ...newCard,
             [props]:event.target.value
@@ -20,10 +20,15 @@ function CreateCard (){
         let createdCard = await axios.post('/api/cards', card)
         return createdCard
     }
-    const handleSubmit = (event) =>{
+    const handleSubmit = async (event) =>{
+        setMessage('')
         event.preventDefault()
-        createCard(newCard)
+        let {data} = await createCard(newCard)
         dispatch(fetchCards())
+        console.log(data)
+        if(data.id){
+            setMessage('Card Successfully Created!')
+        }
     }
     return(
             <div className='create-card-container'>
@@ -45,7 +50,7 @@ function CreateCard (){
                     <label>Description of Champion</label>
                         <input type='text' onChange={handleChange('descriptionBlurb')} required/>
                     <label>tag1</label>
-                        <select onClick={(event)=>{
+                        <select defaultValue={'Fighter'} onClick={(event)=>{
                             setNewCard({
                             ...newCard,
                             tag1:event.target.value})}}>
@@ -53,7 +58,7 @@ function CreateCard (){
                                 <option key={tag.id} value={tag.name}>{tag.name}</option>)}
                         </select>
                     <label>tag2</label>
-                        <select  onClick={(event)=>{
+                        <select onClick={(event)=>{
                             setNewCard({
                             ...newCard,
                             tag2:event.target.value})}}>
@@ -63,6 +68,7 @@ function CreateCard (){
                         </select>
                     <button type='submit'>Create New Card!</button>
                 </form>
+                <div>{message}</div>
             </div>}
             </div>
     )
