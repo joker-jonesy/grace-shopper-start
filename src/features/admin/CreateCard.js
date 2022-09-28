@@ -25,7 +25,6 @@ function CreateCard (){
         event.preventDefault()
         let {data} = await createCard(newCard)
         dispatch(fetchCards())
-        console.log(data)
         if(data.id){
             setMessage('Card Successfully Created!')
         }

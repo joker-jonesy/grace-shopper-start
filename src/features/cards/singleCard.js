@@ -4,18 +4,20 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSingleCard } from './cardsSlice';
 import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
-
 import { TailSpin } from 'react-loading-icons';
 
 const SingleCard = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const login = useSelector((state) => state.login);
+	const [loading, setLoading] = useState(false);
+	
 	React.useEffect(() => {
 		dispatch(fetchSingleCard(id));
+		setTimeout(()=>setLoading(true),500)
 	}, []);
+	
 	const card = useSelector((state) => state.cards.singleCard);
-
 	const handleAddToCart = (card) => {
 		(login.loggedIn &&
 			dispatch(
@@ -25,9 +27,11 @@ const SingleCard = () => {
 			dispatch(addToCart(card));
 	};
 
-
-	return (
-		<div>
+	return !loading ? (
+			<div className="all-cards-container">
+				<TailSpin stroke="#f0b326" strokeWidth="3" />
+			</div>
+		) : (  
 			<div className="card-display">
 				<img className="single-card-image" src={card.imgSingle}></img>
 				<div className="single-card-info">
@@ -71,8 +75,7 @@ const SingleCard = () => {
 						</button>
 					</div>
 				</div>
-			</div>
-		</div>
+			</div>		
 	);
 };
 

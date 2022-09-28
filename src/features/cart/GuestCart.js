@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { getTotalPrice } from './cartSlice';
 import DeleteItem from './DeleteItem';
 import { currencyFormat } from '../util/utils';
+import ChooseQuantity from './ChooseQuantity';
 
 const GuestCart = () => {
 	const navigate = useNavigate();
@@ -43,7 +44,8 @@ const GuestCart = () => {
 								</Link>
 								<div className="image-name"> {item.card.name} </div>
 							</div>
-							<div className="cart-item-qty"> {item.qty} </div>
+							<div className="cart-item-qty"> <ChooseQuantity item={item}/></div>
+							
 							<div className="cart-item-price">
 								{' '}
 								{currencyFormat(item.price)}{' '}
