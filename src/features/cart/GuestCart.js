@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getTotalPrice } from './cartSlice';
 import DeleteItem from './DeleteItem';
 import { currencyFormat } from '../util/utils';
 import ChooseQuantity from './ChooseQuantity';
@@ -10,7 +9,7 @@ const GuestCart = () => {
 	const navigate = useNavigate();
 	const cart = useSelector((state) => state.cart.cart);
 	const totalItem = useSelector((state) => state.cart.totalItems);
-	const totalPrice = useSelector(getTotalPrice);
+	const totalPrice = useSelector((state) => state.cart.totalPrice);
 
 	const handleLogin = () => {
 		navigate('/profile');
@@ -44,8 +43,11 @@ const GuestCart = () => {
 								</Link>
 								<div className="image-name"> {item.card.name} </div>
 							</div>
-							<div className="cart-item-qty"> <ChooseQuantity item={item}/></div>
-							
+							<div className="cart-item-qty">
+								{' '}
+								<ChooseQuantity lineItem={item} />
+							</div>
+
 							<div className="cart-item-price">
 								{' '}
 								{currencyFormat(item.price)}{' '}

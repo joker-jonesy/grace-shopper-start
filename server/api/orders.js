@@ -38,7 +38,11 @@ router.put('/:id', requireToken, async (req, res, next) => {
 		await LineItem.findOne({
 			where: { orderId: order[0].id, productId: req.body.card.id },
 		}).then((obj) => {
-			if (obj) obj.update({ quantity: obj.quantity + req.body.qty });
+			if (obj)
+				obj.update({
+					quantity:
+						obj.quantity + req.body.qty > 10 ? 10 : obj.quantity + req.body.qty,
+				});
 			else {
 				return LineItem.create({
 					orderId: order[0].id,

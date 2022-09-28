@@ -3,7 +3,7 @@ import { addLoginCart } from './cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import GuestCart from './GuestCart';
 import LoginCart from './LoginCart';
-import { updateOrder } from './cartSlice';
+import { updateOrder, clearCart } from './cartSlice';
 
 const Cart = () => {
 	const dispatch = useDispatch();
@@ -19,7 +19,8 @@ const Cart = () => {
 			localCart.cart.length > 0 &&
 			localCart.cart.map((item) => {
 				dispatch(updateOrder({ token: login.token, user: login.user, item }));
-			});
+			}) &&
+			dispatch(clearCart());
 	}, []);
 
 	return !cart ? (
