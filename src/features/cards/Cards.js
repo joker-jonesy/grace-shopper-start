@@ -98,7 +98,7 @@ const Cards = () => {
 								<div className="card-info-flex">
 									<div className="all-card-store-info">
 										<div className="single-card-price">
-											Price: ${currencyFormat(card.price)}
+											Price: {currencyFormat(card.price)}
 										</div>
 										<div className="card-quantity">
 											{card.qty > 5

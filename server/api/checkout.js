@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Order, User, LineItem, Product } = require('../db');
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
+const stripe = require('stripe')('sk_test_51LmLfPHD1eHRXMIWHRrI5LoUgpSKe3zNS62BgW1sxhkbFstLpNXf8uIOR4AUxwBqEzh09GqbFMn28UFEPTcnJa6e00yzNlrURO');
 
 const requireToken = async (req, res, next) => {
 	try {
@@ -28,8 +28,8 @@ router.post('/create-checkout-session', requireToken, async (req, res) => {
 			}),
 
 			mode: 'payment',
-			success_url: `${process.env.SERVER_URL}/succeeded`,
-			cancel_url: `${process.env.SERVER_URL}`,
+			success_url: `https://ecommercelolcards1.herokuapp.com/succeeded`,
+			cancel_url: `https://ecommercelolcards1.herokuapp.com`,
 		});
 
 		res.send({ url: session.url });

@@ -17,7 +17,7 @@ const syncAndSeed = async () => {
 	try {
 		const getChampions = async () => {
 			let { data } = await axios.get(
-				'http://ddragon.leagueoflegends.com/cdn/12.17.1/data/en_US/champion.json'
+				'https://ddragon.leagueoflegends.com/cdn/12.17.1/data/en_US/champion.json'
 			);
 			let championArr = Object.values(data.data);
 			return championArr;
