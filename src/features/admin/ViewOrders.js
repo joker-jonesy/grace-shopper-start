@@ -10,7 +10,7 @@ function ViewOrders() {
 				!orders.length ? (
 					<h1>loading</h1>
 				) : (
-					<div>
+					<div className='user-box-wrapper'>
 						{orders.map((order) => (
 							<ul key={order.id}>
 								<li>

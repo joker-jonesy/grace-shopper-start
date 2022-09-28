@@ -7,7 +7,7 @@ function ViewUsers (){
     const users = useSelector(state=>state.users.users)
     return(<div className='view-users-container'>
         {admin.user.isAdmin ? !users.length ? <h1>loading</h1> : 
-        <div>
+        <div className='user-box-wrapper'>
             {users.map(user=><div key={user.id}>
                 <p>{user.fName} {user.lName}</p>
                 <p>username: {user.username}</p>
