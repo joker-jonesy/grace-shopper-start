@@ -42,6 +42,25 @@ export const updateOrder = createAsyncThunk(
 		}
 	}
 );
+export const updateLineItem = createAsyncThunk(
+	'cart/updateLineItem',
+	async ({ lineItem, qty, token }) => {
+		try {
+			const { data } = await axios.put(
+				`/api/lineItem/${lineItem.id}`,
+				{ qty },
+				{
+					headers: {
+						authorization: token,
+					},
+				}
+			);
+			return data;
+		} catch (e) {
+			console.log(e);
+		}
+	}
+);
 
 export const deleteUserItem = createAsyncThunk(
 	'cart/deleteUserItem',
@@ -107,6 +126,7 @@ const cartSlice = createSlice({
 				state.cart.map((item) => {
 					if (item.card.id === action.payload.card.id) {
 						item.qty += action.payload.qty;
+						item.qty > 10 ? (item.qty = 10) : item.qty;
 						item.price = Number(item.card.price) * item.qty;
 					}
 				});
@@ -123,19 +143,15 @@ const cartSlice = createSlice({
 		setLoginTotal(state, action) {
 			state.totalItems = action.payload;
 		},
-		updateQuantity(state,action){
-			state.cart.map(elem=>{
-			if(elem.card.id===action.payload.id){ 
-			elem.card.id=elem.card.id 
-			elem.qty = action.payload.qty
-			elem.price = Number(elem.card.price) * elem.qty;
-			}else{return elem}
-			})
+		getTotalPrice(state, action) {
+			state.totalPrice = state.cart.reduce((accum, next) => {
+				return accum + Number(next.qty * next.card.price);
+			}, 0);
 		},
-		clearCart(state,action){
-			state.totalItems = 0
-			state.cart = []
-			state.totalPrice= 0
+		clearCart(state, action) {
+			state.totalItems = 0;
+			state.cart = [];
+			state.totalPrice = 0;
 		},
 		addLoginCart(state, action) {
 			const productItems = state.cart.map((item) => item.product.id);
@@ -144,7 +160,6 @@ const cartSlice = createSlice({
 					if (item.card.id === action.payload.product.id) {
 						item.qty += action.payload.quantity;
 						item.price = Number(item.product.price) * item.qty;
-
 					}
 				});
 				state.totalPrice;
@@ -155,12 +170,18 @@ const cartSlice = createSlice({
 			state.cart.map((item) => (state.totalPrice += Number(item.price)));
 			state.totalItems = state.cart.length;
 		},
-		updateLoginQuantity(state,action){
-
-		},
+		updateLoginQuantity(state, action) {},
 		deleteItem(state, action) {
 			state.cart = state.cart.filter((item) => item.card.id !== action.payload);
 			state.totalItems--;
+		},
+		updateQuantity(state, action) {
+			state.cart.map((elem) => {
+				if (elem.card.id === action.payload.id) {
+					elem.qty = action.payload.qty;
+					elem.price = Number(elem.card.price) * elem.qty;
+				}
+			});
 		},
 	},
 	extraReducers(builder) {
@@ -170,13 +191,19 @@ const cartSlice = createSlice({
 			})
 			.addCase(deleteUserItem.fulfilled, (state, action) => {
 				state.totalItems = action.payload.count;
-
 			});
 	},
 });
 
-export const getTotalPrice = (state) => state.cart.totalPrice;
-export const { addToCart, addLoginCart, setLoginTotal, deleteItem, clearCart, updateQuantity } =
-	cartSlice.actions;
+// export const getTotalPrice = (state) => state.cart.totalPrice;
+export const {
+	addToCart,
+	addLoginCart,
+	setLoginTotal,
+	deleteItem,
+	clearCart,
+	updateQuantity,
+	getTotalPrice,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

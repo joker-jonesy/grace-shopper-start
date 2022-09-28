@@ -1,35 +1,43 @@
+import React, { useState } from 'react';
 
-import React, {useState} from "react";
-import { useDispatch } from "react-redux";
-import { updateQuantity } from "./cartSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { updateQuantity, updateLineItem, getTotalPrice } from './cartSlice';
+import { fetchUser } from '../login/loginSlice';
 
-function ChooseQuantity (props){
-    const nums = [1,2,3,4,5,6,7,8,9,10]
-    console.log(props.item)
-    const dispatch = useDispatch()
-    const [updateQty,setUpdateQty] = useState({id:props.item.card.id, qty:props.item.qty})
+function ChooseQuantity({ lineItem }) {
+	const selectQty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	const dispatch = useDispatch();
+	const qty = lineItem.qty || lineItem.quantity;
+	const login = useSelector((state) => state.login);
+	React.useEffect(() => {}, [lineItem]);
+	const handleChange = async (event) => {
+		(login.loggedIn &&
+			dispatch(
+				updateLineItem({
+					lineItem,
+					qty: event.target.value,
+					token: login.token,
+				})
+			) &&
+			dispatch(fetchUser(login.token))) ||
+			(dispatch(
+				updateQuantity({ id: lineItem.card.id, qty: event.target.value })
+			) &&
+				dispatch(getTotalPrice()));
+	};
+	console.log(lineItem.qty);
 
-const handleChange = async (event) =>{
-    event.preventDefault()
-    setUpdateQty({...updateQty,
-        qty:event.target.value})
-    
+	return (
+		<div className="quantity-container">
+			<select value={qty > 10 ? 10 : qty} onChange={handleChange}>
+				{selectQty.map((num) => (
+					<option key={num} value={num}>
+						{num}
+					</option>
+				))}
+			</select>
+		</div>
+	);
 }
-const handleSubmit = (event)=>{
-    event.preventDefault()
-    dispatch(updateQuantity(updateQty))
-}
 
-    return (
-        <div>
-        <form onSubmit={handleSubmit}>
-        <select value={props.item.qty} onChange={handleChange}>
-           {nums.map(num=><option key={num} value={num} >{num}</option>)}
-        </select>
-        <button type='submit' handle>Update</button>
-        </form>
-        </div>
-    )
-}
-
-export default ChooseQuantity
+export default ChooseQuantity;

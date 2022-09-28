@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import DeleteItem from './DeleteItem';
 import Checkout from './Checkout';
 import { currencyFormat } from '../util/utils';
-
+import ChooseQuantity from './ChooseQuantity';
 const LoginCart = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -64,7 +64,9 @@ const LoginCart = () => {
 									<div className="image-name"> {item.product.name} </div>
 								</Link>
 							</div>
-							<div className="cart-item-qty"> {item.quantity} </div>
+							<div className="cart-item-qty">
+								<ChooseQuantity lineItem={item} user={user} />{' '}
+							</div>
 							<div className="cart-item-price">
 								{currencyFormat(item.quantity * item.product.price)}
 							</div>

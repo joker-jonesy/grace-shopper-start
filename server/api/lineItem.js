@@ -11,13 +11,20 @@ const requireToken = async (req, res, next) => {
 		next(error);
 	}
 };
-
+router.put('/:id', requireToken, async (req, res, next) => {
+	try {
+		const lineItem = await LineItem.findByPk(req.params.id);
+		await lineItem.update({ quantity: req.body.qty });
+	} catch (e) {
+		next(e);
+	}
+});
 router.delete('/:id', requireToken, async (req, res, next) => {
 	try {
 		const lineItem = await LineItem.findByPk(req.params.id);
 		const orderId = lineItem.orderId;
 
-		const deleteItem = lineItem.destroy();
+		const deleteItem = await lineItem.destroy();
 		const count = await LineItem.count({ where: { orderId } });
 		res.send({ count, deleteItem });
 	} catch (e) {
