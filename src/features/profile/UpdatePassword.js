@@ -47,14 +47,14 @@ function UpdatePassword (props){
     }
 
     return(<div><h3>Update Password</h3>
-    <form onSubmit={handleSubmit}>
+    <form className='form' onSubmit={handleSubmit}>
         <label>Current Password</label>
-            <input type='password' onChange={handleChange('currentPassword')} required/>
+            <input className='form-element' type='password' onChange={handleChange('currentPassword')} required/>
         <label>New Password</label>
-            <input type='password' onChange={handlePassword('password')} required/>
+            <input className='form-element' type='password' onChange={handlePassword('password')} required/>
         <label>Retype New Password</label>
-            <input type='password' onChange={handlePassword2('password2')} required/>
-        <button type='submit'>Change Password</button>
+            <input className='form-element' type='password' onChange={handlePassword2('password2')} required/>
+        <button className='login-button' type='submit'>Change Password</button>
     </form>
     <div>{message}</div>
     </div>)

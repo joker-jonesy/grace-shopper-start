@@ -25,10 +25,14 @@ const syncAndSeed = async () => {
 		const setRandomPrice = () => {
 			return Math.floor(Math.random() * 10000);
 		};
+
+		
+      
 		//change to true to reseed
 
 		await conn.sync({ force: true });
-		let champions = await getChampions();
+		const champions = await getChampions();
+
 		let tags = await Tag.bulkCreate([
 			{ name: 'Fighter' },
 			{ name: 'Tank' },

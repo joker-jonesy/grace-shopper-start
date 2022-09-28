@@ -6,7 +6,6 @@ import { getFilter } from './cardsSlice';
 import Filter from './Filter';
 import { fetchCards, changeFilter } from './cardsSlice';
 import { TailSpin } from 'react-loading-icons';
-import { currencyFormat } from '../util/utils';
 
 const Cards = () => {
 	const dispatch = useDispatch();
@@ -71,52 +70,33 @@ const Cards = () => {
 									<img className="card-image" src={card.imgAll} alt="" />
 								</Link>
 							</div>{' '}
-							<div className="card-info-wrapper">
-								<div className="card-title">{card.name}</div>
-								<div className="card-info">
-									<div className="card-container">
-										{card.tag2 ? (
-											<span className="tag-wrapper">
-												<img className="tag" src={getTagImage(card.tag1)} />
-												<img className="tag" src={getTagImage(card.tag2)} />
-											</span>
-										) : (
-											<span className="tag-wrapper">
-												<img className="tag" src={getTagImage(card.tag1)} />
-											</span>
-										)}
-									</div>
-								</div>
-
-								<div className="card-info-flex">
-									<div className="all-card-store-info">
-										<div className="single-card-price">
-											Price: {currencyFormat(card.price)}
-										</div>
-										<div className="card-quantity">
-											{card.qty > 5
-												? 'In Stock'
-												: card.qty === 0
-												? 'Out of Stock'
-												: `Only ${card.qty} in stock`}
-										</div>
-									</div>
-									<div className="cart-button-flex">
-										<button
-											className="add-to-cart-button"
-											onClick={() =>
-												handleAddToCart({
-													card: card,
-													qty: 1,
-													price: card.price,
-												})
-											}
-										>
-											{' '}
-											Add to Cart{' '}
-										</button>
-									</div>
-								</div>
+							<div className="card-title">{card.name}</div>
+							<div className="card-info">
+								<div className="card-container">
+									{card.tag2 ? (
+										<span className="tag-wrapper">
+											<img className="tag" src={getTagImage(card.tag1)} />
+											<img className="tag" src={getTagImage(card.tag2)} />
+										</span>
+									) : (
+										<span className="tag-wrapper">
+											<img className="tag" src={getTagImage(card.tag1)} />
+										</span>
+									)}
+								</div>	
+							</div>
+						</div>
+						<div className='card-info-flex'>
+							<div className='all-card-store-info'>
+								<div className='single-card-price'>Price: ${card.price}</div>
+								<div className="card-quantity">{card.qty > 5 ? "In Stock" : (card.qty === 0 ? "Out of Stock" : `Only ${card.qty} in stock`)}</div>
+							</div>
+							<div className='cart-button-flex'>
+								<Link to='/cart'>
+									<button className='add-to-cart-button' onClick={() =>
+											handleAddToCart({ card: card, qty: 1, price: card.price })
+										}> Add to Cart </button>
+								</Link>
 							</div>
 						</div>
 					</div>

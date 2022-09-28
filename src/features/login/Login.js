@@ -23,18 +23,22 @@ function Login (){
     }
     return(
         <div className='rest login'>
+            <div className='login-box-wrapper'>
         <h3>
             Welcome, please log in!
         </h3>
-        <form onSubmit={handleSubmit}>
-            <label>Username</label>
-                <input type='text' onChange={handleChange('username')} required name='username'/>
-            <label>Password</label>
-                <input type='password' onChange={handleChange('password')} required name='password'/>
-            <button type='submit'>Login</button>
-        </form>
+        <div className='login-wrapper'>
+            <form className='form' onSubmit={handleSubmit}>
+                <label>Username</label>
+                    <input className='form-element' type='text' onChange={handleChange('username')} required name='username'/>
+                <label>Password</label>
+                    <input className='form-element' type='password' onChange={handleChange('password')} required name='password'/>
+                <button className='login-button' type='submit'>Login</button>
+            </form>
+        </div>
         <div>{message}</div>
-        <Link to='/signUp'><h3>Sign Up</h3></Link>
+        <Link to='/signUp'><h3 className='sign-up'>Sign Up</h3></Link>
+        </div>
         </div>
     )
 }

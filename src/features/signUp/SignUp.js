@@ -50,21 +50,21 @@ function SignUp (){
     return(
         <div className='rest'>
             <h3>Please use the following form to Sign Up</h3>
-            <form onSubmit={handleSubmit}>
-                <label>First Name</label>
-                    <input  type='text' onChange={handleChange('fName')} required />
-                <label>Last Name</label>
-                    <input type='text' onChange={handleChange('lName')} name='lName' required/>
-                <label>Email</label>
-                    <input type='email' onChange={handleChange('email')} name='email' required/>
-                <label>Username</label>
-                    <input type='text' onChange={handleChange('username')} name='username' required minLength={5} maxLength={32}/>
-                <label>Password</label>
-                    <input type='password' onChange={handlePassword('password')} name='password' required minLength={4} maxLength={20}/>
-                <label>Retype Password</label>
-                    <input type='password' onChange={handlePassword2('password2')} name='password' required minLength={4} maxLength={20}/>
-                <button type='submit'>Sign Up</button>
-                </form>
+                <form className='form' onSubmit={handleSubmit}>
+                    <label>First Name</label>
+                        <input  type='text' onChange={handleChange('fName')} required />
+                    <label>Last Name</label>
+                        <input type='text' onChange={handleChange('lName')} name='lName' required/>
+                    <label>Email</label>
+                        <input type='email' onChange={handleChange('email')} name='email' required/>
+                    <label>Username</label>
+                        <input type='text' onChange={handleChange('username')} name='username' required minLength={5} maxLength={32}/>
+                    <label>Password</label>
+                        <input type='password' onChange={handlePassword('password')} name='password' required minLength={4} maxLength={20}/>
+                    <label>Retype Password</label>
+                        <input type='password' onChange={handlePassword2('password2')} name='password' required minLength={4} maxLength={20}/>
+                    <button className='login-button' type='submit'>Sign Up</button>
+                    </form>
                 {message}
         </div>
     )

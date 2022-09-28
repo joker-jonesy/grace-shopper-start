@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import GuestCart from './GuestCart';
 import LoginCart from './LoginCart';
 import { updateOrder } from './cartSlice';
+
 const Cart = () => {
 	const dispatch = useDispatch();
 	const login = useSelector((state) => state.login);

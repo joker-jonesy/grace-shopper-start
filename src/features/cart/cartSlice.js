@@ -123,6 +123,15 @@ const cartSlice = createSlice({
 		setLoginTotal(state, action) {
 			state.totalItems = action.payload;
 		},
+		updateQuantity(state,action){
+			state.cart.map(elem=>{
+			if(elem.card.id===action.payload.id){ 
+			elem.card.id=elem.card.id 
+			elem.qty = action.payload.qty
+			elem.price = Number(elem.card.price) * elem.qty;
+			}else{return elem}
+			})
+		},
 		clearCart(state,action){
 			state.totalItems = 0
 			state.cart = []
@@ -142,11 +151,12 @@ const cartSlice = createSlice({
 			} else {
 				state.cart.push(action.payload);
 			}
-
 			state.totalPrice = 0;
 			state.cart.map((item) => (state.totalPrice += Number(item.price)));
-
 			state.totalItems = state.cart.length;
+		},
+		updateLoginQuantity(state,action){
+
 		},
 		deleteItem(state, action) {
 			state.cart = state.cart.filter((item) => item.card.id !== action.payload);
@@ -166,7 +176,7 @@ const cartSlice = createSlice({
 });
 
 export const getTotalPrice = (state) => state.cart.totalPrice;
-export const { addToCart, addLoginCart, setLoginTotal, deleteItem, clearCart } =
+export const { addToCart, addLoginCart, setLoginTotal, deleteItem, clearCart, updateQuantity } =
 	cartSlice.actions;
 
 export default cartSlice.reducer;
