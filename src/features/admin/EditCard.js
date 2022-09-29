@@ -24,4 +24,4 @@ function EditCard (){
     )
 }
 
-export default EditCard
+export default EditCard;

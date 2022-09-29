@@ -41,13 +41,13 @@ function UpdateCard (props){
                 <label>Quantity</label>
                     <input type = 'number' onChange = {handleChange('qty')} placeholder={card.qty}/>
                 <label>Image for Single Card View</label>
-                    <input type='text' onChange = {handleChange('imgSingle')}/>
+                    <input type='text' onChange = {handleChange('imgSingle')} placeholder={card.imgSingle}/>
                 <label>Image for All Cards View</label>
-                    <input type='text' onChange = {handleChange('imgAll')}/>
+                    <input type='text' onChange = {handleChange('imgAll')} placeholder={card.imgAll}/>
                 <label>Image for Cart View</label>
-                    <input type='text' onChange = {handleChange('imgCart')}/>
+                    <input type='text' onChange = {handleChange('imgCart')} placeholder={card.imgCart}/>
                 <label>Description of Champion</label>
-                    <input type='text' onChange={handleChange('descriptionBlurb')}/>
+                    <input type='text' onChange={handleChange('descriptionBlurb')} placeholder={card.descriptionBlurb}/>
                 <label>tag1</label>
                     <select defaultValue={card.tag1} onClick={(event)=>{
                         setForm({
