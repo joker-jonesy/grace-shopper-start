@@ -25,7 +25,6 @@ function ChooseQuantity({ lineItem }) {
 			) &&
 				dispatch(getTotalPrice()));
 	};
-	console.log(lineItem.qty);
 
 	return (
 		<div className="quantity-container">

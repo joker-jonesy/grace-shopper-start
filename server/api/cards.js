@@ -3,6 +3,18 @@ const { Product } = require('../db');
 
 // GET /api/cards
 
+const requireToken = async (req, res, next) => {
+	try {
+		const token = await req.headers.authorization;
+		const user = await User.byToken(token);
+		req.user = user;
+		next();
+	} catch (error) {
+		next(error);
+	}
+};
+
+
 router.get('/', async (req, res, next) => {
 	try {
 		const product = await Product.findAll();
@@ -23,7 +35,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 //post /api/cards
-router.post('/', async (req,res,next)=>{
+router.post('/', requireToken, async (req,res,next)=>{
 	try{
 		console.log(req.body)
 		const newCard = await Product.create(req.body)
@@ -32,7 +44,7 @@ router.post('/', async (req,res,next)=>{
 })
 
 //delete /api/cards/:id
-router.delete('/:id', async (req,res,next)=>{
+router.delete('/:id', requireToken, async (req,res,next)=>{
 	try {
 		const card = await Product.findByPk((req.params.id))
 		await card.destroy()
@@ -40,7 +52,7 @@ router.delete('/:id', async (req,res,next)=>{
 	}catch(error){next(error)}
 })
 //update or put /api/cards/:id
-router.put('/:id', async (req,res,next)=>{
+router.put('/:id', requireToken, async (req,res,next)=>{
 	try{
 		const card = await Product.findByPk((req.params.id))
 		await card.update(req.body)
