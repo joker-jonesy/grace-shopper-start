@@ -19,6 +19,10 @@ const Nav = () => {
 					{' '}
 					Cart {totalItem > 0 ? `( ${totalItem} )` : ''}
 				</Link>
+				<Link className='nav-link' to=  '/about'>
+					{' '}
+					About{' '}
+				</Link>
 			</nav>
 		</div>
 	);
