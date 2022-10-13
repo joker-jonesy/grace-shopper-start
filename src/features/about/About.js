@@ -12,7 +12,7 @@ function About (){
             </div>
             <div className="devContainer">
                 <h4>Bill Munkacsy</h4>
-                <img src='https://res.cloudinary.com/dn79dsttu/image/upload/v1665677209/BillProfile_txamxp.jpg'/>
+                <img className='photo' src='https://res.cloudinary.com/dn79dsttu/image/upload/v1665677209/BillProfile_txamxp.jpg'/>
                 <p>Prior to enrolling in Fullstack Academy Bill was a mathematics teacher at public schools. Bill is excited to join the development community and is looking for remote work or work in the central Virginia Area.</p>
                 <a href='www.linkedin.com/in/williammunkacsy'>Bill's LinkedIn</a>
                 <div>
