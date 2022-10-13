@@ -642,3 +642,7 @@ body {
 	animation-timing-function: ease-in;
 	animation-duration: 1s;
 }
+.photo{
+	height:200px;
+	width:200px;
+}
