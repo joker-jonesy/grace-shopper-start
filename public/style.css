@@ -1,0 +1,643 @@
+* {
+	box-sizing: border-box;
+	/* background-color: black; */
+}
+
+@font-face {
+	font-family: lol-font;
+	src: url('./FrizQuadrataRegular.ttf');
+}
+
+@keyframes fade-in-opacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+body {
+	font-family: lol-font;
+	color: gold;
+	background-color: black;
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav {
+	z-index: 1;
+	position: sticky;
+	top: 10px;
+	padding: 10px;
+	margin-top: 5%;
+	background-color: rgb(0, 0, 0, 0);
+}
+
+.content-container {
+	max-width: 1200px;
+	min-width: 80vw;
+}
+
+.backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #000000e1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal {
+	width: clamp(50%, 700px, 90%);
+  height: min(50%, 300px);
+
+  margin: auto;
+  padding: 0 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.all-cards-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.card-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.nav-bar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	overflow: hidden;
+	background-color: rgb(6, 0, 63);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 2% 20%;
+	background-color: rgb(17, 17, 17);
+	font-family: lol-font;
+	border-bottom: 2px solid rgb(255, 215, 0, .5);
+}
+
+.nav-link {
+	color: gold;
+	font-size: 2.5vh;
+	text-decoration: none;
+	height: 50px;
+	max-height: 3vh;
+	padding-top: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+
+/* .nav-link:focus,
+.nav-link:hover {
+	background-color: gold;
+	color: #333;
+	font-size: 24px
+} */
+  
+.nav-link:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: gold;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+}
+  
+.nav-link:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+.rest {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin-top: 5%;
+	background-color: rgb(0, 0, 0);
+}
+
+.cart-container {
+	background-color: #333;
+	margin-top: 5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.cart-item-header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+.header-element {
+	width: 25%;
+}
+
+.cart-item-name,
+.cart-item-qty,
+.cart-item-price,
+.cart-delete-button {
+	width: 25%;
+}
+
+.cart-delete-button {
+	width: 100px;
+}
+
+.cart-item-header span {
+	text-decoration: underline;
+	text-transform: capitalize;
+	font-size: large;
+}
+
+.cart-item-header-info {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.cart-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	opacity: 1;
+	background-color: #333;
+	border-color: rgb(45, 45, 45);
+	border-width: 10px, 5px, 5px, 5px;
+	border-style: dotted;
+
+	animation-name: fade-in-opacity;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.cart-image {
+	width: 75px;
+	height: 75px;
+	margin-bottom: 2px;
+}
+
+.cart-price {
+	margin: 5px;
+}
+
+.image-name {
+	font-size: 20px;
+	color: gold;
+	text-decoration: none;
+}
+
+.cart-item-name {
+	display: flex;
+	flex-direction: column;
+}
+
+.cart-item-info {
+	display: flex;
+	width: 66%;
+	justify-content: space-evenly;
+}
+
+.qty-div {
+	display: flex;
+	flex-direction: row;
+}
+
+.all-cards-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 6rem;
+	flex-wrap: wrap;
+	margin-top: 7rems;
+}
+
+.admin-profile-container {
+	margin-top: 7rems;
+}
+
+.create-card-container {
+	margin-top: 7rems;
+}
+
+.card-edit-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.edit-form {
+	display: flex;
+	flex-direction: column;
+	margin-right: 5px;
+}
+
+.create-form {
+	display: flex;
+	flex-direction: column;
+	padding-top: 10px;
+	width: 300px;
+}
+
+.view-orders-container {
+	margin-top: 7rems;
+}
+
+.view-users-container {
+	margin-top: 7rems;
+}
+
+.view-profile-container {
+	margin-top: 7rems;
+}
+
+.card-display {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card-image {
+	max-height: 417px;
+	max-width: 700px;
+	transition: width 1s, height 1s, transform 1s;
+}
+
+.single-card-image {
+	max-height: 417px;
+	max-width: 700px;
+}
+
+
+
+.card-image:hover {
+	transform: scale(1.025);
+	transition: width 0.3s, height 0.3s, transform 0.3s;
+}
+
+.blurb-wrapper {
+	display: flex;
+	justify-content: center;
+	max-height: 40%;
+	overflow: auto;
+}
+
+.card-blurb {
+	margin: 20px;
+	max-width: 70%;
+	overflow:auto;
+	background-color: #101711;
+	padding: 10px;
+	border-style:double;
+	border-width: 5px;
+	border-color: rgb(60 73 60);
+}
+
+.card-title {
+	font-family: lol-font;
+	color: gold;
+	text-decoration: none;
+	font-weight: 600;
+	text-align: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+}
+
+.form-button {
+	width: 130px;
+}
+
+.form-element {
+	padding: 5px;
+	width: 150px;
+	margin: 5px;
+}
+
+.form-email-element {
+	padding: 5px;
+	width: 200px;
+	margin-left: 5px;
+}
+
+.form-label {
+	padding: 5px;
+}
+
+.single-card-title {
+	font-family: lol-font;
+	color: gold;
+	font-size: 24px;
+	text-align: center;
+	padding-top: 55px;
+}
+
+.single-card-info {
+	width: 490px;
+	height: 400px;
+    background-color: rgb(0, 33, 0);
+	background-image: url('https://blz-contentstack-images.akamaized.net/v3/assets/blt45749e0fed8aa592/blte8df32260aa76d67/60192ff814a90a0bfc552b1d/frame.png');
+}
+
+.single-card-store-info {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.card-info-flex {
+	padding-top: 5px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.card-info {
+	background-color: black;
+}
+
+.card-price {
+	color: lightgray;
+	margin-bottom: 5px;
+}
+
+.add-to-cart-button {
+	justify-content: center;
+	align-items: center;
+	font-family: lol-font;
+	color: black;
+	background-color: rgb(255, 238, 138);
+}
+
+.add-to-cart-button:hover {
+	cursor: pointer;
+}
+
+.cart-button-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.single-add-to-cart-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: lol-font;
+	color: black;
+	background-color: gold;
+	margin-left: 20px;
+}
+
+.single-add-to-cart-button:hover {
+	cursor: pointer;
+}
+
+.tag-wrapper {
+	display: flex;
+	justify-content: space-evenly;
+	max-height: 50px;
+}
+
+.tag {
+	max-width: 50px;
+}
+
+.tags-container {
+	display: flex;
+	justify-content: baseline;
+}
+
+.card-info {
+	background-color: rgb(0, 0, 0, 0);
+}
+
+.card-blurb {
+	flex-shrink: 2;
+}
+
+.single-card-price {
+	color: lightgray;
+	/* margin-left: 20px; */
+	font-family: serif;
+	font-size: 12px;
+}
+
+.card-quantity {
+	/* margin-left: 20px; */
+	margin-bottom: 10px;
+	font-family: serif;
+	font-size: 12px;
+	color: lightgray;
+}
+
+.qty-button {
+	background-color: gold;
+	max-height: 20px;
+}
+
+.previous-order-image {
+	height: 50px;
+	width: 50px;
+}
+
+.cart-container {
+	margin-top: 2rem;
+	border: 1px solid rgba(255, 215, 0, 0.5);
+	border-radius: 4px;
+	margin-bottom: 1rem;
+}
+
+.card-wrapper {
+	opacity: 1;
+	animation-name: fade-in-opacity;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.splash-image {
+	width: 100%;
+	opacity: 1;
+
+	animation-name: fade-in-opacity;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.card-bottom {
+	display: flex;
+	justify-content: space-evenly;
+	padding: 3px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.admin-profile-links {
+	color: gold;
+	text-decoration: underline;
+	padding: 5px;
+	cursor: pointer;
+}
+.filter-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 7rem;
+
+	margin-top: 2rem;
+	margin-bottom: -50px;
+	position: sticky;
+}
+
+.payment-process {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10rem;
+}
+
+
+.card-info-wrapper{
+	border-right:  3px solid rgb(13, 13, 13);
+	border-bottom: 7px solid rgb(17, 17, 17);
+	border-left:   3px solid rgb(13, 13, 13);
+	margin-bottom: 40px;
+}
+
+.login-wrapper {
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+}
+
+.login {
+	background-color: black;
+	padding: 20px;
+}
+
+.login-box-wrapper {
+	background-color: #333;
+	border-color: rgb(255, 215, 0, .3);
+	border-width: 10px, 5px, 5px, 5px;
+	border-style: solid;
+	width: 400px;
+	padding: 20px;
+}
+
+.login-button {
+	width: 100px;
+	margin-left: 5px;
+}
+
+.logout-button {
+	margin-top: 5px;
+}
+
+.sign-up {
+	padding-left: 5px;
+	color: gold;
+	text-decoration: underline;
+}
+
+.user {
+	padding: 5px;
+}
+
+.user-box-wrapper {
+	background-color: #333;
+	border-color: rgb(255, 215, 0, .3);
+	border-width: 10px, 5px, 5px, 5px;
+	border-style: solid;
+	padding: 10px;
+	padding-bottom: 20px;
+}
+
+.c-form {
+	width: 200px;
+}
+
+.c-form-button {
+	width: 100px;
+	margin-top: 10px;
+}
+
+.edit-card {
+	margin: 10px;
+}
+
+.card-header {
+	margin-left: 100px;
+	font-size: 50px;
+}
+
+.splash-container {
+    max-height:85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.splash-text-div{
+    height: 8em;
+    position: absolute;
+    padding: 5px 20vw;
+    background-color: rgb(0, 0, 0, 0.7);
+    color:beige;
+    line-height: 1.2;
+    z-index: 1;
+    opacity: 1;
+    animation-name: fade-in-opacity;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+    overflow: hidden;
+}
+
+.splash-text{
+    display: flex;
+    justify-content:center;
+    text-align: center;
+}
+
+#splash-button{
+    color: rgb(255, 250, 173)
+}
+
+.splash-image {
+    opacity: 1;
+    max-height: 95%;
+    max-width: 100%;
+    animation-name: fade-in-opacity;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+}
