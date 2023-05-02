@@ -14,8 +14,10 @@ const Cards = () => {
 	const login = useSelector((state) => state.login);
 	const filter = useSelector(getFilter);
 
-	const filteredCards = useSelector((state) => state.cards.filteredCards);
-
+	const filteredCards = useSelector((state) => state.cards);
+	if(filteredCards){
+		console.log(filteredCards)
+	}
 	const handleAddToCart = (card) => {
 		(login.loggedIn &&
 			dispatch(
@@ -48,13 +50,13 @@ const Cards = () => {
 		}
 	};
 
-	return !cards ? (
+	return !filteredCards ? (
 		<div className="all-cards-container">
 			<TailSpin stroke="#f0b326" strokeWidth="3" />
 		</div>
 	) : (
 		<>
-			<Filter />
+			{/* <Filter /> */}
 			<div className="all-cards-container">
 				{filteredCards.map((card, i) => (
 					<div
