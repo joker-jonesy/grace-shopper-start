@@ -10,19 +10,19 @@ function ViewOrders() {
 				!orders.length ? (
 					<h1>loading</h1>
 				) : (
-					<div className='user-box-wrapper'>
+					<div className='login-box-wrapper'>
 						{orders.map((order) => (
-							<ul key={order.id}>
-								<li>
+							<ul className='user-info-list' key={order.id}>
+								<li className='user-item'>
 									Create By: {order.user.fName} {order.user.lName}
 								</li>
-								<li>Email associated with order {order.user.email}</li>
-								<li>Order ID:{order.id}</li>
-								<li>Date:{order.createdAt}</li>
-								<li>{order.orderStreet}</li>
-								<li>{order.orderState}</li>
-								<li>{order.orderCountry}</li>
-								<li>{order.orderZip}</li>
+								<li className='user-item'>Email associated with order {order.user.email}</li>
+								<li className='user-item'>Order ID:{order.id}</li>
+								<li className='user-item'>Date:{order.createdAt}</li>
+								<li className='user-item'>{order.orderStreet}</li>
+								<li className='user-item'>{order.orderState}</li>
+								<li className='user-item'>{order.orderCountry}</li>
+								<li className='user-item'>{order.orderZip}</li>
 								<p>Bought these Cards:</p>
 								<div>
 									{order.lineItems.map((product) => (

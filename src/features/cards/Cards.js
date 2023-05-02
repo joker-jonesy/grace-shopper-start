@@ -34,8 +34,9 @@ const Cards = () => {
 				)
 			);
 		}
+		console.log("INSIDE USEEFFECT" )
 	}, [filter]);
-
+console.log("OUTSIDE USEEFFECT: ", cards)
 	const getTagImage = (tag) => {
 		switch (tag) {
 			case 'Fighter':

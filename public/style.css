@@ -574,6 +574,14 @@ body {
 	padding: 5px;
 }
 
+.user-info-list {
+	list-style-type: none;
+}
+
+.user-item {
+	padding: 2px;
+}
+
 .user-box-wrapper {
 	background-color: #333;
 	border-color: rgb(255, 215, 0, .3);

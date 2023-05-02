@@ -14,6 +14,7 @@ export const fetchCards = createAsyncThunk('cards/fetchCards', async () => {
 	try {
 		const { data } = await axios.get('/api/cards');
 		await data.sort((a, b) => a.id - b.id);
+		console.log("DATA IN THE THUNK: ", data)
 		return data;
 	} catch (e) {
 		console.log(e);
