@@ -23,7 +23,7 @@ router.get('/', requireToken, async (req,res,next)=>{
     }catch(error){next(error)}
 })
 
-router.delete('/:id', async (req,res,next)=>{
+router.delete('/:id', requireToken, async (req,res,next)=>{
     try{
         const user = await User.findByPk((req.params.id))
         await user.destroy()

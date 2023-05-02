@@ -6,6 +6,7 @@ import {
 	updateOrder,
 	deleteUserItem,
 	deleteItem,
+	getTotalPrice,
 } from './cartSlice';
 import { fetchUser } from '../login/loginSlice';
 
@@ -17,7 +18,7 @@ const DeleteItem = ({ id, lineItem, user }) => {
 		(login.loggedIn &&
 			dispatch(deleteUserItem({ lineItem, token: login.token })) &&
 			dispatch(fetchUser(login.token))) ||
-			dispatch(deleteItem(id));
+			(dispatch(deleteItem(id)) && dispatch(getTotalPrice()));
 	};
 
 	return (

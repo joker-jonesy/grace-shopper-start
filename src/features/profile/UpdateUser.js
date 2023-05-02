@@ -52,7 +52,7 @@ function UpdateUser (){
                         <input className='form-email-element' type='text' onChange={handleChange('email')} placeholder={user.email}/>
                     <label className='form-label'>Username: {user.username}</label>
                         <input className='form-element' type='text' onChange={handleChange('username')} placeholder={user.username}/>
-                    <button className='form-button' type='submit'>Edit your profile</button>
+                    <button className='login-button' type='submit'>Edit your profile</button>
                 </form>
                 <UpdatePassword user={user}/>
             </div>}

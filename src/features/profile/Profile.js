@@ -19,14 +19,15 @@ const Profile = () => {
 				<AdminProfile />
 			) : (
 				<div className="user-profile">
+					<div className='login-box-wrapper'>
 					<h2>Welcome, {user.username}!</h2>
 					<div className="user-info">
-						<div className="user-name">
+						<div className="user-name user">
 							{user.fName} {user.lName}
 						</div>
-						<div className="user-email">{user.email}</div>
+						<div className="user-email user">{user.email}</div>
 					</div>
-					<button
+					<button className='login-button'
 						onClick={() => {
 							dispatch(logout())
 							dispatch(setLoginTotal(0))
@@ -35,11 +36,12 @@ const Profile = () => {
 					>
 						Logout
 					</button>
+					</div>
 					<Link to="/profile/updateProfile">
 						<h4>Update Your Profile/Password</h4>
 					</Link>
 					{user.orders.length ? (
-						<div>
+						<div className='user-box-wrapper'>
 							<h4>Previous Orders:</h4>
 							<div>
 								{user.orders.map((order) => {
