@@ -6,7 +6,7 @@ if (process.env.QUIET) {
 
 //you name this whatever your project is
 const connection = new Sequelize(
-	process.env.DATABASE_URL || 'postgres://localhost/lolcards',{
+	process.env.DATABASE_URL || 'postgres://localhost/lol-cards',{
 		dialectOptions: {
 			ssl: {
 				require: true,
