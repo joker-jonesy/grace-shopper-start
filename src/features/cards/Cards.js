@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, setLoginTotal, updateOrder } from '../cart/cartSlice';
 import { getFilter } from './cardsSlice';
 import Filter from './Filter';
-import { fetchCards } from './cardsSlice';
+import { fetchCards, changeFilter } from './cardsSlice';
 import { TailSpin } from 'react-loading-icons';
-
+import { currencyFormat } from '../util/utils';
 const Cards = () => {
 	const dispatch = useDispatch();
 
@@ -14,8 +14,8 @@ const Cards = () => {
 	const login = useSelector((state) => state.login);
 	const filter = useSelector(getFilter);
 
-	const [filteredCards, setfilteredCards] = React.useState([]);
-
+	const filteredCards = useSelector((state) => state.cards.cards);
+	
 	const handleAddToCart = (card) => {
 		(login.loggedIn &&
 			dispatch(
@@ -26,17 +26,9 @@ const Cards = () => {
 	};
 
 	React.useEffect(() => {
-		setfilteredCards(cards);
-		if (filter !== 'All') {
-			setfilteredCards(
-				filteredCards.filter(
-					(card) => card.tag1 === filter || card.tag2 === filter
-				)
-			);
-		}
-		console.log("INSIDE USEEFFECT" )
-	}, [filter]);
-console.log("OUTSIDE USEEFFECT: ", cards)
+		dispatch(changeFilter(filter));
+	}, []);
+
 	const getTagImage = (tag) => {
 		switch (tag) {
 			case 'Fighter':
@@ -56,13 +48,13 @@ console.log("OUTSIDE USEEFFECT: ", cards)
 		}
 	};
 
-	return !cards.length ? (
+	return !cards ? (
 		<div className="all-cards-container">
 			<TailSpin stroke="#f0b326" strokeWidth="3" />
 		</div>
 	) : (
 		<>
-			<Filter />
+			{/* <Filter /> */}
 			<div className="all-cards-container">
 				{filteredCards.map((card, i) => (
 					<div
@@ -91,20 +83,31 @@ console.log("OUTSIDE USEEFFECT: ", cards)
 											<img className="tag" src={getTagImage(card.tag1)} />
 										</span>
 									)}
-								</div>	
+								</div>
 							</div>
 						</div>
-						<div className='card-info-flex'>
-							<div className='all-card-store-info'>
-								<div className='single-card-price'>Price: ${card.price}</div>
-								<div className="card-quantity">{card.qty > 5 ? "In Stock" : (card.qty === 0 ? "Out of Stock" : `Only ${card.qty} in stock`)}</div>
+						<div className="card-info-flex">
+							<div className="all-card-store-info">
+								<div className="single-card-price">
+									Price: {currencyFormat(card.price)}
+								</div>
+								<div className="card-quantity">
+									{card.qty > 5
+										? 'In Stock'
+										: card.qty === 0
+										? 'Out of Stock'
+										: `Only ${card.qty} in stock`}
+								</div>
 							</div>
-							<div className='cart-button-flex'>
-								<Link to='/cart'>
-									<button className='add-to-cart-button' onClick={() =>
-											handleAddToCart({ card: card, qty: 1, price: card.price })
-										}> Add to Cart </button>
-								</Link>
+							<div className="cart-button-flex">
+								<button
+									className="add-to-cart-button"
+									onClick={() =>
+										handleAddToCart({ card: card, qty: 1, price: card.price })
+									}
+								>
+									Add to Cart
+								</button>
 							</div>
 						</div>
 					</div>

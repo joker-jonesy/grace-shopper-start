@@ -24,11 +24,13 @@ const syncAndSeed = async () => {
 		};
 		const setRandomPrice = () => {
 			return Math.floor(Math.random() * 10000);
-		};
+		};	
+      
 		//change to true to reseed
 
 		await conn.sync({ force: true });
-		let champions = await getChampions();
+		const champions = await getChampions();
+
 		let tags = await Tag.bulkCreate([
 			{ name: 'Fighter' },
 			{ name: 'Tank' },
@@ -89,7 +91,7 @@ const syncAndSeed = async () => {
 			userId: sally.id,
 		});
 
-		let orderItems = await LineItem.bulkCreate([
+		orderItems = await LineItem.bulkCreate([
 			{ orderId: order1.id, productId: 1, quantity: 1 },
 			{ orderId: order1.id, productId: 6, quantity: 3 },
 			{ orderId: order1.id, productId: 5, quantity: 1 },

@@ -17,6 +17,7 @@ import { fetchCards } from './features/cards/cardsSlice';
 import Splash from './features/splash/Splash';
 import PaymentRecieve from './components/PaymentRecieve';
 import { checkToken } from './features/login/loginSlice';
+import About from './features/about/About';
 
 export default function App() {
 	const dispatch = useDispatch();
@@ -43,6 +44,7 @@ export default function App() {
 					<Route path="/admin/editCard" element={<EditCard />} />
 					<Route path="/profile/updateProfile" element={<UpdateUser />} />
 					<Route path="/succeeded" element={<PaymentRecieve />} />
+					<Route path='/about' element={<About/>}/>
 				</Routes>
 			</div>
 		</div>
